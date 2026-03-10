@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>7. Runbooks :: ArkaB2B Docs</title>
+    <link>http://localhost:1313/mvp/operacion/runbooks/index.html</link>
+    <description>Runbooks operativos de MVP para incidentes y degradaciones del flujo core. Cada runbook define entrada, contencion, recuperacion, verificacion, escalamiento y evidencia obligatoria.&#xA;Regla transversal para incidentes de runtime:&#xA;verificar salud de servicio, version de imagen desplegada y configuracion inyectada por entorno; cuando el alcance sea local/dev/qa de integracion, validar reproduccion del incidente sobre stack docker compose antes de cerrar.</description>
+    <generator>Hugo</generator>
+    <language>es-CO</language>
+    <atom:link href="http://localhost:1313/mvp/operacion/runbooks/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Caida de Servicio</title>
+      <link>http://localhost:1313/mvp/operacion/runbooks/caida-servicio/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/operacion/runbooks/caida-servicio/index.html</guid>
+      <description>Proposito Restaurar disponibilidad cuando un servicio deja de responder por completo.&#xA;Senal de entrada Healthcheck fallando en dos ventanas consecutivas. Error rate cercano al 100% para endpoints criticos. Senales iniciales y prioridad Senal Prioridad sugerida servicio core sin respuesta Sev 1 servicio no core caido con workaround Sev 2 health inestable sin impacto funcional Sev 3 Impacto esperado Interrupcion de flujo critico segun el servicio afectado.</description>
+    </item>
+    <item>
+      <title>Aumento de Errores 5xx</title>
+      <link>http://localhost:1313/mvp/operacion/runbooks/aumento-errores-5xx/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/operacion/runbooks/aumento-errores-5xx/index.html</guid>
+      <description>Proposito Reducir rapidamente errores 5xx y recuperar estabilidad del API.&#xA;Senal de entrada Alerta de error rate 5xx por encima de umbral. Aumento sostenido de excepciones no controladas. Impacto esperado Fallas intermitentes o continuas de operaciones criticas.</description>
+    </item>
+    <item>
+      <title>Fallos de Autenticacion</title>
+      <link>http://localhost:1313/mvp/operacion/runbooks/fallos-autenticacion/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/operacion/runbooks/fallos-autenticacion/index.html</guid>
+      <description>Proposito Restaurar autenticacion/autorizacion sin degradar aislamiento tenant.&#xA;Senal de entrada Incremento de 401/403 anomalo. Errores de validacion de token o JWKS. Impacto esperado Usuarios sin acceso a operaciones permitidas.</description>
+    </item>
+    <item>
+      <title>Checkout Degradado</title>
+      <link>http://localhost:1313/mvp/operacion/runbooks/checkout-degradado/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/operacion/runbooks/checkout-degradado/index.html</guid>
+      <description>Proposito Recuperar el flujo de checkout minimizando perdida de conversion.&#xA;Senal de entrada Latencia alta o errores en checkout. Fallas en validacion de stock, direccion o pago manual. Senales por etapa del checkout Etapa Senal tipica Impacto validacion regional configuracion_pais_no_disponible bloqueo por pais validacion stock/reserva stock_insuficiente o timeout de reserva checkout inconcluso creacion pedido error 5xx o conflicto de checkout pedido no creado pago manual rechazo o timeout en confirmacion pedido pendiente/error Impacto esperado Pedidos no creados o checkout inconcluso.</description>
+    </item>
+    <item>
+      <title>Reserva Inconsistente</title>
+      <link>http://localhost:1313/mvp/operacion/runbooks/reserva-inconsistente/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/operacion/runbooks/reserva-inconsistente/index.html</guid>
+      <description>Proposito Corregir divergencias entre reserva de inventario y estado de pedido.&#xA;Senal de entrada Reserva activa sin pedido asociado. Pedido confirmado sin reserva valida. Impacto esperado Sobreventa o bloqueo indebido de stock.</description>
+    </item>
+    <item>
+      <title>Crecimiento de DLQ</title>
+      <link>http://localhost:1313/mvp/operacion/runbooks/crecimiento-dlq/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/operacion/runbooks/crecimiento-dlq/index.html</guid>
+      <description>Proposito Controlar aumento anormal de mensajes en DLQ sin perder trazabilidad.&#xA;Senal de entrada Alerta de crecimiento sostenido de DLQ. Reintentos agotados en consumidor. Senales para priorizacion Senal Prioridad sugerida DLQ creciendo en topico core (order/inventory) Sev 1/Sev 2 alta DLQ creciendo en topico derivado (reporting/notification) Sev 2/Sev 3 reingreso recurrente del mismo mensaje Sev 2 Impacto esperado Procesamiento atrasado y riesgo de inconsistencia.</description>
+    </item>
+    <item>
+      <title>Consumidor Atascado</title>
+      <link>http://localhost:1313/mvp/operacion/runbooks/consumidor-atascado/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/operacion/runbooks/consumidor-atascado/index.html</guid>
+      <description>Proposito Recuperar consumidor de eventos con lag creciente o throughput nulo.&#xA;Senal de entrada Lag de consumidor creciendo sin drenaje. Throughput cercano a cero. Impacto esperado Atraso de proyecciones y sincronizacion entre servicios.</description>
+    </item>
+    <item>
+      <title>Reporting Atrasado</title>
+      <link>http://localhost:1313/mvp/operacion/runbooks/reporting-atrasado/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/operacion/runbooks/reporting-atrasado/index.html</guid>
+      <description>Proposito Restablecer frescura de reportes sin comprometer consistencia del core.&#xA;Senal de entrada SLA de actualizacion semanal incumplido. Desfase entre eventos fuente y datasets de reporteria. Impacto esperado Analitica desactualizada para negocio y operaciones.</description>
+    </item>
+    <item>
+      <title>Configuracion Pais No Disponible</title>
+      <link>http://localhost:1313/mvp/operacion/runbooks/configuracion-pais-no-disponible/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/operacion/runbooks/configuracion-pais-no-disponible/index.html</guid>
+      <description>Proposito Gestionar bloqueos operativos por ausencia de configuracion regional vigente.&#xA;Senal de entrada Error canonico configuracion_pais_no_disponible. Bloqueo en checkout u operacion critica regional. Senales para delimitar alcance Senal Interpretacion error concentrado en un countryCode politica ausente o vencida en ese pais error en multiples paises tras cambio posible falla de propagacion/configuracion global error solo en un tenant configuracion organizacional incompleta Impacto esperado No se procesa operacion critica para countryCode afectado.</description>
+    </item>
+    <item>
+      <title>Rotacion Urgente de Secretos</title>
+      <link>http://localhost:1313/mvp/operacion/runbooks/rotacion-urgente-secretos/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/operacion/runbooks/rotacion-urgente-secretos/index.html</guid>
+      <description>Proposito Rotar secretos comprometidos minimizando interrupcion del servicio.&#xA;Senal de entrada Indicador de exposicion de secreto. Alerta de uso no autorizado. Impacto esperado Riesgo de acceso indebido, fuga o manipulacion.</description>
+    </item>
+    <item>
+      <title>Rollback de Release</title>
+      <link>http://localhost:1313/mvp/operacion/runbooks/rollback-release/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/operacion/runbooks/rollback-release/index.html</guid>
+      <description>Proposito Revertir un release cuando su impacto supera tolerancia operacional.&#xA;Senal de entrada Degradacion tras despliegue confirmada por metricas. Fallas funcionales de flujo critico. Senales para activar rollback Senal Decision falla sostenida de healthcheck tras deploy rollback inmediato smoke funcional core fallido rollback o fix forward en ventana corta crecimiento anomalo de DLQ/lag tras cambio pausar promocion y evaluar rollback errores authn/authz anormales tras cambio de seguridad rollback con incidente de seguridad Impacto esperado Riesgo de indisponibilidad o inconsistencia de negocio.</description>
+    </item>
+  </channel>
+</rss>

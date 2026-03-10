@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Arquitectura :: ArkaB2B Docs</title>
+    <link>http://localhost:1313/mvp/arquitectura/index.html</link>
+    <description>Pilar de arquitectura para ArkaB2B: traduccion estructural del baseline semantico de MVP hacia servicios, contratos tecnicos, runtime, datos, seguridad, rendimiento y despliegue.&#xA;Este pilar consume directamente el baseline aprobado de dominio del ciclo actual. El contenido sigue un orden tecnico: vistas globales (arc42), detalle local por servicio (Servicios) y cierre del pilar (Trazabilidad y Evolucion).</description>
+    <generator>Hugo</generator>
+    <language>es-CO</language>
+    <atom:link href="http://localhost:1313/mvp/arquitectura/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>arc42</title>
+      <link>http://localhost:1313/mvp/arquitectura/arc42/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/arquitectura/arc42/index.html</guid>
+      <description>Marco global Responde: como se organiza la vista global de arquitectura y en que orden debe recorrerse.&#xA;La vista arc42 concentra las decisiones estructurales del sistema: drivers, restricciones, contexto, estrategia, bloques, runtime, despliegue, conceptos transversales, ADR, escenarios de calidad y deuda.&#xA;Criterio de autoridad Responde: como se relaciona esta vista global con producto, dominio y el resto del pilar.</description>
+    </item>
+    <item>
+      <title>Servicios</title>
+      <link>http://localhost:1313/mvp/arquitectura/servicios/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/arquitectura/servicios/index.html</guid>
+      <description>Marco de servicios Responde: que organiza esta capa de detalle y como se relaciona cada servicio con los bounded contexts del dominio.&#xA;Cada dossier de servicio aterriza el bounded context correspondiente en arquitectura interna, contratos, datos, rendimiento y seguridad.&#xA;Convenciones del dossier Responde: como se documenta cada servicio sin duplicar autoridad ni arrastrar ruido editorial.</description>
+    </item>
+    <item>
+      <title>Trazabilidad de Arquitectura</title>
+      <link>http://localhost:1313/mvp/arquitectura/trazabilidad/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/arquitectura/trazabilidad/index.html</guid>
+      <description>Marco de trazabilidad Responde: como se verifica que arquitectura materializa RF/RNF y preserva el baseline de dominio sin contradicciones.&#xA;La trazabilidad del pilar de arquitectura conecta requisitos de producto, decisiones de dominio y artefactos tecnicos globales/locales para MVP.&#xA;Criterio de cierre Responde: cuando un requisito se considera cubierto por arquitectura y que queda explicitamente para pilares posteriores.</description>
+    </item>
+    <item>
+      <title>Evolucion de Arquitectura</title>
+      <link>http://localhost:1313/mvp/arquitectura/evolucion/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/arquitectura/evolucion/index.html</guid>
+      <description>Marco de evolucion Responde: como cambia esta arquitectura sin romper contratos, fronteras ni verdades del dominio.&#xA;La evolucion de arquitectura se gobierna por compatibilidad de contratos, respeto al ownership de servicio, ADR y control explicito de deuda tecnica.&#xA;Cambios no breaking Responde: que cambios pueden realizarse sin alterar el contrato semantico aprobado.</description>
+    </item>
+  </channel>
+</rss>

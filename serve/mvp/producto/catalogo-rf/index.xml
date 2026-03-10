@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Catalogo RF :: ArkaB2B Docs</title>
+    <link>http://localhost:1313/mvp/producto/catalogo-rf/index.html</link>
+    <description>Proposito del archivo Requisitos funcionales del ciclo de vida MVP, representados en formato de 1 archivo por requisito.&#xA;Estado del catalogo Estado de aprobacion Estado de implementacion Hecho/Total Approved Pendiente 0/11 Resumen por prioridad Prioridad IDs Must FR-001, FR-002, FR-004, FR-005, FR-009, FR-011 Should FR-003, FR-006, FR-007, FR-010 Could FR-008 Requisitos Must FR-001 - Gestionar catalogo de productos y variantes FR-002 - Actualizar stock con validaciones FR-004 - Crear pedido con multiples productos FR-005 - Modificar pedido antes de confirmacion FR-009 - Gestionar acceso por organizacion y rol FR-011 - Configurar parametros operativos por pais para readiness regional Should FR-003 - Reporte de productos por abastecer FR-006 - Notificar cambio de estado de pedido FR-007 - Generar reporte semanal de ventas FR-010 - Registrar pago manual del pedido (MVP) Could FR-008 - Detectar y gestionar carrito abandonado</description>
+    <generator>Hugo</generator>
+    <language>es-CO</language>
+    <atom:link href="http://localhost:1313/mvp/producto/catalogo-rf/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FR-001 - Gestionar catalogo de productos y variantes</title>
+      <link>http://localhost:1313/mvp/producto/catalogo-rf/fr-001/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/producto/catalogo-rf/fr-001/index.html</guid>
+      <description>Ficha del requisito Campo Valor ID FR-001 Ciclo de vida MVP Prioridad Must Estado de aprobacion Approved Estado de implementacion Pendiente Descripcion El sistema permite registrar y mantener productos y variantes (SKU) con atributos comerciales, usando taxonomia referencial activa de marca/categoria dentro de Catalog.</description>
+    </item>
+    <item>
+      <title>FR-002 - Actualizar stock con validaciones</title>
+      <link>http://localhost:1313/mvp/producto/catalogo-rf/fr-002/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/producto/catalogo-rf/fr-002/index.html</guid>
+      <description>Ficha del requisito Campo Valor ID FR-002 Ciclo de vida MVP Prioridad Must Estado de aprobacion Approved Estado de implementacion Pendiente Descripcion El sistema permite ajustar stock por SKU y evita valores negativos.&#xA;Racional Controla sobreventa y errores operativos.</description>
+    </item>
+    <item>
+      <title>FR-003 - Reporte de productos por abastecer</title>
+      <link>http://localhost:1313/mvp/producto/catalogo-rf/fr-003/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/producto/catalogo-rf/fr-003/index.html</guid>
+      <description>Ficha del requisito Campo Valor ID FR-003 Ciclo de vida MVP Prioridad Should Estado de aprobacion Approved Estado de implementacion Pendiente Descripcion El sistema genera reporte semanal de SKU con bajo stock segun umbral configurable.&#xA;Racional Permite planificar compras y evitar faltantes.</description>
+    </item>
+    <item>
+      <title>FR-004 - Crear pedido con multiples productos</title>
+      <link>http://localhost:1313/mvp/producto/catalogo-rf/fr-004/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/producto/catalogo-rf/fr-004/index.html</guid>
+      <description>Ficha del requisito Campo Valor ID FR-004 Ciclo de vida MVP Prioridad Must Estado de aprobacion Approved Estado de implementacion Pendiente Descripcion El cliente B2B puede crear pedido con varias lineas desde carrito validando disponibilidad.&#xA;Racional Es el flujo core de venta digital B2B.</description>
+    </item>
+    <item>
+      <title>FR-005 - Modificar pedido antes de confirmacion</title>
+      <link>http://localhost:1313/mvp/producto/catalogo-rf/fr-005/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/producto/catalogo-rf/fr-005/index.html</guid>
+      <description>Ficha del requisito Campo Valor ID FR-005 Ciclo de vida MVP Prioridad Must Estado de aprobacion Approved Estado de implementacion Pendiente Descripcion El cliente puede ajustar el pedido mientras su estado lo permita.&#xA;Racional Reduce errores y friccion de compra recurrente.</description>
+    </item>
+    <item>
+      <title>FR-006 - Notificar cambio de estado de pedido</title>
+      <link>http://localhost:1313/mvp/producto/catalogo-rf/fr-006/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/producto/catalogo-rf/fr-006/index.html</guid>
+      <description>Ficha del requisito Campo Valor ID FR-006 Ciclo de vida MVP Prioridad Should Estado de aprobacion Approved Estado de implementacion Pendiente Descripcion El sistema informa al cliente cambios de estado relevantes del pedido.&#xA;Racional Disminuye incertidumbre post-compra y consultas manuales.</description>
+    </item>
+    <item>
+      <title>FR-007 - Generar reporte semanal de ventas</title>
+      <link>http://localhost:1313/mvp/producto/catalogo-rf/fr-007/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/producto/catalogo-rf/fr-007/index.html</guid>
+      <description>Ficha del requisito Campo Valor ID FR-007 Ciclo de vida MVP Prioridad Should Estado de aprobacion Approved Estado de implementacion Pendiente Descripcion El sistema consolida ventas semanales para seguimiento comercial.&#xA;Racional Habilita decisiones de negocio y control de crecimiento.</description>
+    </item>
+    <item>
+      <title>FR-008 - Detectar y gestionar carrito abandonado</title>
+      <link>http://localhost:1313/mvp/producto/catalogo-rf/fr-008/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/producto/catalogo-rf/fr-008/index.html</guid>
+      <description>Ficha del requisito Campo Valor ID FR-008 Ciclo de vida MVP Prioridad Could Estado de aprobacion Approved Estado de implementacion Pendiente Descripcion El sistema identifica carritos sin conversion y habilita recordatorio al cliente.&#xA;Racional Aumenta conversion y recuperacion de oportunidades.</description>
+    </item>
+    <item>
+      <title>FR-009 - Gestionar acceso por organizacion y rol</title>
+      <link>http://localhost:1313/mvp/producto/catalogo-rf/fr-009/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/producto/catalogo-rf/fr-009/index.html</guid>
+      <description>Ficha del requisito Campo Valor ID FR-009 Ciclo de vida MVP Prioridad Must Estado de aprobacion Approved Estado de implementacion Pendiente Descripcion El sistema autentica usuarios y autoriza operaciones por organizacion y rol de negocio.&#xA;Racional Sin aislamiento multi-organizacion no hay operacion B2B segura.</description>
+    </item>
+    <item>
+      <title>FR-010 - Registrar pago manual del pedido (MVP)</title>
+      <link>http://localhost:1313/mvp/producto/catalogo-rf/fr-010/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/producto/catalogo-rf/fr-010/index.html</guid>
+      <description>Ficha del requisito Campo Valor ID FR-010 Ciclo de vida MVP Prioridad Should Estado de aprobacion Approved Estado de implementacion Pendiente Descripcion El operador registra pagos manuales y el estado de pago del pedido se actualiza.&#xA;Racional Permite operacion MVP sin pasarela online completa.</description>
+    </item>
+    <item>
+      <title>FR-011 - Configurar parametros operativos por pais para readiness regional</title>
+      <link>http://localhost:1313/mvp/producto/catalogo-rf/fr-011/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/producto/catalogo-rf/fr-011/index.html</guid>
+      <description>Ficha del requisito Campo Valor ID FR-011 Ciclo de vida MVP Prioridad Must Estado de aprobacion Approved Estado de implementacion Pendiente Descripcion El sistema permite parametrizar reglas operativas por pais de la organizacion para soportar Colombia y readiness de Ecuador, Peru y Chile sin bifurcar el core.</description>
+    </item>
+  </channel>
+</rss>

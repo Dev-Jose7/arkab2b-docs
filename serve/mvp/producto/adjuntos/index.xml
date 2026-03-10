@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Adjuntos :: ArkaB2B Docs</title>
+    <link>http://localhost:1313/mvp/producto/adjuntos/index.html</link>
+    <description>Fuentes base del contexto de negocio y backlog inicial usados para construir el pilar de producto.&#xA;Documentos disponibles Adjunto 01 Reto Backend V2 Adjunto 02 Proyecto Arka Adjunto 03 Backlog Arka</description>
+    <generator>Hugo</generator>
+    <language>es-CO</language>
+    <atom:link href="http://localhost:1313/mvp/producto/adjuntos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Adjunto 01 Reto Backend V2</title>
+      <link>http://localhost:1313/mvp/producto/adjuntos/proyecto-java-backend-reto-v2/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/producto/adjuntos/proyecto-java-backend-reto-v2/index.html</guid>
+      <description>RETO PROGRESIVO POR MÓDULOS JAVA BACKEND - V2 Nota editorial: este adjunto se conserva como antecedente historico de contexto y no define aperturas vigentes del baseline mvp.&#xA;I. DESCRIPCIÓN DEL RETO Arka es una empresa colombiana distribuidora de accesorios para PC.</description>
+    </item>
+    <item>
+      <title>Adjunto 02 Proyecto Arka</title>
+      <link>http://localhost:1313/mvp/producto/adjuntos/proyecto-arka/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/producto/adjuntos/proyecto-arka/index.html</guid>
+      <description>PROYECTO ARKA Alejandro Marcano&#xA;Definición General del Proyecto Desarrollar una arquitectura de microservicios para una plataforma e-commerce, que permita gestionar de forma eficiente:&#xA;Órdenes Inventario Productos Proveedores Garantizando:&#xA;Escalabilidad Integración con AWS Experiencia de usuario optimizada Módulos del Proyecto 1. Gestión de Órdenes Orquestación del proceso de creación de órdenes.</description>
+    </item>
+    <item>
+      <title>Adjunto 03 Backlog Arka</title>
+      <link>http://localhost:1313/mvp/producto/adjuntos/backlog-java-backend-arka/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/producto/adjuntos/backlog-java-backend-arka/index.html</guid>
+      <description>Backlog del Proyecto Java Backend - Arka 1. Introducción Este backlog contiene las historias de usuario que se desarrollarán a lo largo del curso para la implementación del backend del sistema de Arka.&#xA;Su objetivo es garantizar que la empresa pueda gestionar eficientemente su inventario, órdenes de compra y ventas, optimizando así sus operaciones.</description>
+    </item>
+  </channel>
+</rss>

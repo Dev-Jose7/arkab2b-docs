@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Contextos Delimitados :: ArkaB2B Docs</title>
+    <link>http://localhost:1313/mvp/dominio/contextos-delimitados/index.html</link>
+    <description>Marco tactico Responde: que organiza esta capa tactica del dominio y como debe leerse el detalle de cada contexto delimitado.&#xA;Catalogo tactico de bounded contexts del dominio MVP con su responsabilidad local y detalle por artefacto (overview, modelo, agregados, comandos, eventos, politicas, repositories/ports y anti-corruption).&#xA;Contextos Responde: que bounded contexts componen la capa tactica y donde consultar el detalle de cada uno.</description>
+    <generator>Hugo</generator>
+    <language>es-CO</language>
+    <atom:link href="http://localhost:1313/mvp/dominio/contextos-delimitados/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Identidad y Acceso</title>
+      <link>http://localhost:1313/mvp/dominio/contextos-delimitados/identidad-acceso/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/contextos-delimitados/identidad-acceso/index.html</guid>
+      <description>Contexto delimitado responsable de autenticacion, sesiones y autorizacion por tenant.</description>
+    </item>
+    <item>
+      <title>Directorio</title>
+      <link>http://localhost:1313/mvp/dominio/contextos-delimitados/directorio/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/contextos-delimitados/directorio/index.html</guid>
+      <description>Contexto delimitado responsable de organizaciones, perfiles de usuario organizacionales, contactos institucionales, direcciones y configuracion operativa por pais.</description>
+    </item>
+    <item>
+      <title>Catalogo</title>
+      <link>http://localhost:1313/mvp/dominio/contextos-delimitados/catalogo/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/contextos-delimitados/catalogo/index.html</guid>
+      <description>Contexto delimitado responsable de productos, variantes SKU, vendibilidad y precio vigente/programado.</description>
+    </item>
+    <item>
+      <title>Inventario</title>
+      <link>http://localhost:1313/mvp/dominio/contextos-delimitados/inventario/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/contextos-delimitados/inventario/index.html</guid>
+      <description>Contexto delimitado responsable de stock fisico, disponibilidad reservable y ciclo de reservas.</description>
+    </item>
+    <item>
+      <title>Pedidos</title>
+      <link>http://localhost:1313/mvp/dominio/contextos-delimitados/pedidos/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/contextos-delimitados/pedidos/index.html</guid>
+      <description>Contexto delimitado responsable de carrito, checkout, pedido y estado agregado de pago.</description>
+    </item>
+    <item>
+      <title>Notificaciones</title>
+      <link>http://localhost:1313/mvp/dominio/contextos-delimitados/notificaciones/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/contextos-delimitados/notificaciones/index.html</guid>
+      <description>Contexto delimitado responsable de solicitudes/intentos de notificacion no bloqueantes.</description>
+    </item>
+    <item>
+      <title>Reporteria</title>
+      <link>http://localhost:1313/mvp/dominio/contextos-delimitados/reporteria/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/contextos-delimitados/reporteria/index.html</guid>
+      <description>Contexto delimitado responsable de proyecciones y reportes derivados, no transaccionales.</description>
+    </item>
+  </channel>
+</rss>

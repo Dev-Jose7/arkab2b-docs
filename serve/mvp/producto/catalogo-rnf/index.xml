@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Catalogo RNF :: ArkaB2B Docs</title>
+    <link>http://localhost:1313/mvp/producto/catalogo-rnf/index.html</link>
+    <description>Proposito del archivo Requisitos no funcionales del ciclo de vida MVP, representados en formato de 1 archivo por requisito.&#xA;Estado del catalogo Estado de aprobacion Estado de implementacion Hecho/Total Approved Pendiente 0/11 Resumen por prioridad Prioridad IDs Must NFR-001, NFR-003, NFR-004, NFR-005, NFR-006, NFR-007, NFR-010, NFR-011 Should NFR-002, NFR-008, NFR-009 Could N/A Requisitos Must NFR-001 - Tiempo de respuesta de APIs core NFR-003 - Disponibilidad del backend en horario operativo NFR-004 - Confiabilidad de disponibilidad comercial NFR-005 - Aislamiento por organizacion (tenant) NFR-006 - Trazabilidad de cambios criticos NFR-007 - Observabilidad operacional minima NFR-010 - Retencion y borrado/anonimizacion de datos NFR-011 - Localizacion operativa y cumplimiento configurable por pais Should NFR-002 - Tiempo de generacion de reportes semanales NFR-008 - Escalamiento en picos de demanda NFR-009 - Calidad minima de entrega continua</description>
+    <generator>Hugo</generator>
+    <language>es-CO</language>
+    <atom:link href="http://localhost:1313/mvp/producto/catalogo-rnf/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NFR-001 - Tiempo de respuesta de APIs core</title>
+      <link>http://localhost:1313/mvp/producto/catalogo-rnf/nfr-001/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/producto/catalogo-rnf/nfr-001/index.html</guid>
+      <description>Ficha del requisito Campo Valor ID NFR-001 Ciclo de vida MVP Prioridad Must Estado de aprobacion Approved Estado de implementacion Pendiente Enunciado Tiempo de respuesta de APIs core.&#xA;Metrica y umbral p95 &lt;= 800 ms en lecturas de catalogo y p95 &lt;= 1500 ms en mutaciones de carrito/pedido.</description>
+    </item>
+    <item>
+      <title>NFR-002 - Tiempo de generacion de reportes semanales</title>
+      <link>http://localhost:1313/mvp/producto/catalogo-rnf/nfr-002/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/producto/catalogo-rnf/nfr-002/index.html</guid>
+      <description>Ficha del requisito Campo Valor ID NFR-002 Ciclo de vida MVP Prioridad Should Estado de aprobacion Approved Estado de implementacion Pendiente Enunciado Tiempo de generacion de reportes semanales.&#xA;Metrica y umbral Reporte de ventas y abastecimiento disponible en &lt;= 15 min para corte semanal definido.</description>
+    </item>
+    <item>
+      <title>NFR-003 - Disponibilidad del backend en horario operativo</title>
+      <link>http://localhost:1313/mvp/producto/catalogo-rnf/nfr-003/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/producto/catalogo-rnf/nfr-003/index.html</guid>
+      <description>Ficha del requisito Campo Valor ID NFR-003 Ciclo de vida MVP Prioridad Must Estado de aprobacion Approved Estado de implementacion Pendiente Enunciado Disponibilidad del backend en horario operativo.&#xA;Metrica y umbral Disponibilidad mensual &gt;= 99.5% (ventana 06:00-22:00 hora local).</description>
+    </item>
+    <item>
+      <title>NFR-004 - Confiabilidad de disponibilidad comercial</title>
+      <link>http://localhost:1313/mvp/producto/catalogo-rnf/nfr-004/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/producto/catalogo-rnf/nfr-004/index.html</guid>
+      <description>Ficha del requisito Campo Valor ID NFR-004 Ciclo de vida MVP Prioridad Must Estado de aprobacion Approved Estado de implementacion Pendiente Enunciado Confiabilidad de disponibilidad comercial.&#xA;Metrica y umbral Tasa de sobreventa &lt;= 1.0% semanal.</description>
+    </item>
+    <item>
+      <title>NFR-005 - Aislamiento por organizacion (tenant)</title>
+      <link>http://localhost:1313/mvp/producto/catalogo-rnf/nfr-005/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/producto/catalogo-rnf/nfr-005/index.html</guid>
+      <description>Ficha del requisito Campo Valor ID NFR-005 Ciclo de vida MVP Prioridad Must Estado de aprobacion Approved Estado de implementacion Pendiente Enunciado Aislamiento por organizacion (tenant).&#xA;Metrica y umbral 0 incidentes criticos de acceso cruzado por mes.</description>
+    </item>
+    <item>
+      <title>NFR-006 - Trazabilidad de cambios criticos</title>
+      <link>http://localhost:1313/mvp/producto/catalogo-rnf/nfr-006/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/producto/catalogo-rnf/nfr-006/index.html</guid>
+      <description>Ficha del requisito Campo Valor ID NFR-006 Ciclo de vida MVP Prioridad Must Estado de aprobacion Approved Estado de implementacion Pendiente Enunciado Trazabilidad de cambios criticos.&#xA;Metrica y umbral = 99% de mutaciones de stock/pedido/pago con actor, fecha y referencia de operacion.</description>
+    </item>
+    <item>
+      <title>NFR-007 - Observabilidad operacional minima</title>
+      <link>http://localhost:1313/mvp/producto/catalogo-rnf/nfr-007/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/producto/catalogo-rnf/nfr-007/index.html</guid>
+      <description>Ficha del requisito Campo Valor ID NFR-007 Ciclo de vida MVP Prioridad Must Estado de aprobacion Approved Estado de implementacion Pendiente Enunciado Observabilidad operacional minima.&#xA;Metrica y umbral 100% de respuestas mutantes incluyen traceId; alertas para error rate y latencia p95 en servicios core.</description>
+    </item>
+    <item>
+      <title>NFR-008 - Escalamiento en picos de demanda</title>
+      <link>http://localhost:1313/mvp/producto/catalogo-rnf/nfr-008/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/producto/catalogo-rnf/nfr-008/index.html</guid>
+      <description>Ficha del requisito Campo Valor ID NFR-008 Ciclo de vida MVP Prioridad Should Estado de aprobacion Approved Estado de implementacion Pendiente Enunciado Escalamiento en picos de demanda.&#xA;Metrica y umbral Soportar 3x carga baseline de pedidos sin degradar mas de 30% el p95 definido en NFR-001.</description>
+    </item>
+    <item>
+      <title>NFR-009 - Calidad minima de entrega continua</title>
+      <link>http://localhost:1313/mvp/producto/catalogo-rnf/nfr-009/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/producto/catalogo-rnf/nfr-009/index.html</guid>
+      <description>Ficha del requisito Campo Valor ID NFR-009 Ciclo de vida MVP Prioridad Should Estado de aprobacion Approved Estado de implementacion Pendiente Enunciado Calidad minima de entrega continua.&#xA;Metrica y umbral 100% PR en rama principal con tests automatizados y lint; cobertura unitaria</description>
+    </item>
+    <item>
+      <title>NFR-010 - Retencion y borrado/anonimizacion de datos</title>
+      <link>http://localhost:1313/mvp/producto/catalogo-rnf/nfr-010/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/producto/catalogo-rnf/nfr-010/index.html</guid>
+      <description>Ficha del requisito Campo Valor ID NFR-010 Ciclo de vida MVP Prioridad Must Estado de aprobacion Approved Estado de implementacion Pendiente Enunciado Retencion y borrado/anonimizacion de datos.&#xA;Metrica y umbral Politica aplicada por tipo de dato: pedidos/auditoria con retencion definida y solicitudes de borrado procesadas &lt;= 30 dias.</description>
+    </item>
+    <item>
+      <title>NFR-011 - Localizacion operativa y cumplimiento configurable por pais</title>
+      <link>http://localhost:1313/mvp/producto/catalogo-rnf/nfr-011/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/producto/catalogo-rnf/nfr-011/index.html</guid>
+      <description>Ficha del requisito Campo Valor ID NFR-011 Ciclo de vida MVP Prioridad Must Estado de aprobacion Approved Estado de implementacion Pendiente Enunciado Localizacion operativa y cumplimiento configurable por pais.&#xA;Metrica y umbral 100% de organizaciones operan con parametros de su pais (moneda, corte semanal y retencion aplicable) sin fallback global no autorizado.</description>
+    </item>
+  </channel>
+</rss>

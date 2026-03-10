@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Calidad :: ArkaB2B Docs</title>
+    <link>http://localhost:1313/mvp/calidad/index.html</link>
+    <description>Pilar de calidad para MVP: define estrategia, mapeo, convenciones, puertas, paquete de certificacion minima y modelo de evidencia para mantener trazabilidad verificable entre Producto, Dominio y Arquitectura, separando diseno, implementacion, ejecucion y validacion con evidencia.</description>
+    <generator>Hugo</generator>
+    <language>es-CO</language>
+    <atom:link href="http://localhost:1313/mvp/calidad/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Estrategia de Pruebas</title>
+      <link>http://localhost:1313/mvp/calidad/estrategia-pruebas/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/calidad/estrategia-pruebas/index.html</guid>
+      <description>Proposito Definir el baseline de calidad de MVP y la estrategia global de pruebas para asegurar coherencia verificable entre Producto, Dominio y Arquitectura.&#xA;1) Preparacion y baseline (Dia 1) 1.1 Fuentes de verdad congeladas Para 03-calidad, las fuentes de verdad vigentes y congeladas son:</description>
+    </item>
+    <item>
+      <title>Mapeo de Pruebas</title>
+      <link>http://localhost:1313/mvp/calidad/mapeo-pruebas/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/calidad/mapeo-pruebas/index.html</guid>
+      <description>Proposito Trazar de forma verificable los requisitos e invariantes del ciclo contra escenarios de prueba concretos, separando diseno, implementacion, ejecucion y validacion con evidencia.&#xA;Convenciones de estado (taxonomia unica) Definido: requisito identificado en el pilar con alcance de prueba. Disenado: escenario documentado con Given/When/Then y resultado esperado. Listo para implementar: escenario disenado con artefacto objetivo de prueba y owner. Implementado: escenario automatizado en suite. Ejecutado: corrida registrada en entorno objetivo con resultado trazable. Validado con evidencia: resultado ejecutado, evidencia referenciada y aprobada en gate. Estado documental actual del ciclo MVP:</description>
+    </item>
+    <item>
+      <title>Convenciones de Prueba</title>
+      <link>http://localhost:1313/mvp/calidad/convenciones-prueba/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/calidad/convenciones-prueba/index.html</guid>
+      <description>Proposito Estandarizar la definicion, implementacion y ejecucion de pruebas de MVP para que todos los servicios evalen de forma consistente Producto, Dominio y Arquitectura.&#xA;1) Taxonomia de estados (uso obligatorio) Definido: requisito identificado para cobertura. Disenado: escenario documentado con Given/When/Then. Listo para implementar: escenario disenado con owner y artefacto objetivo. Implementado: prueba automatizada disponible. Ejecutado: corrida registrada con resultado y metadatos. Validado con evidencia: ejecucion evaluada y aprobada en gate con evidencia verificable. Regla: no usar Validado sin el sufijo con evidencia ni sin referencia de evidencia.</description>
+    </item>
+    <item>
+      <title>Puertas de Calidad</title>
+      <link>http://localhost:1313/mvp/calidad/puertas-calidad/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/calidad/puertas-calidad/index.html</guid>
+      <description>Proposito Definir las compuertas de calidad de MVP para controlar promocion de cambios desde PR hasta evaluacion no funcional, sin sobreactuar certificacion cuando no exista evidencia.&#xA;Alcance Aplica a los 7 servicios del sistema:&#xA;identity-access-service directory-service catalog-service inventory-service order-service notification-service reporting-service Regla transversal de certificacion Cumplir un gate requiere corrida ejecutada + evidencia verificable. Si no hay evidencia, el estado maximo permitido es Implementado. Solo se usa Validado con evidencia cuando hay aprobacion explicita del gate. El cierre del baseline integral se habilita con certificacion minima aprobada (no con certificacion total de produccion). Referencia: Modelo de Evidencia</description>
+    </item>
+    <item>
+      <title>Notas de Cobertura</title>
+      <link>http://localhost:1313/mvp/calidad/notas-cobertura/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/calidad/notas-cobertura/index.html</guid>
+      <description>Proposito Definir el modelo de cobertura de MVP priorizando evidencia funcional y semantica (dominio/contratos/flujos), no solo porcentaje de lineas.&#xA;1) Modelo de cobertura por tipo 1.1 Cobertura de logica de dominio Valida:</description>
+    </item>
+    <item>
+      <title>Evidencias y Certificacion Minima</title>
+      <link>http://localhost:1313/mvp/calidad/evidencias/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/calidad/evidencias/index.html</guid>
+      <description>Proposito Consolidar el paquete de certificacion minima del baseline MVP, separando diseno de pruebas, ejecucion real y validacion con evidencia.&#xA;Alcance Esta seccion no declara corridas ejecutadas por defecto. Define:&#xA;plan minimo de certificacion; matriz de resultados esperados; registro de ejecuciones reales; manejo de desviaciones/aceptaciones; acta formal de certificacion minima. Estado del pilar 03-calidad queda cerrado como sistema de verificacion documental del baseline. La certificacion minima del baseline se declara cuando exista evidencia real en los artefactos definidos en esta seccion.</description>
+    </item>
+    <item>
+      <title>Modelo de Evidencia</title>
+      <link>http://localhost:1313/mvp/calidad/modelo-evidencia/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/calidad/modelo-evidencia/index.html</guid>
+      <description>Proposito Definir un modelo unico y auditable para registrar evidencia de pruebas y habilitar trazabilidad entre caso, corrida, gate y estado final.&#xA;1) Ubicacion de evidencia Estructura recomendada para almacenar evidencia por ciclo/release: content/mvp/03-calidad/06-Evidencias/artefactos/&lt;release&gt;/&lt;gate&gt;/&lt;servicio&gt;/&#xA;Donde:&#xA;&lt;release&gt;: identificador de release (ej. mvp-r1). &lt;gate&gt;: gate-1-pr, gate-2-integracion, gate-3-e2e, gate-4-no-funcional. &lt;servicio&gt;: identity-access-service, directory-service, catalog-service, inventory-service, order-service, notification-service, reporting-service. Referencias del paquete de certificacion minima:</description>
+    </item>
+    <item>
+      <title>Pruebas por Servicio</title>
+      <link>http://localhost:1313/mvp/calidad/pruebas/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/calidad/pruebas/index.html</guid>
+      <description>Ejecucion operativa de pruebas por servicio para MVP.&#xA;Cobertura minima por servicio:&#xA;unitarias: invariantes, politicas y transiciones de estado. integracion: repositorios, adapters, contratos API/eventos, idempotencia y dedupe. e2e: flujo critico real, errores de negocio y seguridad tenant/rol.</description>
+    </item>
+  </channel>
+</rss>

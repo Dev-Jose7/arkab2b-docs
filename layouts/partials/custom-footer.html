@@ -1,0 +1,625 @@
+<script>
+  (function () {
+    function initCicloSwitcher() {
+      var cicloSelect = document.getElementById("R-select-ciclo");
+      if (!cicloSelect) return;
+
+      cicloSelect.addEventListener("change", function (event) {
+        var target = event.target.value;
+        if (!target) return;
+        window.location.href = target;
+      });
+    }
+
+    function enforceDefaultVariantAuto() {
+      if (!window.localStorage || !window.relearn || !window.relearn.absBaseUri) return;
+
+      var base = window.relearn.absBaseUri;
+      var variantKey = base + "/variant";
+      var migrationKey = base + "/variant-default-0.1.0";
+
+      if (window.localStorage.getItem(migrationKey) === "true") return;
+
+      window.localStorage.setItem(variantKey, "auto");
+      window.localStorage.setItem(migrationKey, "true");
+
+      if (window.relearn && typeof window.relearn.changeVariant === "function") {
+        window.relearn.changeVariant("auto");
+      } else {
+        document.documentElement.dataset.rThemeVariant = "auto";
+      }
+    }
+
+    function initMermaidLightbox() {
+      var bodyOrigin = document.body && document.body.getAttribute("data-origin");
+      if (!bodyOrigin || bodyOrigin.indexOf("/arquitectura/") === -1) return;
+
+      var dragThreshold = 6;
+      var minScale = 0.25;
+      var maxScale = 6;
+      var bindScheduled = false;
+      var overlay;
+      var titleElement;
+      var stageElement;
+      var canvasElement;
+      var closeButton;
+      var zoomOutButton;
+      var zoomInButton;
+      var resetButton;
+      var active = null;
+
+      function ensureModal() {
+        if (overlay) return;
+
+        overlay = document.createElement("div");
+        overlay.id = "R-mermaid-lightbox";
+        overlay.className = "R-mermaid-lightbox";
+        overlay.setAttribute("aria-hidden", "true");
+        overlay.innerHTML =
+          '<div class="R-mermaid-lightbox__dialog" role="dialog" aria-modal="true" aria-label="Visor ampliado de diagrama Mermaid">' +
+          '<div class="R-mermaid-lightbox__toolbar">' +
+          '<div class="R-mermaid-lightbox__meta">' +
+          '<strong class="R-mermaid-lightbox__title">Diagrama Mermaid</strong>' +
+          '<span class="R-mermaid-lightbox__hint">Rueda para zoom, arrastra para recorrer.</span>' +
+          "</div>" +
+          '<div class="R-mermaid-lightbox__actions">' +
+          '<button type="button" class="R-mermaid-lightbox__button" data-action="zoom-out" aria-label="Alejar" title="Alejar"><i class="fa-fw fas fa-search-minus" aria-hidden="true"></i></button>' +
+          '<button type="button" class="R-mermaid-lightbox__button" data-action="zoom-in" aria-label="Acercar" title="Acercar"><i class="fa-fw fas fa-search-plus" aria-hidden="true"></i></button>' +
+          '<button type="button" class="R-mermaid-lightbox__button" data-action="reset" aria-label="Reiniciar vista" title="Reiniciar vista"><i class="fa-fw fas fa-undo-alt" aria-hidden="true"></i></button>' +
+          '<button type="button" class="R-mermaid-lightbox__button R-mermaid-lightbox__button--close" data-action="close" aria-label="Cerrar visor" title="Cerrar visor"><i class="fa-fw fas fa-times" aria-hidden="true"></i></button>' +
+          "</div>" +
+          "</div>" +
+          '<div class="R-mermaid-lightbox__stage">' +
+          '<div class="R-mermaid-lightbox__canvas"></div>' +
+          "</div>" +
+          "</div>";
+
+        document.body.appendChild(overlay);
+
+        titleElement = overlay.querySelector(".R-mermaid-lightbox__title");
+        stageElement = overlay.querySelector(".R-mermaid-lightbox__stage");
+        canvasElement = overlay.querySelector(".R-mermaid-lightbox__canvas");
+        closeButton = overlay.querySelector('[data-action="close"]');
+        zoomOutButton = overlay.querySelector('[data-action="zoom-out"]');
+        zoomInButton = overlay.querySelector('[data-action="zoom-in"]');
+        resetButton = overlay.querySelector('[data-action="reset"]');
+
+        overlay.addEventListener("click", function (event) {
+          if (event.target === overlay) {
+            closeModal();
+          }
+        });
+
+        closeButton.addEventListener("click", closeModal);
+        zoomOutButton.addEventListener("click", function () {
+          zoomFromCenter(1 / 1.2);
+        });
+        zoomInButton.addEventListener("click", function () {
+          zoomFromCenter(1.2);
+        });
+        resetButton.addEventListener("click", resetTransform);
+
+        stageElement.addEventListener(
+          "wheel",
+          function (event) {
+            if (!active) return;
+            event.preventDefault();
+            zoomAt(event.deltaY < 0 ? 1.12 : 1 / 1.12, event.clientX, event.clientY);
+          },
+          { passive: false }
+        );
+
+        canvasElement.addEventListener("pointerdown", function (event) {
+          if (!active || event.button !== 0) return;
+
+          active.dragging = true;
+          active.pointerId = event.pointerId;
+          active.dragStartX = event.clientX;
+          active.dragStartY = event.clientY;
+          active.dragOriginX = active.offsetX;
+          active.dragOriginY = active.offsetY;
+          canvasElement.classList.add("is-dragging");
+
+          if (canvasElement.setPointerCapture) {
+            canvasElement.setPointerCapture(event.pointerId);
+          }
+        });
+
+        canvasElement.addEventListener("pointermove", function (event) {
+          if (!active || !active.dragging || active.pointerId !== event.pointerId) return;
+
+          active.offsetX = active.dragOriginX + (event.clientX - active.dragStartX);
+          active.offsetY = active.dragOriginY + (event.clientY - active.dragStartY);
+          applyTransform();
+        });
+
+        canvasElement.addEventListener("pointerup", stopDragging);
+        canvasElement.addEventListener("pointercancel", stopDragging);
+        canvasElement.addEventListener("dragstart", function (event) {
+          event.preventDefault();
+        });
+
+        document.addEventListener("keydown", function (event) {
+          if (event.key === "Escape") {
+            closeModal();
+          }
+        });
+
+        window.addEventListener("resize", function () {
+          if (overlay.classList.contains("is-open")) {
+            resetTransform();
+          }
+        });
+      }
+
+      function stopDragging(event) {
+        if (!active || !active.dragging) return;
+        if (event && active.pointerId !== null && event.pointerId !== active.pointerId) return;
+
+        if (canvasElement.releasePointerCapture && active.pointerId !== null) {
+          try {
+            canvasElement.releasePointerCapture(active.pointerId);
+          } catch (error) {}
+        }
+
+        active.dragging = false;
+        active.pointerId = null;
+        canvasElement.classList.remove("is-dragging");
+      }
+
+      function clampScale(value) {
+        return Math.min(maxScale, Math.max(minScale, value));
+      }
+
+      function getSvgSize(svg) {
+        var widthAttr = svg.getAttribute("width") || "";
+        var heightAttr = svg.getAttribute("height") || "";
+        var width = parseFloat(widthAttr);
+        var height = parseFloat(heightAttr);
+        var viewBox = svg.viewBox && svg.viewBox.baseVal ? svg.viewBox.baseVal : null;
+
+        if (viewBox && viewBox.width > 0 && viewBox.height > 0) {
+          width = viewBox.width;
+          height = viewBox.height;
+        } else {
+          if (!Number.isFinite(width) || width <= 0 || /%$/.test(widthAttr)) {
+            width = svg.getBoundingClientRect().width;
+          }
+
+          if (!Number.isFinite(height) || height <= 0 || /%$/.test(heightAttr)) {
+            height = svg.getBoundingClientRect().height;
+          }
+        }
+
+        return {
+          width: width || 960,
+          height: height || 640,
+        };
+      }
+
+      function getDiagramTitle(sourceSvg) {
+        var container = sourceSvg.closest(".mermaid-container");
+        var previous = container ? container.previousElementSibling : null;
+
+        while (previous) {
+          if (/^H[1-6]$/.test(previous.tagName)) {
+            return previous.textContent.replace(/\s+/g, " ").trim();
+          }
+          previous = previous.previousElementSibling;
+        }
+
+        return document.title || "Diagrama Mermaid";
+      }
+
+      function applyTransform() {
+        if (!active) return;
+
+        canvasElement.style.transform =
+          "translate(-50%, -50%) translate(" +
+          active.offsetX +
+          "px, " +
+          active.offsetY +
+          "px) scale(" +
+          active.scale +
+          ")";
+      }
+
+      function resetTransform() {
+        if (!active) return;
+
+        var stageRect = stageElement.getBoundingClientRect();
+        var widthBudget = Math.max(stageRect.width - 48, 320);
+        var heightBudget = Math.max(stageRect.height - 48, 220);
+        var fitScale = Math.min(widthBudget / active.width, heightBudget / active.height);
+
+        active.scale = clampScale(fitScale);
+        active.offsetX = 0;
+        active.offsetY = 0;
+        applyTransform();
+      }
+
+      function zoomAt(factor, clientX, clientY) {
+        if (!active) return;
+
+        var stageRect = stageElement.getBoundingClientRect();
+        var pointerX = clientX - stageRect.left - stageRect.width / 2;
+        var pointerY = clientY - stageRect.top - stageRect.height / 2;
+        var nextScale = clampScale(active.scale * factor);
+
+        if (nextScale === active.scale) return;
+
+        var ratio = nextScale / active.scale;
+        active.offsetX = pointerX - (pointerX - active.offsetX) * ratio;
+        active.offsetY = pointerY - (pointerY - active.offsetY) * ratio;
+        active.scale = nextScale;
+        applyTransform();
+      }
+
+      function zoomFromCenter(factor) {
+        if (!active) return;
+
+        var stageRect = stageElement.getBoundingClientRect();
+        zoomAt(factor, stageRect.left + stageRect.width / 2, stageRect.top + stageRect.height / 2);
+      }
+
+      function closeModal() {
+        if (!overlay || !overlay.classList.contains("is-open")) return;
+
+        stopDragging();
+        overlay.classList.remove("is-open");
+        overlay.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("R-mermaid-lightbox-open");
+        canvasElement.innerHTML = "";
+
+        var sourceSvg = active && active.sourceSvg ? active.sourceSvg : null;
+        active = null;
+
+        if (sourceSvg && typeof sourceSvg.focus === "function") {
+          sourceSvg.focus({ preventScroll: true });
+        }
+      }
+
+      function openModal(sourceSvg, titleOverride) {
+        ensureModal();
+
+        var clone = sourceSvg.cloneNode(true);
+        var firstChild = clone.firstElementChild;
+        if (firstChild && firstChild.tagName && firstChild.tagName.toLowerCase() === "g") {
+          firstChild.removeAttribute("transform");
+        }
+
+        clone.classList.remove("R-mermaid-expandable");
+        clone.removeAttribute("tabindex");
+        clone.removeAttribute("role");
+        clone.removeAttribute("aria-label");
+
+        var size = getSvgSize(sourceSvg);
+        clone.style.width = size.width + "px";
+        clone.style.height = size.height + "px";
+        clone.style.maxWidth = "none";
+        clone.style.maxHeight = "none";
+
+        canvasElement.innerHTML = "";
+        canvasElement.appendChild(clone);
+
+        active = {
+          sourceSvg: sourceSvg,
+          width: size.width,
+          height: size.height,
+          scale: 1,
+          offsetX: 0,
+          offsetY: 0,
+          dragging: false,
+          pointerId: null,
+          dragStartX: 0,
+          dragStartY: 0,
+          dragOriginX: 0,
+          dragOriginY: 0,
+        };
+
+        titleElement.textContent = titleOverride || getDiagramTitle(sourceSvg);
+        overlay.classList.add("is-open");
+        overlay.setAttribute("aria-hidden", "false");
+        document.body.classList.add("R-mermaid-lightbox-open");
+
+        requestAnimationFrame(function () {
+          resetTransform();
+          closeButton.focus({ preventScroll: true });
+        });
+      }
+
+      function bindSvg(svg) {
+        if (!svg || svg.dataset.mermaidLightboxReady === "true") return;
+
+        svg.dataset.mermaidLightboxReady = "true";
+        svg.classList.add("R-mermaid-expandable");
+        svg.setAttribute("tabindex", "0");
+        svg.setAttribute("role", "button");
+        svg.setAttribute("aria-label", "Abrir diagrama Mermaid en pantalla completa");
+
+        var gesture = {
+          moved: false,
+          startX: 0,
+          startY: 0,
+        };
+
+        svg.addEventListener("pointerdown", function (event) {
+          gesture.moved = false;
+          gesture.startX = event.clientX;
+          gesture.startY = event.clientY;
+        });
+
+        svg.addEventListener("pointermove", function (event) {
+          if (
+            Math.abs(event.clientX - gesture.startX) > dragThreshold ||
+            Math.abs(event.clientY - gesture.startY) > dragThreshold
+          ) {
+            gesture.moved = true;
+          }
+        });
+
+        svg.addEventListener("click", function (event) {
+          if (gesture.moved) {
+            gesture.moved = false;
+            return;
+          }
+          if (event.target.closest("a")) return;
+          openModal(svg);
+        });
+
+        svg.addEventListener("keydown", function (event) {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            openModal(svg);
+          }
+        });
+      }
+
+      function bindDiagrams(root) {
+        root.querySelectorAll(".mermaid-container > .mermaid > svg").forEach(bindSvg);
+      }
+
+      var mermaidRuntimePromise = null;
+
+      function ensureMermaidRuntime() {
+        if (typeof mermaid !== "undefined" && typeof mermaid.render === "function") {
+          if (typeof mermaid.initialize === "function") {
+            mermaid.initialize(
+              Object.assign(
+                { securityLevel: "antiscript", startOnLoad: false },
+                (window.relearn && window.relearn.mermaidConfig) || {},
+                {
+                  theme:
+                    typeof getColorValue === "function"
+                      ? getColorValue("MERMAID-theme")
+                      : undefined,
+                }
+              )
+            );
+          }
+          return Promise.resolve(mermaid);
+        }
+
+        if (mermaidRuntimePromise) return mermaidRuntimePromise;
+
+        mermaidRuntimePromise = new Promise(function (resolve, reject) {
+          var script = document.createElement("script");
+          script.src = "/js/mermaid/mermaid.min.js";
+          script.defer = true;
+
+          script.onload = function () {
+            if (typeof mermaid === "undefined" || typeof mermaid.render !== "function") {
+              reject(new Error("Mermaid no disponible despues de cargar la libreria."));
+              return;
+            }
+
+            if (typeof mermaid.initialize === "function") {
+              mermaid.initialize(
+                Object.assign(
+                  { securityLevel: "antiscript", startOnLoad: false },
+                  (window.relearn && window.relearn.mermaidConfig) || {},
+                  {
+                    theme:
+                      typeof getColorValue === "function"
+                        ? getColorValue("MERMAID-theme")
+                        : undefined,
+                  }
+                )
+              );
+            }
+
+            resolve(mermaid);
+          };
+
+          script.onerror = function () {
+            reject(new Error("No se pudo cargar mermaid.min.js."));
+          };
+
+          document.head.appendChild(script);
+        }).catch(function (error) {
+          mermaidRuntimePromise = null;
+          console.error(error);
+          return null;
+        });
+
+        return mermaidRuntimePromise;
+      }
+
+      function renderTemplateDiagram(templateId) {
+        if (!templateId) {
+          return Promise.resolve(null);
+        }
+
+        var template = document.getElementById(templateId);
+        if (!template) return Promise.resolve(null);
+
+        var definition = template.textContent.trim();
+        if (!definition) return Promise.resolve(null);
+
+        var renderId = "R-tree-diagram-" + templateId + "-" + Date.now();
+
+        return ensureMermaidRuntime().then(function (runtime) {
+          if (!runtime || typeof runtime.render !== "function") return null;
+
+          return Promise.resolve(runtime.render(renderId, definition)).then(function (rendered) {
+            var svgMarkup = rendered && rendered.svg ? rendered.svg : rendered;
+            if (!svgMarkup) return null;
+
+            var wrapper = document.createElement("div");
+            wrapper.innerHTML = svgMarkup.trim();
+
+            if (rendered && typeof rendered.bindFunctions === "function") {
+              rendered.bindFunctions(wrapper);
+            }
+
+            return wrapper.querySelector("svg");
+          });
+        });
+      }
+
+      function openTemplateDiagram(templateId, title) {
+        renderTemplateDiagram(templateId).then(function (svg) {
+          if (!svg) return;
+          openModal(svg, title);
+        });
+      }
+
+      document.addEventListener("click", function (event) {
+        var trigger = event.target.closest(".R-tree-diagram-trigger, .R-tree-diagram-link");
+        if (!trigger || !trigger.dataset.diagramTemplate) return;
+
+        event.preventDefault();
+        openTemplateDiagram(
+          trigger.dataset.diagramTemplate,
+          trigger.dataset.diagramTitle || trigger.textContent.replace(/^\[|\]$/g, "").trim()
+        );
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key !== "Enter" && event.key !== " ") return;
+
+        var trigger = event.target.closest(".R-tree-diagram-trigger, .R-tree-diagram-link");
+        if (!trigger || !trigger.dataset.diagramTemplate) return;
+
+        event.preventDefault();
+        openTemplateDiagram(
+          trigger.dataset.diagramTemplate,
+          trigger.dataset.diagramTitle || trigger.textContent.replace(/^\[|\]$/g, "").trim()
+        );
+      });
+
+      function scheduleBind() {
+        if (bindScheduled) return;
+        bindScheduled = true;
+
+        requestAnimationFrame(function () {
+          bindScheduled = false;
+          bindDiagrams(document);
+        });
+      }
+
+      bindDiagrams(document);
+      new MutationObserver(scheduleBind).observe(document.body, {
+        childList: true,
+        subtree: true,
+      });
+    }
+
+    function refreshMermaidAfterInitialTabRestore() {
+      if (typeof initMermaid !== "function") return;
+
+      setTimeout(function () {
+        requestAnimationFrame(function () {
+          initMermaid(true);
+        });
+      }, 0);
+    }
+
+    function disableTabSelectionPersistence() {
+      if (typeof switchTab !== "function") return;
+
+      window.switchTab = function (tabGroup, tabId) {
+        var tabs = Array.from(
+          document.querySelectorAll('.tab-panel[data-tab-group="' + tabGroup + '"]')
+        ).filter(function (panel) {
+          return !!panel.querySelector('[data-tab-item="' + tabId + '"]');
+        });
+        var allTabItems =
+          tabs &&
+          tabs.reduce(function (acc, panel) {
+            return acc.concat(
+              Array.from(panel.querySelectorAll("[data-tab-item]")).filter(function (item) {
+                return item.parentNode.parentNode == panel;
+              })
+            );
+          }, []);
+        var targetTabItems =
+          tabs &&
+          tabs.reduce(function (acc, panel) {
+            return acc.concat(
+              Array.from(panel.querySelectorAll('[data-tab-item="' + tabId + '"]')).filter(
+                function (item) {
+                  return item.parentNode.parentNode == panel;
+                }
+              )
+            );
+          }, []);
+
+        var currentEvent = typeof event !== "undefined" ? event : null;
+        var isButtonEvent =
+          currentEvent && currentEvent.target && currentEvent.target.getBoundingClientRect;
+        var yposButton = isButtonEvent ? currentEvent.target.getBoundingClientRect().top : 0;
+
+        allTabItems &&
+          allTabItems.forEach(function (item) {
+            item.classList.remove("active");
+            item.setAttribute("aria-expanded", "false");
+            item.removeAttribute("tabindex");
+          });
+        targetTabItems &&
+          targetTabItems.forEach(function (item) {
+            item.classList.add("active");
+            item.setAttribute("aria-expanded", "true");
+            item.setAttribute("tabindex", "-1");
+          });
+
+        if (typeof initMermaid === "function") {
+          requestAnimationFrame(function () {
+            initMermaid(true);
+
+            if (isButtonEvent) {
+              var yposButtonDiff = currentEvent.target.getBoundingClientRect().top - yposButton;
+              window.scrollTo(window.scrollX, window.scrollY + yposButtonDiff);
+            }
+          });
+        }
+      };
+
+      switchTab = window.switchTab;
+
+      if (window.localStorage && window.relearn && window.relearn.absBaseUri) {
+        window.localStorage.removeItem(window.relearn.absBaseUri + "/tab-selections");
+      }
+
+      var seenGroups = new Set();
+      document.querySelectorAll(".tab-panel[data-tab-group]").forEach(function (panel) {
+        var tabGroup = panel.getAttribute("data-tab-group");
+        if (!tabGroup || seenGroups.has(tabGroup)) return;
+        seenGroups.add(tabGroup);
+
+        var firstButton = panel.querySelector(".tab-nav-button[data-tab-item]");
+        if (!firstButton) return;
+
+        window.switchTab(tabGroup, firstButton.getAttribute("data-tab-item"));
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      enforceDefaultVariantAuto();
+      initCicloSwitcher();
+      disableTabSelectionPersistence();
+      initMermaidLightbox();
+      refreshMermaidAfterInitialTabRestore();
+    });
+  })();
+</script>

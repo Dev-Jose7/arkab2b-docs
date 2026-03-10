@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Servicio de Pedidos :: ArkaB2B Docs</title>
+    <link>http://localhost:1313/mvp/arquitectura/servicios/servicio-pedidos/index.html</link>
+    <description>Marco del servicio Responde: que bounded context aterriza este servicio y como debe leerse su dossier tecnico. Dossier tecnico del servicio que materializa Contexto Pedidos.&#xA;Rol del servicio Responde: que verdad protege este servicio y con que alcance participa en el MVP.&#xA;carrito, checkout, pedido, confirmacion comercial y pago manual. Preserva fronteras de dominio sin mezclar ownership con otros servicios. Cobertura de requisitos Responde: que FR/RNF justifican la existencia y prioridad de este servicio.</description>
+    <generator>Hugo</generator>
+    <language>es-CO</language>
+    <atom:link href="http://localhost:1313/mvp/arquitectura/servicios/servicio-pedidos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Arquitectura Interna</title>
+      <link>http://localhost:1313/mvp/arquitectura/servicios/servicio-pedidos/arquitectura-interna/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/arquitectura/servicios/servicio-pedidos/arquitectura-interna/index.html</guid>
+      <description>Marco de la categoria Responde: que tipo de decisiones locales concentra esta carpeta dentro del servicio. Arquitectura Interna del servicio de pedidos.&#xA;Artefactos Responde: que documentos concretos componen esta categoria.&#xA;Vista C4 Nivel 3 Vista de Codigo Casos de Uso en Ejecucion</description>
+    </item>
+    <item>
+      <title>Contratos</title>
+      <link>http://localhost:1313/mvp/arquitectura/servicios/servicio-pedidos/contratos/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/arquitectura/servicios/servicio-pedidos/contratos/index.html</guid>
+      <description>Marco de la categoria Responde: que tipo de decisiones locales concentra esta carpeta dentro del servicio. Contratos del servicio de pedidos.&#xA;Artefactos Responde: que documentos concretos componen esta categoria.&#xA;APIs Eventos</description>
+    </item>
+    <item>
+      <title>Datos</title>
+      <link>http://localhost:1313/mvp/arquitectura/servicios/servicio-pedidos/datos/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/arquitectura/servicios/servicio-pedidos/datos/index.html</guid>
+      <description>Marco de la categoria Responde: que tipo de decisiones locales concentra esta carpeta dentro del servicio. Datos del servicio de pedidos.&#xA;Artefactos Responde: que documentos concretos componen esta categoria.&#xA;Modelo Logico Modelo Fisico</description>
+    </item>
+    <item>
+      <title>Rendimiento</title>
+      <link>http://localhost:1313/mvp/arquitectura/servicios/servicio-pedidos/rendimiento/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/arquitectura/servicios/servicio-pedidos/rendimiento/index.html</guid>
+      <description>Marco de la categoria Responde: que tipo de decisiones locales concentra esta carpeta dentro del servicio. Rendimiento del servicio de pedidos.&#xA;Artefactos Responde: que documentos concretos componen esta categoria.&#xA;Presupuestos de Rendimiento</description>
+    </item>
+    <item>
+      <title>Seguridad</title>
+      <link>http://localhost:1313/mvp/arquitectura/servicios/servicio-pedidos/seguridad/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/arquitectura/servicios/servicio-pedidos/seguridad/index.html</guid>
+      <description>Marco de la categoria Responde: que tipo de decisiones locales concentra esta carpeta dentro del servicio. Seguridad del servicio de pedidos.&#xA;Artefactos Responde: que documentos concretos componen esta categoria.&#xA;Arquitectura de Seguridad</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html id="R-html" lang="es-CO" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.157.0">
+    <meta name="generator" content="Relearn 9.0.3+36307e4ed23582638ab689240ac7b427217803ee">
+    <meta name="description" content="Marco tactico Responde: que organiza esta capa tactica del dominio y como debe leerse el detalle de cada contexto delimitado.
+Catalogo tactico de bounded contexts del dominio MVP con su responsabilidad local y detalle por artefacto (overview, modelo, agregados, comandos, eventos, politicas, repositories/ports y anti-corruption).
+Contextos Responde: que bounded contexts componen la capa tactica y donde consultar el detalle de cada uno.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Contextos Delimitados :: ArkaB2B Docs">
+    <meta name="twitter:description" content="Marco tactico Responde: que organiza esta capa tactica del dominio y como debe leerse el detalle de cada contexto delimitado.
+Catalogo tactico de bounded contexts del dominio MVP con su responsabilidad local y detalle por artefacto (overview, modelo, agregados, comandos, eventos, politicas, repositories/ports y anti-corruption).
+Contextos Responde: que bounded contexts componen la capa tactica y donde consultar el detalle de cada uno.">
+    <meta property="og:url" content="http://localhost:1313/mvp/dominio/contextos-delimitados/index.html">
+    <meta property="og:site_name" content="ArkaB2B Docs">
+    <meta property="og:title" content="Contextos Delimitados :: ArkaB2B Docs">
+    <meta property="og:description" content="Marco tactico Responde: que organiza esta capa tactica del dominio y como debe leerse el detalle de cada contexto delimitado.
+Catalogo tactico de bounded contexts del dominio MVP con su responsabilidad local y detalle por artefacto (overview, modelo, agregados, comandos, eventos, politicas, repositories/ports y anti-corruption).
+Contextos Responde: que bounded contexts componen la capa tactica y donde consultar el detalle de cada uno.">
+    <meta property="og:locale" content="es_CO">
+    <meta property="og:type" content="website">
+    <meta itemprop="name" content="Contextos Delimitados :: ArkaB2B Docs">
+    <meta itemprop="description" content="Marco tactico Responde: que organiza esta capa tactica del dominio y como debe leerse el detalle de cada contexto delimitado.
+Catalogo tactico de bounded contexts del dominio MVP con su responsabilidad local y detalle por artefacto (overview, modelo, agregados, comandos, eventos, politicas, repositories/ports y anti-corruption).
+Contextos Responde: que bounded contexts componen la capa tactica y donde consultar el detalle de cada uno.">
+    <meta itemprop="wordCount" content="71">
+    <title>Contextos Delimitados :: ArkaB2B Docs</title>
+    <link href="/mvp/dominio/contextos-delimitados/index.xml" rel="alternate" type="application/rss+xml" title="Contextos Delimitados :: ArkaB2B Docs">
+    <link href="/css/auto-complete/auto-complete.min.css?1774837038" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1774837038" defer></script>
+    <script src="/js/search-lunr.min.js?1774837038" defer></script>
+    <script src="/js/search.min.js?1774837038" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/searchindex.es.js?1774837038";
+    </script>
+    <script src="/js/lunr/lunr.min.js?1774837038" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1774837038" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1774837038" defer></script>
+    <script src="/js/lunr/lunr.es.min.js?1774837038" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['es'];
+    </script>
+    <link href="/fonts/fontawesome/css/all.min.css?1774837038" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/all.min.css?1774837038" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1774837038" rel="stylesheet">
+    <link href="/css/theme.min.css?1774837038" rel="stylesheet">
+    <link href="/css/format-html.min.css?1774837038" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/mvp\/dominio\/contextos-delimitados\/index.html';
+      window.relearn.relBasePath='..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
+      window.relearn.absBaseUri='http:\/\/localhost:1313';
+      window.relearn.disableInlineCopyToClipboard=true;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copiar texto al portapapeles`;
+      window.T_Copied_to_clipboard = `¡Texto copiado al portapapeles!`;
+      window.T_Link_copied_to_clipboard = `¡Enlace copiado al portapapeles!`;
+      window.T_Reset_view = `Restablecer vista`;
+      window.T_View_reset = `¡Ver reajuste!`;
+      window.T_No_results_found = `No se han encontrado resultados para "{0}"`;
+      window.T_N_results_found = `{1} resultados encontrados para "{0}"`;
+      window.T_Browser_unsupported_feature = `Este navegador no admite esta función`;
+      // variant stuff
+      window.relearn.themevariants = [ 'zen-light', 'zen-dark', 'red' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="/css/custom.css?1774837038" rel="stylesheet">
+  </head>
+  <body class="mobile-support html" data-origin="/mvp/dominio/contextos-delimitados/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menú (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Tabla de contenido (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#marco-tactico">Marco tactico</a></li>
+    <li><a href="#contextos">Contextos</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">ArkaB2B</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/mvp/index.html"><span itemprop="name">MVP</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/mvp/dominio/index.html"><span itemprop="name">Dominio</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">8. Contextos Delimitados</span><meta itemprop="position" content="4"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/mvp/dominio/contratos-integracion/index.html" title="Contratos de Integracion (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/mvp/dominio/contextos-delimitados/identidad-acceso/index.html" title="Identidad y Acceso (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Más"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable mvp" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="contextos-delimitados">Contextos Delimitados</h1>
+
+<h2 id="marco-tactico">Marco tactico<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copiar enlace al portapapeles"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p><em>Responde: que organiza esta capa tactica del dominio y como debe leerse el detalle de cada contexto delimitado.</em></p>
+<p>Catalogo tactico de bounded contexts del dominio <code>MVP</code> con su
+responsabilidad local y detalle por artefacto (<code>overview</code>, <code>modelo</code>,
+<code>agregados</code>, <code>comandos</code>, <code>eventos</code>, <code>politicas</code>, <code>repositories/ports</code>
+y <code>anti-corruption</code>).</p>
+<h2 id="contextos">Contextos<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copiar enlace al portapapeles"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p><em>Responde: que bounded contexts componen la capa tactica y donde consultar el detalle de cada uno.</em></p>
+<ul>
+<li><a href="/mvp/dominio/contextos-delimitados/identidad-acceso/index.html">Identidad y Acceso</a></li>
+<li><a href="/mvp/dominio/contextos-delimitados/directorio/index.html">Directorio</a></li>
+<li><a href="/mvp/dominio/contextos-delimitados/catalogo/index.html">Catalogo</a></li>
+<li><a href="/mvp/dominio/contextos-delimitados/inventario/index.html">Inventario</a></li>
+<li><a href="/mvp/dominio/contextos-delimitados/pedidos/index.html">Pedidos</a></li>
+<li><a href="/mvp/dominio/contextos-delimitados/notificaciones/index.html">Notificaciones</a></li>
+<li><a href="/mvp/dominio/contextos-delimitados/reporteria/index.html">Reporteria</a></li>
+</ul>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <a id="R-logo" class="R-default direction-row" href="/index.html">
+          <span class="logo-title default-animation">ArkaB2B Docs</span>
+        </a>
+        <search><form action="/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Buscar (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Buscar</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Buscar...">
+            <button class="search-clear" type="button" data-search-clear="" title="Borrar búsqueda"><i class="fas fa-fw fa-times" title="Borrar búsqueda"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation">
+        <div class="R-sidebarmenu R-shortcutmenu-ciclo default-animation">
+          <ul class="">
+
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-ciclo default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/mvp/producto/index.html"><input type="checkbox" id="R-section-9c1692d7371f270cd26732d7ad9fc3ce" aria-controls="R-subsections-9c1692d7371f270cd26732d7ad9fc3ce"><label for="R-section-9c1692d7371f270cd26732d7ad9fc3ce"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú Producto</span></label><a class="padding default-animation" href="/mvp/producto/index.html">Producto</a><ul id="R-subsections-9c1692d7371f270cd26732d7ad9fc3ce" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/producto/srs-ligero/index.html"><a class="padding" href="/mvp/producto/srs-ligero/index.html">1. SRS Ligero</a></li>
+            <li class="" data-nav-id="/mvp/producto/catalogo-rf/index.html"><input type="checkbox" id="R-section-de479bf9345ede906e2be8edebc92c3a" aria-controls="R-subsections-de479bf9345ede906e2be8edebc92c3a"><label for="R-section-de479bf9345ede906e2be8edebc92c3a"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 2. Catalogo RF</span></label><a class="padding default-animation" href="/mvp/producto/catalogo-rf/index.html">2. Catalogo RF</a><ul id="R-subsections-de479bf9345ede906e2be8edebc92c3a" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/producto/catalogo-rf/fr-001/index.html"><a class="padding" href="/mvp/producto/catalogo-rf/fr-001/index.html">FR-001</a></li>
+            <li class="" data-nav-id="/mvp/producto/catalogo-rf/fr-002/index.html"><a class="padding" href="/mvp/producto/catalogo-rf/fr-002/index.html">FR-002</a></li>
+            <li class="" data-nav-id="/mvp/producto/catalogo-rf/fr-003/index.html"><a class="padding" href="/mvp/producto/catalogo-rf/fr-003/index.html">FR-003</a></li>
+            <li class="" data-nav-id="/mvp/producto/catalogo-rf/fr-004/index.html"><a class="padding" href="/mvp/producto/catalogo-rf/fr-004/index.html">FR-004</a></li>
+            <li class="" data-nav-id="/mvp/producto/catalogo-rf/fr-005/index.html"><a class="padding" href="/mvp/producto/catalogo-rf/fr-005/index.html">FR-005</a></li>
+            <li class="" data-nav-id="/mvp/producto/catalogo-rf/fr-006/index.html"><a class="padding" href="/mvp/producto/catalogo-rf/fr-006/index.html">FR-006</a></li>
+            <li class="" data-nav-id="/mvp/producto/catalogo-rf/fr-007/index.html"><a class="padding" href="/mvp/producto/catalogo-rf/fr-007/index.html">FR-007</a></li>
+            <li class="" data-nav-id="/mvp/producto/catalogo-rf/fr-008/index.html"><a class="padding" href="/mvp/producto/catalogo-rf/fr-008/index.html">FR-008</a></li>
+            <li class="" data-nav-id="/mvp/producto/catalogo-rf/fr-009/index.html"><a class="padding" href="/mvp/producto/catalogo-rf/fr-009/index.html">FR-009</a></li>
+            <li class="" data-nav-id="/mvp/producto/catalogo-rf/fr-010/index.html"><a class="padding" href="/mvp/producto/catalogo-rf/fr-010/index.html">FR-010</a></li>
+            <li class="" data-nav-id="/mvp/producto/catalogo-rf/fr-011/index.html"><a class="padding" href="/mvp/producto/catalogo-rf/fr-011/index.html">FR-011</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/producto/catalogo-rnf/index.html"><input type="checkbox" id="R-section-d56352e05b09031974c30c4ed0b4b49a" aria-controls="R-subsections-d56352e05b09031974c30c4ed0b4b49a"><label for="R-section-d56352e05b09031974c30c4ed0b4b49a"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 3. Catalogo RNF</span></label><a class="padding default-animation" href="/mvp/producto/catalogo-rnf/index.html">3. Catalogo RNF</a><ul id="R-subsections-d56352e05b09031974c30c4ed0b4b49a" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/producto/catalogo-rnf/nfr-001/index.html"><a class="padding" href="/mvp/producto/catalogo-rnf/nfr-001/index.html">NFR-001</a></li>
+            <li class="" data-nav-id="/mvp/producto/catalogo-rnf/nfr-002/index.html"><a class="padding" href="/mvp/producto/catalogo-rnf/nfr-002/index.html">NFR-002</a></li>
+            <li class="" data-nav-id="/mvp/producto/catalogo-rnf/nfr-003/index.html"><a class="padding" href="/mvp/producto/catalogo-rnf/nfr-003/index.html">NFR-003</a></li>
+            <li class="" data-nav-id="/mvp/producto/catalogo-rnf/nfr-004/index.html"><a class="padding" href="/mvp/producto/catalogo-rnf/nfr-004/index.html">NFR-004</a></li>
+            <li class="" data-nav-id="/mvp/producto/catalogo-rnf/nfr-005/index.html"><a class="padding" href="/mvp/producto/catalogo-rnf/nfr-005/index.html">NFR-005</a></li>
+            <li class="" data-nav-id="/mvp/producto/catalogo-rnf/nfr-006/index.html"><a class="padding" href="/mvp/producto/catalogo-rnf/nfr-006/index.html">NFR-006</a></li>
+            <li class="" data-nav-id="/mvp/producto/catalogo-rnf/nfr-007/index.html"><a class="padding" href="/mvp/producto/catalogo-rnf/nfr-007/index.html">NFR-007</a></li>
+            <li class="" data-nav-id="/mvp/producto/catalogo-rnf/nfr-008/index.html"><a class="padding" href="/mvp/producto/catalogo-rnf/nfr-008/index.html">NFR-008</a></li>
+            <li class="" data-nav-id="/mvp/producto/catalogo-rnf/nfr-009/index.html"><a class="padding" href="/mvp/producto/catalogo-rnf/nfr-009/index.html">NFR-009</a></li>
+            <li class="" data-nav-id="/mvp/producto/catalogo-rnf/nfr-010/index.html"><a class="padding" href="/mvp/producto/catalogo-rnf/nfr-010/index.html">NFR-010</a></li>
+            <li class="" data-nav-id="/mvp/producto/catalogo-rnf/nfr-011/index.html"><a class="padding" href="/mvp/producto/catalogo-rnf/nfr-011/index.html">NFR-011</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/producto/trazabilidad/index.html"><a class="padding" href="/mvp/producto/trazabilidad/index.html">4. Trazabilidad</a></li>
+            <li class="" data-nav-id="/mvp/producto/glosario/index.html"><a class="padding" href="/mvp/producto/glosario/index.html">5. Glosario</a></li>
+            <li class="" data-nav-id="/mvp/producto/adjuntos/index.html"><input type="checkbox" id="R-section-e8d80fee88e850089e0dc350db8b816f" aria-controls="R-subsections-e8d80fee88e850089e0dc350db8b816f"><label for="R-section-e8d80fee88e850089e0dc350db8b816f"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú Adjuntos</span></label><a class="padding default-animation" href="/mvp/producto/adjuntos/index.html">Adjuntos</a><ul id="R-subsections-e8d80fee88e850089e0dc350db8b816f" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/producto/adjuntos/proyecto-java-backend-reto-v2/index.html"><a class="padding" href="/mvp/producto/adjuntos/proyecto-java-backend-reto-v2/index.html">Adjunto 01 Reto Backend V2</a></li>
+            <li class="" data-nav-id="/mvp/producto/adjuntos/proyecto-arka/index.html"><a class="padding" href="/mvp/producto/adjuntos/proyecto-arka/index.html">Adjunto 02 Proyecto Arka</a></li>
+            <li class="" data-nav-id="/mvp/producto/adjuntos/backlog-java-backend-arka/index.html"><a class="padding" href="/mvp/producto/adjuntos/backlog-java-backend-arka/index.html">Adjunto 03 Backlog Arka</a></li></ul></li></ul></li>
+            <li class="parent " data-nav-id="/mvp/dominio/index.html"><input type="checkbox" id="R-section-15ce740df0df730eebb6cc578c8574fe" aria-controls="R-subsections-15ce740df0df730eebb6cc578c8574fe" checked><label for="R-section-15ce740df0df730eebb6cc578c8574fe"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú Dominio</span></label><a class="padding default-animation" href="/mvp/dominio/index.html">Dominio</a><ul id="R-subsections-15ce740df0df730eebb6cc578c8574fe" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/dominio/mapa-contexto/index.html"><a class="padding" href="/mvp/dominio/mapa-contexto/index.html">1. Mapa de Contexto</a></li>
+            <li class="" data-nav-id="/mvp/dominio/lenguaje-ubicuo/index.html"><a class="padding" href="/mvp/dominio/lenguaje-ubicuo/index.html">2. Lenguaje Ubicuo</a></li>
+            <li class="" data-nav-id="/mvp/dominio/conceptos/index.html"><a class="padding" href="/mvp/dominio/conceptos/index.html">3. Conceptos</a></li>
+            <li class="" data-nav-id="/mvp/dominio/reglas-invariantes/index.html"><a class="padding" href="/mvp/dominio/reglas-invariantes/index.html">4. Reglas e Invariantes</a></li>
+            <li class="" data-nav-id="/mvp/dominio/comportamiento-global/index.html"><a class="padding" href="/mvp/dominio/comportamiento-global/index.html">5. Comportamiento Global</a></li>
+            <li class="" data-nav-id="/mvp/dominio/eventos-dominio/index.html"><a class="padding" href="/mvp/dominio/eventos-dominio/index.html">6. Eventos de Dominio</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contratos-integracion/index.html"><a class="padding" href="/mvp/dominio/contratos-integracion/index.html">7. Contratos de Integracion</a></li>
+            <li class="active parent " data-nav-id="/mvp/dominio/contextos-delimitados/index.html"><input type="checkbox" id="R-section-789ec66d85a3e0bf83fcfafd84a5f652" aria-controls="R-subsections-789ec66d85a3e0bf83fcfafd84a5f652" checked><label for="R-section-789ec66d85a3e0bf83fcfafd84a5f652"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 8. Contextos Delimitados</span></label><a class="padding default-animation" href="/mvp/dominio/contextos-delimitados/index.html">8. Contextos Delimitados</a><ul id="R-subsections-789ec66d85a3e0bf83fcfafd84a5f652" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/identidad-acceso/index.html"><input type="checkbox" id="R-section-a019cda5632da8021e67fc065d708edf" aria-controls="R-subsections-a019cda5632da8021e67fc065d708edf"><label for="R-section-a019cda5632da8021e67fc065d708edf"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú Identidad y Acceso</span></label><a class="padding default-animation" href="/mvp/dominio/contextos-delimitados/identidad-acceso/index.html">Identidad y Acceso</a><ul id="R-subsections-a019cda5632da8021e67fc065d708edf" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/identidad-acceso/resumen/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/identidad-acceso/resumen/index.html">1. Resumen</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/identidad-acceso/modelo/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/identidad-acceso/modelo/index.html">2. Modelo</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/identidad-acceso/agregados/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/identidad-acceso/agregados/index.html">3. Agregados</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/identidad-acceso/comandos/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/identidad-acceso/comandos/index.html">4. Comandos</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/identidad-acceso/eventos/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/identidad-acceso/eventos/index.html">5. Eventos</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/identidad-acceso/politicas/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/identidad-acceso/politicas/index.html">6. Politicas</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/identidad-acceso/repositorios-puertos/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/identidad-acceso/repositorios-puertos/index.html">7. Repositorios y Puertos</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/identidad-acceso/anti-corrupcion/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/identidad-acceso/anti-corrupcion/index.html">8. Anti-Corrupcion</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/directorio/index.html"><input type="checkbox" id="R-section-b1b658361529f2779772c77ff851e9d5" aria-controls="R-subsections-b1b658361529f2779772c77ff851e9d5"><label for="R-section-b1b658361529f2779772c77ff851e9d5"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú Directorio</span></label><a class="padding default-animation" href="/mvp/dominio/contextos-delimitados/directorio/index.html">Directorio</a><ul id="R-subsections-b1b658361529f2779772c77ff851e9d5" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/directorio/resumen/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/directorio/resumen/index.html">1. Resumen</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/directorio/modelo/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/directorio/modelo/index.html">2. Modelo</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/directorio/agregados/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/directorio/agregados/index.html">3. Agregados</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/directorio/comandos/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/directorio/comandos/index.html">4. Comandos</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/directorio/eventos/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/directorio/eventos/index.html">5. Eventos</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/directorio/politicas/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/directorio/politicas/index.html">6. Politicas</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/directorio/repositorios-puertos/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/directorio/repositorios-puertos/index.html">7. Repositorios y Puertos</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/directorio/anti-corrupcion/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/directorio/anti-corrupcion/index.html">8. Anti-Corrupcion</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/catalogo/index.html"><input type="checkbox" id="R-section-7f00b04bd494a8d48f4440349aedb4c6" aria-controls="R-subsections-7f00b04bd494a8d48f4440349aedb4c6"><label for="R-section-7f00b04bd494a8d48f4440349aedb4c6"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú Catalogo</span></label><a class="padding default-animation" href="/mvp/dominio/contextos-delimitados/catalogo/index.html">Catalogo</a><ul id="R-subsections-7f00b04bd494a8d48f4440349aedb4c6" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/catalogo/resumen/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/catalogo/resumen/index.html">1. Resumen</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/catalogo/modelo/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/catalogo/modelo/index.html">2. Modelo</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/catalogo/agregados/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/catalogo/agregados/index.html">3. Agregados</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/catalogo/comandos/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/catalogo/comandos/index.html">4. Comandos</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/catalogo/eventos/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/catalogo/eventos/index.html">5. Eventos</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/catalogo/politicas/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/catalogo/politicas/index.html">6. Politicas</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/catalogo/repositorios-puertos/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/catalogo/repositorios-puertos/index.html">7. Repositorios y Puertos</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/catalogo/anti-corrupcion/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/catalogo/anti-corrupcion/index.html">8. Anti-Corrupcion</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/inventario/index.html"><input type="checkbox" id="R-section-791ded616ed2218ae2cfe4b406bea7bf" aria-controls="R-subsections-791ded616ed2218ae2cfe4b406bea7bf"><label for="R-section-791ded616ed2218ae2cfe4b406bea7bf"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú Inventario</span></label><a class="padding default-animation" href="/mvp/dominio/contextos-delimitados/inventario/index.html">Inventario</a><ul id="R-subsections-791ded616ed2218ae2cfe4b406bea7bf" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/inventario/resumen/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/inventario/resumen/index.html">1. Resumen</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/inventario/modelo/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/inventario/modelo/index.html">2. Modelo</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/inventario/agregados/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/inventario/agregados/index.html">3. Agregados</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/inventario/comandos/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/inventario/comandos/index.html">4. Comandos</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/inventario/eventos/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/inventario/eventos/index.html">5. Eventos</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/inventario/politicas/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/inventario/politicas/index.html">6. Politicas</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/inventario/repositorios-puertos/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/inventario/repositorios-puertos/index.html">7. Repositorios y Puertos</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/inventario/anti-corrupcion/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/inventario/anti-corrupcion/index.html">8. Anti-Corrupcion</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/pedidos/index.html"><input type="checkbox" id="R-section-ad03e82a2a49f5d4422952134b3b16a9" aria-controls="R-subsections-ad03e82a2a49f5d4422952134b3b16a9"><label for="R-section-ad03e82a2a49f5d4422952134b3b16a9"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú Pedidos</span></label><a class="padding default-animation" href="/mvp/dominio/contextos-delimitados/pedidos/index.html">Pedidos</a><ul id="R-subsections-ad03e82a2a49f5d4422952134b3b16a9" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/pedidos/resumen/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/pedidos/resumen/index.html">1. Resumen</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/pedidos/modelo/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/pedidos/modelo/index.html">2. Modelo</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/pedidos/agregados/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/pedidos/agregados/index.html">3. Agregados</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/pedidos/comandos/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/pedidos/comandos/index.html">4. Comandos</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/pedidos/eventos/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/pedidos/eventos/index.html">5. Eventos</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/pedidos/politicas/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/pedidos/politicas/index.html">6. Politicas</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/pedidos/repositorios-puertos/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/pedidos/repositorios-puertos/index.html">7. Repositorios y Puertos</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/pedidos/anti-corrupcion/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/pedidos/anti-corrupcion/index.html">8. Anti-Corrupcion</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/notificaciones/index.html"><input type="checkbox" id="R-section-60dff2cf812261d2e88d76712ba06e8f" aria-controls="R-subsections-60dff2cf812261d2e88d76712ba06e8f"><label for="R-section-60dff2cf812261d2e88d76712ba06e8f"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú Notificaciones</span></label><a class="padding default-animation" href="/mvp/dominio/contextos-delimitados/notificaciones/index.html">Notificaciones</a><ul id="R-subsections-60dff2cf812261d2e88d76712ba06e8f" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/notificaciones/resumen/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/notificaciones/resumen/index.html">1. Resumen</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/notificaciones/modelo/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/notificaciones/modelo/index.html">2. Modelo</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/notificaciones/agregados/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/notificaciones/agregados/index.html">3. Agregados</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/notificaciones/comandos/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/notificaciones/comandos/index.html">4. Comandos</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/notificaciones/eventos/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/notificaciones/eventos/index.html">5. Eventos</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/notificaciones/politicas/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/notificaciones/politicas/index.html">6. Politicas</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/notificaciones/repositorios-puertos/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/notificaciones/repositorios-puertos/index.html">7. Repositorios y Puertos</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/notificaciones/anti-corrupcion/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/notificaciones/anti-corrupcion/index.html">8. Anti-Corrupcion</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/reporteria/index.html"><input type="checkbox" id="R-section-478d5f40fb346a8dfe7e7a60dbf9eee5" aria-controls="R-subsections-478d5f40fb346a8dfe7e7a60dbf9eee5"><label for="R-section-478d5f40fb346a8dfe7e7a60dbf9eee5"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú Reporteria</span></label><a class="padding default-animation" href="/mvp/dominio/contextos-delimitados/reporteria/index.html">Reporteria</a><ul id="R-subsections-478d5f40fb346a8dfe7e7a60dbf9eee5" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/reporteria/resumen/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/reporteria/resumen/index.html">1. Resumen</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/reporteria/modelo/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/reporteria/modelo/index.html">2. Modelo</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/reporteria/agregados/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/reporteria/agregados/index.html">3. Agregados</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/reporteria/comandos/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/reporteria/comandos/index.html">4. Comandos</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/reporteria/eventos/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/reporteria/eventos/index.html">5. Eventos</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/reporteria/politicas/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/reporteria/politicas/index.html">6. Politicas</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/reporteria/repositorios-puertos/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/reporteria/repositorios-puertos/index.html">7. Repositorios y Puertos</a></li>
+            <li class="" data-nav-id="/mvp/dominio/contextos-delimitados/reporteria/anti-corrupcion/index.html"><a class="padding" href="/mvp/dominio/contextos-delimitados/reporteria/anti-corrupcion/index.html">8. Anti-Corrupcion</a></li></ul></li></ul></li>
+            <li class="" data-nav-id="/mvp/dominio/trazabilidad/index.html"><a class="padding" href="/mvp/dominio/trazabilidad/index.html">9. Trazabilidad</a></li>
+            <li class="" data-nav-id="/mvp/dominio/evolucion/index.html"><a class="padding" href="/mvp/dominio/evolucion/index.html">10. Evolucion</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/index.html"><input type="checkbox" id="R-section-9eaca5fb8509318de9e4a48fb406c546" aria-controls="R-subsections-9eaca5fb8509318de9e4a48fb406c546"><label for="R-section-9eaca5fb8509318de9e4a48fb406c546"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú Arquitectura</span></label><a class="padding default-animation" href="/mvp/arquitectura/index.html">Arquitectura</a><ul id="R-subsections-9eaca5fb8509318de9e4a48fb406c546" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/arc42/index.html"><input type="checkbox" id="R-section-ec492b98a9119eaffe90c30249a1c821" aria-controls="R-subsections-ec492b98a9119eaffe90c30249a1c821"><label for="R-section-ec492b98a9119eaffe90c30249a1c821"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 1. arc42</span></label><a class="padding default-animation" href="/mvp/arquitectura/arc42/index.html">1. arc42</a><ul id="R-subsections-ec492b98a9119eaffe90c30249a1c821" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/arc42/introduccion-objetivos/index.html"><a class="padding" href="/mvp/arquitectura/arc42/introduccion-objetivos/index.html">1. Introduccion y Objetivos</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/arc42/restricciones/index.html"><a class="padding" href="/mvp/arquitectura/arc42/restricciones/index.html">2. Restricciones</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/arc42/contexto-alcance/index.html"><a class="padding" href="/mvp/arquitectura/arc42/contexto-alcance/index.html">3. Contexto y Alcance</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/arc42/estrategia-solucion/index.html"><a class="padding" href="/mvp/arquitectura/arc42/estrategia-solucion/index.html">4. Estrategia de Solucion</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/arc42/vista-bloques/index.html"><a class="padding" href="/mvp/arquitectura/arc42/vista-bloques/index.html">5. Vista de Bloques</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/arc42/vista-ejecucion/index.html"><a class="padding" href="/mvp/arquitectura/arc42/vista-ejecucion/index.html">6. Vista de Ejecucion</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/arc42/vista-despliegue/index.html"><a class="padding" href="/mvp/arquitectura/arc42/vista-despliegue/index.html">7. Vista de Despliegue</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/arc42/conceptos-transversales/index.html"><a class="padding" href="/mvp/arquitectura/arc42/conceptos-transversales/index.html">8. Conceptos Transversales</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/arc42/decisiones-arquitectonicas/index.html"><a class="padding" href="/mvp/arquitectura/arc42/decisiones-arquitectonicas/index.html">9. Decisiones Arquitectonicas</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/arc42/escenarios-calidad/index.html"><a class="padding" href="/mvp/arquitectura/arc42/escenarios-calidad/index.html">10. Escenarios de Calidad</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/arc42/riesgos-deuda-tecnica/index.html"><a class="padding" href="/mvp/arquitectura/arc42/riesgos-deuda-tecnica/index.html">11. Riesgos y Deuda Tecnica</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/arc42/adr/index.html"><input type="checkbox" id="R-section-3c0927a7bf644726e5fa62622eaf1d91" aria-controls="R-subsections-3c0927a7bf644726e5fa62622eaf1d91"><label for="R-section-3c0927a7bf644726e5fa62622eaf1d91"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 12. ADR</span></label><a class="padding default-animation" href="/mvp/arquitectura/arc42/adr/index.html">12. ADR</a><ul id="R-subsections-3c0927a7bf644726e5fa62622eaf1d91" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/arc42/adr/adr-001-estilo-arquitectonico-por-contexto/index.html"><a class="padding" href="/mvp/arquitectura/arc42/adr/adr-001-estilo-arquitectonico-por-contexto/index.html">ADR-001</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/arc42/adr/adr-002-integracion-sync-async-outbox/index.html"><a class="padding" href="/mvp/arquitectura/arc42/adr/adr-002-integracion-sync-async-outbox/index.html">ADR-002</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/arc42/adr/adr-003-separacion-catalogo-inventario/index.html"><a class="padding" href="/mvp/arquitectura/arc42/adr/adr-003-separacion-catalogo-inventario/index.html">ADR-003</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/arc42/adr/adr-004-versionado-de-contratos/index.html"><a class="padding" href="/mvp/arquitectura/arc42/adr/adr-004-versionado-de-contratos/index.html">ADR-004</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/arc42/adr/adr-005-multitenancy-y-auditoria/index.html"><a class="padding" href="/mvp/arquitectura/arc42/adr/adr-005-multitenancy-y-auditoria/index.html">ADR-005</a></li></ul></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/index.html"><input type="checkbox" id="R-section-aeee03500fc89a31941f87c2ed0e0245" aria-controls="R-subsections-aeee03500fc89a31941f87c2ed0e0245"><label for="R-section-aeee03500fc89a31941f87c2ed0e0245"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 2. Servicios</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/index.html">2. Servicios</a><ul id="R-subsections-aeee03500fc89a31941f87c2ed0e0245" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-identidad-acceso/index.html"><input type="checkbox" id="R-section-136d8c0ae35f6eacc067c3ad4396bf0d" aria-controls="R-subsections-136d8c0ae35f6eacc067c3ad4396bf0d"><label for="R-section-136d8c0ae35f6eacc067c3ad4396bf0d"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 1. Identidad y Acceso</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-identidad-acceso/index.html">1. Identidad y Acceso</a><ul id="R-subsections-136d8c0ae35f6eacc067c3ad4396bf0d" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-identidad-acceso/arquitectura-interna/index.html"><input type="checkbox" id="R-section-6bd072b6a2acaee7dfd8631556184c10" aria-controls="R-subsections-6bd072b6a2acaee7dfd8631556184c10"><label for="R-section-6bd072b6a2acaee7dfd8631556184c10"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 1. Arquitectura Interna</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-identidad-acceso/arquitectura-interna/index.html">1. Arquitectura Interna</a><ul id="R-subsections-6bd072b6a2acaee7dfd8631556184c10" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-identidad-acceso/arquitectura-interna/vista-c4-nivel-3/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-identidad-acceso/arquitectura-interna/vista-c4-nivel-3/index.html">1. Vista C4 L3</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-identidad-acceso/arquitectura-interna/vista-codigo/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-identidad-acceso/arquitectura-interna/vista-codigo/index.html">2. Vista de Codigo</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-identidad-acceso/arquitectura-interna/casos-uso-ejecucion/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-identidad-acceso/arquitectura-interna/casos-uso-ejecucion/index.html">3. Casos de Uso en Ejecucion</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-identidad-acceso/contratos/index.html"><input type="checkbox" id="R-section-8ed4e650fbec965401c29a457e68181a" aria-controls="R-subsections-8ed4e650fbec965401c29a457e68181a"><label for="R-section-8ed4e650fbec965401c29a457e68181a"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 2. Contratos</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-identidad-acceso/contratos/index.html">2. Contratos</a><ul id="R-subsections-8ed4e650fbec965401c29a457e68181a" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-identidad-acceso/contratos/apis/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-identidad-acceso/contratos/apis/index.html">1. APIs</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-identidad-acceso/contratos/eventos/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-identidad-acceso/contratos/eventos/index.html">2. Eventos</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-identidad-acceso/datos/index.html"><input type="checkbox" id="R-section-136667f016439063dd56219d73f0e2ae" aria-controls="R-subsections-136667f016439063dd56219d73f0e2ae"><label for="R-section-136667f016439063dd56219d73f0e2ae"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 3. Datos</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-identidad-acceso/datos/index.html">3. Datos</a><ul id="R-subsections-136667f016439063dd56219d73f0e2ae" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-identidad-acceso/datos/modelo-logico/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-identidad-acceso/datos/modelo-logico/index.html">1. Modelo Logico</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-identidad-acceso/datos/modelo-fisico/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-identidad-acceso/datos/modelo-fisico/index.html">2. Modelo Fisico</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-identidad-acceso/rendimiento/index.html"><input type="checkbox" id="R-section-4c0212668bc7a4370a3e48bea705fe7a" aria-controls="R-subsections-4c0212668bc7a4370a3e48bea705fe7a"><label for="R-section-4c0212668bc7a4370a3e48bea705fe7a"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 4. Rendimiento</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-identidad-acceso/rendimiento/index.html">4. Rendimiento</a><ul id="R-subsections-4c0212668bc7a4370a3e48bea705fe7a" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-identidad-acceso/rendimiento/presupuestos-rendimiento/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-identidad-acceso/rendimiento/presupuestos-rendimiento/index.html">1. Presupuestos de Rendimiento</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-identidad-acceso/seguridad/index.html"><input type="checkbox" id="R-section-c0c5d1a78402d8efdf78f70d41734fd5" aria-controls="R-subsections-c0c5d1a78402d8efdf78f70d41734fd5"><label for="R-section-c0c5d1a78402d8efdf78f70d41734fd5"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 5. Seguridad</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-identidad-acceso/seguridad/index.html">5. Seguridad</a><ul id="R-subsections-c0c5d1a78402d8efdf78f70d41734fd5" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-identidad-acceso/seguridad/arquitectura-seguridad/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-identidad-acceso/seguridad/arquitectura-seguridad/index.html">1. Arquitectura de Seguridad</a></li></ul></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-directorio/index.html"><input type="checkbox" id="R-section-42a767d0a6a84ba5dd5d281f39a379ed" aria-controls="R-subsections-42a767d0a6a84ba5dd5d281f39a379ed"><label for="R-section-42a767d0a6a84ba5dd5d281f39a379ed"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 2. Directorio</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-directorio/index.html">2. Directorio</a><ul id="R-subsections-42a767d0a6a84ba5dd5d281f39a379ed" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-directorio/arquitectura-interna/index.html"><input type="checkbox" id="R-section-ef610f5e421a3d1b9c56cde57e24f69d" aria-controls="R-subsections-ef610f5e421a3d1b9c56cde57e24f69d"><label for="R-section-ef610f5e421a3d1b9c56cde57e24f69d"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 1. Arquitectura Interna</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-directorio/arquitectura-interna/index.html">1. Arquitectura Interna</a><ul id="R-subsections-ef610f5e421a3d1b9c56cde57e24f69d" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-directorio/arquitectura-interna/vista-c4-nivel-3/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-directorio/arquitectura-interna/vista-c4-nivel-3/index.html">1. Vista C4 L3</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-directorio/arquitectura-interna/vista-codigo/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-directorio/arquitectura-interna/vista-codigo/index.html">2. Vista de Codigo</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-directorio/arquitectura-interna/casos-uso-ejecucion/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-directorio/arquitectura-interna/casos-uso-ejecucion/index.html">3. Casos de Uso en Ejecucion</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-directorio/contratos/index.html"><input type="checkbox" id="R-section-d6cd8fb877e25afdfefc7d3b6b08da0c" aria-controls="R-subsections-d6cd8fb877e25afdfefc7d3b6b08da0c"><label for="R-section-d6cd8fb877e25afdfefc7d3b6b08da0c"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 2. Contratos</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-directorio/contratos/index.html">2. Contratos</a><ul id="R-subsections-d6cd8fb877e25afdfefc7d3b6b08da0c" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-directorio/contratos/apis/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-directorio/contratos/apis/index.html">1. APIs</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-directorio/contratos/eventos/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-directorio/contratos/eventos/index.html">2. Eventos</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-directorio/datos/index.html"><input type="checkbox" id="R-section-a07d9d45cde210eccef4fc123762b5f9" aria-controls="R-subsections-a07d9d45cde210eccef4fc123762b5f9"><label for="R-section-a07d9d45cde210eccef4fc123762b5f9"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 3. Datos</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-directorio/datos/index.html">3. Datos</a><ul id="R-subsections-a07d9d45cde210eccef4fc123762b5f9" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-directorio/datos/modelo-logico/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-directorio/datos/modelo-logico/index.html">1. Modelo Logico</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-directorio/datos/modelo-fisico/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-directorio/datos/modelo-fisico/index.html">2. Modelo Fisico</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-directorio/rendimiento/index.html"><input type="checkbox" id="R-section-bbda77e2fb974e8f3a71a41493abf359" aria-controls="R-subsections-bbda77e2fb974e8f3a71a41493abf359"><label for="R-section-bbda77e2fb974e8f3a71a41493abf359"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 4. Rendimiento</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-directorio/rendimiento/index.html">4. Rendimiento</a><ul id="R-subsections-bbda77e2fb974e8f3a71a41493abf359" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-directorio/rendimiento/presupuestos-rendimiento/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-directorio/rendimiento/presupuestos-rendimiento/index.html">1. Presupuestos de Rendimiento</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-directorio/seguridad/index.html"><input type="checkbox" id="R-section-e793a8bd33fe096f5101c4c77b80ed6e" aria-controls="R-subsections-e793a8bd33fe096f5101c4c77b80ed6e"><label for="R-section-e793a8bd33fe096f5101c4c77b80ed6e"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 5. Seguridad</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-directorio/seguridad/index.html">5. Seguridad</a><ul id="R-subsections-e793a8bd33fe096f5101c4c77b80ed6e" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-directorio/seguridad/arquitectura-seguridad/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-directorio/seguridad/arquitectura-seguridad/index.html">1. Arquitectura de Seguridad</a></li></ul></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-catalogo/index.html"><input type="checkbox" id="R-section-73291e8d6b77fabaa0b4124d8ea215c6" aria-controls="R-subsections-73291e8d6b77fabaa0b4124d8ea215c6"><label for="R-section-73291e8d6b77fabaa0b4124d8ea215c6"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 3. Catalogo</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-catalogo/index.html">3. Catalogo</a><ul id="R-subsections-73291e8d6b77fabaa0b4124d8ea215c6" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-catalogo/arquitectura-interna/index.html"><input type="checkbox" id="R-section-01b160b1cf71fda9ac137f3966e77b57" aria-controls="R-subsections-01b160b1cf71fda9ac137f3966e77b57"><label for="R-section-01b160b1cf71fda9ac137f3966e77b57"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 1. Arquitectura Interna</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-catalogo/arquitectura-interna/index.html">1. Arquitectura Interna</a><ul id="R-subsections-01b160b1cf71fda9ac137f3966e77b57" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-catalogo/arquitectura-interna/vista-c4-nivel-3/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-catalogo/arquitectura-interna/vista-c4-nivel-3/index.html">1. Vista C4 L3</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-catalogo/arquitectura-interna/vista-codigo/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-catalogo/arquitectura-interna/vista-codigo/index.html">2. Vista de Codigo</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-catalogo/arquitectura-interna/casos-uso-ejecucion/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-catalogo/arquitectura-interna/casos-uso-ejecucion/index.html">3. Casos de Uso en Ejecucion</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-catalogo/contratos/index.html"><input type="checkbox" id="R-section-f3909aaa68a58df8cadefc6d5dd125ea" aria-controls="R-subsections-f3909aaa68a58df8cadefc6d5dd125ea"><label for="R-section-f3909aaa68a58df8cadefc6d5dd125ea"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 2. Contratos</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-catalogo/contratos/index.html">2. Contratos</a><ul id="R-subsections-f3909aaa68a58df8cadefc6d5dd125ea" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-catalogo/contratos/apis/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-catalogo/contratos/apis/index.html">1. APIs</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-catalogo/contratos/eventos/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-catalogo/contratos/eventos/index.html">2. Eventos</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-catalogo/datos/index.html"><input type="checkbox" id="R-section-aff0447a3b6079396525639a3082c8c6" aria-controls="R-subsections-aff0447a3b6079396525639a3082c8c6"><label for="R-section-aff0447a3b6079396525639a3082c8c6"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 3. Datos</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-catalogo/datos/index.html">3. Datos</a><ul id="R-subsections-aff0447a3b6079396525639a3082c8c6" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-catalogo/datos/modelo-logico/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-catalogo/datos/modelo-logico/index.html">1. Modelo Logico</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-catalogo/datos/modelo-fisico/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-catalogo/datos/modelo-fisico/index.html">2. Modelo Fisico</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-catalogo/rendimiento/index.html"><input type="checkbox" id="R-section-84a7c63136d10ef60d8013b43e8f1cdc" aria-controls="R-subsections-84a7c63136d10ef60d8013b43e8f1cdc"><label for="R-section-84a7c63136d10ef60d8013b43e8f1cdc"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 4. Rendimiento</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-catalogo/rendimiento/index.html">4. Rendimiento</a><ul id="R-subsections-84a7c63136d10ef60d8013b43e8f1cdc" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-catalogo/rendimiento/presupuestos-rendimiento/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-catalogo/rendimiento/presupuestos-rendimiento/index.html">1. Presupuestos de Rendimiento</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-catalogo/seguridad/index.html"><input type="checkbox" id="R-section-b42ff972e97e49334eb5995d4d901e02" aria-controls="R-subsections-b42ff972e97e49334eb5995d4d901e02"><label for="R-section-b42ff972e97e49334eb5995d4d901e02"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 5. Seguridad</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-catalogo/seguridad/index.html">5. Seguridad</a><ul id="R-subsections-b42ff972e97e49334eb5995d4d901e02" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-catalogo/seguridad/arquitectura-seguridad/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-catalogo/seguridad/arquitectura-seguridad/index.html">1. Arquitectura de Seguridad</a></li></ul></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-inventario/index.html"><input type="checkbox" id="R-section-037e07341d7b4d98bc3f0b2956c9dceb" aria-controls="R-subsections-037e07341d7b4d98bc3f0b2956c9dceb"><label for="R-section-037e07341d7b4d98bc3f0b2956c9dceb"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 4. Inventario</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-inventario/index.html">4. Inventario</a><ul id="R-subsections-037e07341d7b4d98bc3f0b2956c9dceb" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-inventario/arquitectura-interna/index.html"><input type="checkbox" id="R-section-0ceef48fc5732fd849de454630228856" aria-controls="R-subsections-0ceef48fc5732fd849de454630228856"><label for="R-section-0ceef48fc5732fd849de454630228856"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 1. Arquitectura Interna</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-inventario/arquitectura-interna/index.html">1. Arquitectura Interna</a><ul id="R-subsections-0ceef48fc5732fd849de454630228856" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-inventario/arquitectura-interna/vista-c4-nivel-3/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-inventario/arquitectura-interna/vista-c4-nivel-3/index.html">1. Vista C4 L3</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-inventario/arquitectura-interna/vista-codigo/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-inventario/arquitectura-interna/vista-codigo/index.html">2. Vista de Codigo</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-inventario/arquitectura-interna/casos-uso-ejecucion/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-inventario/arquitectura-interna/casos-uso-ejecucion/index.html">3. Casos de Uso en Ejecucion</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-inventario/contratos/index.html"><input type="checkbox" id="R-section-eb8b89af2f308e3ef2107395c074c49c" aria-controls="R-subsections-eb8b89af2f308e3ef2107395c074c49c"><label for="R-section-eb8b89af2f308e3ef2107395c074c49c"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 2. Contratos</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-inventario/contratos/index.html">2. Contratos</a><ul id="R-subsections-eb8b89af2f308e3ef2107395c074c49c" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-inventario/contratos/apis/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-inventario/contratos/apis/index.html">1. APIs</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-inventario/contratos/eventos/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-inventario/contratos/eventos/index.html">2. Eventos</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-inventario/datos/index.html"><input type="checkbox" id="R-section-d70df78067798524b25762d014c50a56" aria-controls="R-subsections-d70df78067798524b25762d014c50a56"><label for="R-section-d70df78067798524b25762d014c50a56"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 3. Datos</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-inventario/datos/index.html">3. Datos</a><ul id="R-subsections-d70df78067798524b25762d014c50a56" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-inventario/datos/modelo-logico/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-inventario/datos/modelo-logico/index.html">1. Modelo Logico</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-inventario/datos/modelo-fisico/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-inventario/datos/modelo-fisico/index.html">2. Modelo Fisico</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-inventario/rendimiento/index.html"><input type="checkbox" id="R-section-30b7f6c6ffe92d2cd223f353a27d781a" aria-controls="R-subsections-30b7f6c6ffe92d2cd223f353a27d781a"><label for="R-section-30b7f6c6ffe92d2cd223f353a27d781a"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 4. Rendimiento</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-inventario/rendimiento/index.html">4. Rendimiento</a><ul id="R-subsections-30b7f6c6ffe92d2cd223f353a27d781a" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-inventario/rendimiento/presupuestos-rendimiento/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-inventario/rendimiento/presupuestos-rendimiento/index.html">1. Presupuestos de Rendimiento</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-inventario/seguridad/index.html"><input type="checkbox" id="R-section-617a1fa9a416c7ec15a155945b0c5a95" aria-controls="R-subsections-617a1fa9a416c7ec15a155945b0c5a95"><label for="R-section-617a1fa9a416c7ec15a155945b0c5a95"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 5. Seguridad</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-inventario/seguridad/index.html">5. Seguridad</a><ul id="R-subsections-617a1fa9a416c7ec15a155945b0c5a95" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-inventario/seguridad/arquitectura-seguridad/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-inventario/seguridad/arquitectura-seguridad/index.html">1. Arquitectura de Seguridad</a></li></ul></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-pedidos/index.html"><input type="checkbox" id="R-section-dfa703a3568c0253ee78f52b61a703dd" aria-controls="R-subsections-dfa703a3568c0253ee78f52b61a703dd"><label for="R-section-dfa703a3568c0253ee78f52b61a703dd"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 5. Pedidos</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-pedidos/index.html">5. Pedidos</a><ul id="R-subsections-dfa703a3568c0253ee78f52b61a703dd" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-pedidos/arquitectura-interna/index.html"><input type="checkbox" id="R-section-541f27785807e211abb16f2d76f96f9c" aria-controls="R-subsections-541f27785807e211abb16f2d76f96f9c"><label for="R-section-541f27785807e211abb16f2d76f96f9c"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 1. Arquitectura Interna</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-pedidos/arquitectura-interna/index.html">1. Arquitectura Interna</a><ul id="R-subsections-541f27785807e211abb16f2d76f96f9c" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-pedidos/arquitectura-interna/vista-c4-nivel-3/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-pedidos/arquitectura-interna/vista-c4-nivel-3/index.html">1. Vista C4 L3</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-pedidos/arquitectura-interna/vista-codigo/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-pedidos/arquitectura-interna/vista-codigo/index.html">2. Vista de Codigo</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-pedidos/arquitectura-interna/casos-uso-ejecucion/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-pedidos/arquitectura-interna/casos-uso-ejecucion/index.html">3. Casos de Uso en Ejecucion</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-pedidos/contratos/index.html"><input type="checkbox" id="R-section-726e473fdaf94980d5ae1209a09c3c85" aria-controls="R-subsections-726e473fdaf94980d5ae1209a09c3c85"><label for="R-section-726e473fdaf94980d5ae1209a09c3c85"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 2. Contratos</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-pedidos/contratos/index.html">2. Contratos</a><ul id="R-subsections-726e473fdaf94980d5ae1209a09c3c85" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-pedidos/contratos/apis/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-pedidos/contratos/apis/index.html">1. APIs</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-pedidos/contratos/eventos/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-pedidos/contratos/eventos/index.html">2. Eventos</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-pedidos/datos/index.html"><input type="checkbox" id="R-section-a8ab15e86395af93bbcd6eae59bf8436" aria-controls="R-subsections-a8ab15e86395af93bbcd6eae59bf8436"><label for="R-section-a8ab15e86395af93bbcd6eae59bf8436"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 3. Datos</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-pedidos/datos/index.html">3. Datos</a><ul id="R-subsections-a8ab15e86395af93bbcd6eae59bf8436" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-pedidos/datos/modelo-logico/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-pedidos/datos/modelo-logico/index.html">1. Modelo Logico</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-pedidos/datos/modelo-fisico/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-pedidos/datos/modelo-fisico/index.html">2. Modelo Fisico</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-pedidos/rendimiento/index.html"><input type="checkbox" id="R-section-f63d47d0ac425abb5a7e8a020a97a23f" aria-controls="R-subsections-f63d47d0ac425abb5a7e8a020a97a23f"><label for="R-section-f63d47d0ac425abb5a7e8a020a97a23f"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 4. Rendimiento</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-pedidos/rendimiento/index.html">4. Rendimiento</a><ul id="R-subsections-f63d47d0ac425abb5a7e8a020a97a23f" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-pedidos/rendimiento/presupuestos-rendimiento/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-pedidos/rendimiento/presupuestos-rendimiento/index.html">1. Presupuestos de Rendimiento</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-pedidos/seguridad/index.html"><input type="checkbox" id="R-section-89eff91074e7aa432afd6bd489de1a43" aria-controls="R-subsections-89eff91074e7aa432afd6bd489de1a43"><label for="R-section-89eff91074e7aa432afd6bd489de1a43"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 5. Seguridad</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-pedidos/seguridad/index.html">5. Seguridad</a><ul id="R-subsections-89eff91074e7aa432afd6bd489de1a43" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-pedidos/seguridad/arquitectura-seguridad/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-pedidos/seguridad/arquitectura-seguridad/index.html">1. Arquitectura de Seguridad</a></li></ul></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-notificaciones/index.html"><input type="checkbox" id="R-section-4667b5beac52cd557357687af5fca8d5" aria-controls="R-subsections-4667b5beac52cd557357687af5fca8d5"><label for="R-section-4667b5beac52cd557357687af5fca8d5"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 6. Notificaciones</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-notificaciones/index.html">6. Notificaciones</a><ul id="R-subsections-4667b5beac52cd557357687af5fca8d5" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-notificaciones/arquitectura-interna/index.html"><input type="checkbox" id="R-section-1f7eedcfbe7dbcf6ca1c9a6b94d33146" aria-controls="R-subsections-1f7eedcfbe7dbcf6ca1c9a6b94d33146"><label for="R-section-1f7eedcfbe7dbcf6ca1c9a6b94d33146"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 1. Arquitectura Interna</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-notificaciones/arquitectura-interna/index.html">1. Arquitectura Interna</a><ul id="R-subsections-1f7eedcfbe7dbcf6ca1c9a6b94d33146" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-notificaciones/arquitectura-interna/vista-c4-nivel-3/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-notificaciones/arquitectura-interna/vista-c4-nivel-3/index.html">1. Vista C4 L3</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-notificaciones/arquitectura-interna/vista-codigo/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-notificaciones/arquitectura-interna/vista-codigo/index.html">2. Vista de Codigo</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-notificaciones/arquitectura-interna/casos-uso-ejecucion/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-notificaciones/arquitectura-interna/casos-uso-ejecucion/index.html">3. Casos de Uso en Ejecucion</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-notificaciones/contratos/index.html"><input type="checkbox" id="R-section-7191afba73c663a71b7dc4ed1a5331ee" aria-controls="R-subsections-7191afba73c663a71b7dc4ed1a5331ee"><label for="R-section-7191afba73c663a71b7dc4ed1a5331ee"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 2. Contratos</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-notificaciones/contratos/index.html">2. Contratos</a><ul id="R-subsections-7191afba73c663a71b7dc4ed1a5331ee" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-notificaciones/contratos/apis/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-notificaciones/contratos/apis/index.html">1. APIs</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-notificaciones/contratos/eventos/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-notificaciones/contratos/eventos/index.html">2. Eventos</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-notificaciones/datos/index.html"><input type="checkbox" id="R-section-0a20c1924431d412fb244480e10b032f" aria-controls="R-subsections-0a20c1924431d412fb244480e10b032f"><label for="R-section-0a20c1924431d412fb244480e10b032f"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 3. Datos</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-notificaciones/datos/index.html">3. Datos</a><ul id="R-subsections-0a20c1924431d412fb244480e10b032f" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-notificaciones/datos/modelo-logico/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-notificaciones/datos/modelo-logico/index.html">1. Modelo Logico</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-notificaciones/datos/modelo-fisico/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-notificaciones/datos/modelo-fisico/index.html">2. Modelo Fisico</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-notificaciones/rendimiento/index.html"><input type="checkbox" id="R-section-c0e8d9559e71f712b07e43ced461e160" aria-controls="R-subsections-c0e8d9559e71f712b07e43ced461e160"><label for="R-section-c0e8d9559e71f712b07e43ced461e160"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 4. Rendimiento</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-notificaciones/rendimiento/index.html">4. Rendimiento</a><ul id="R-subsections-c0e8d9559e71f712b07e43ced461e160" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-notificaciones/rendimiento/presupuestos-rendimiento/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-notificaciones/rendimiento/presupuestos-rendimiento/index.html">1. Presupuestos de Rendimiento</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-notificaciones/seguridad/index.html"><input type="checkbox" id="R-section-4d7122b0116da9c3ad25b7ba746943c7" aria-controls="R-subsections-4d7122b0116da9c3ad25b7ba746943c7"><label for="R-section-4d7122b0116da9c3ad25b7ba746943c7"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 5. Seguridad</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-notificaciones/seguridad/index.html">5. Seguridad</a><ul id="R-subsections-4d7122b0116da9c3ad25b7ba746943c7" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-notificaciones/seguridad/arquitectura-seguridad/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-notificaciones/seguridad/arquitectura-seguridad/index.html">1. Arquitectura de Seguridad</a></li></ul></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-reporteria/index.html"><input type="checkbox" id="R-section-84ca3fe9515da58a790790760ad89cea" aria-controls="R-subsections-84ca3fe9515da58a790790760ad89cea"><label for="R-section-84ca3fe9515da58a790790760ad89cea"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 7. Reporteria</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-reporteria/index.html">7. Reporteria</a><ul id="R-subsections-84ca3fe9515da58a790790760ad89cea" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-reporteria/arquitectura-interna/index.html"><input type="checkbox" id="R-section-b3bcbd444e24bdc2ebf073406e97a610" aria-controls="R-subsections-b3bcbd444e24bdc2ebf073406e97a610"><label for="R-section-b3bcbd444e24bdc2ebf073406e97a610"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 1. Arquitectura Interna</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-reporteria/arquitectura-interna/index.html">1. Arquitectura Interna</a><ul id="R-subsections-b3bcbd444e24bdc2ebf073406e97a610" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-reporteria/arquitectura-interna/vista-c4-nivel-3/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-reporteria/arquitectura-interna/vista-c4-nivel-3/index.html">1. Vista C4 L3</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-reporteria/arquitectura-interna/vista-codigo/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-reporteria/arquitectura-interna/vista-codigo/index.html">2. Vista de Codigo</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-reporteria/arquitectura-interna/casos-uso-ejecucion/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-reporteria/arquitectura-interna/casos-uso-ejecucion/index.html">3. Casos de Uso en Ejecucion</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-reporteria/contratos/index.html"><input type="checkbox" id="R-section-4cd263e1e036a917853e55d98cb2a9f1" aria-controls="R-subsections-4cd263e1e036a917853e55d98cb2a9f1"><label for="R-section-4cd263e1e036a917853e55d98cb2a9f1"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 2. Contratos</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-reporteria/contratos/index.html">2. Contratos</a><ul id="R-subsections-4cd263e1e036a917853e55d98cb2a9f1" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-reporteria/contratos/apis/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-reporteria/contratos/apis/index.html">1. APIs</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-reporteria/contratos/eventos/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-reporteria/contratos/eventos/index.html">2. Eventos</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-reporteria/datos/index.html"><input type="checkbox" id="R-section-86d9eb1b7c514ef8853ccb072e665b15" aria-controls="R-subsections-86d9eb1b7c514ef8853ccb072e665b15"><label for="R-section-86d9eb1b7c514ef8853ccb072e665b15"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 3. Datos</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-reporteria/datos/index.html">3. Datos</a><ul id="R-subsections-86d9eb1b7c514ef8853ccb072e665b15" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-reporteria/datos/modelo-logico/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-reporteria/datos/modelo-logico/index.html">1. Modelo Logico</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-reporteria/datos/modelo-fisico/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-reporteria/datos/modelo-fisico/index.html">2. Modelo Fisico</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-reporteria/rendimiento/index.html"><input type="checkbox" id="R-section-a6b9d234a684d734655c55abcd09c163" aria-controls="R-subsections-a6b9d234a684d734655c55abcd09c163"><label for="R-section-a6b9d234a684d734655c55abcd09c163"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 4. Rendimiento</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-reporteria/rendimiento/index.html">4. Rendimiento</a><ul id="R-subsections-a6b9d234a684d734655c55abcd09c163" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-reporteria/rendimiento/presupuestos-rendimiento/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-reporteria/rendimiento/presupuestos-rendimiento/index.html">1. Presupuestos de Rendimiento</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-reporteria/seguridad/index.html"><input type="checkbox" id="R-section-f85aa5e4cabf53ee44da95c56bf5d26f" aria-controls="R-subsections-f85aa5e4cabf53ee44da95c56bf5d26f"><label for="R-section-f85aa5e4cabf53ee44da95c56bf5d26f"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 5. Seguridad</span></label><a class="padding default-animation" href="/mvp/arquitectura/servicios/servicio-reporteria/seguridad/index.html">5. Seguridad</a><ul id="R-subsections-f85aa5e4cabf53ee44da95c56bf5d26f" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/arquitectura/servicios/servicio-reporteria/seguridad/arquitectura-seguridad/index.html"><a class="padding" href="/mvp/arquitectura/servicios/servicio-reporteria/seguridad/arquitectura-seguridad/index.html">1. Arquitectura de Seguridad</a></li></ul></li></ul></li></ul></li>
+            <li class="" data-nav-id="/mvp/arquitectura/trazabilidad/index.html"><a class="padding" href="/mvp/arquitectura/trazabilidad/index.html">3. Trazabilidad</a></li>
+            <li class="" data-nav-id="/mvp/arquitectura/evolucion/index.html"><a class="padding" href="/mvp/arquitectura/evolucion/index.html">4. Evolucion</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/calidad/index.html"><input type="checkbox" id="R-section-98d2ef3a127af916a6cc177488368a81" aria-controls="R-subsections-98d2ef3a127af916a6cc177488368a81"><label for="R-section-98d2ef3a127af916a6cc177488368a81"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú Calidad</span></label><a class="padding default-animation" href="/mvp/calidad/index.html">Calidad</a><ul id="R-subsections-98d2ef3a127af916a6cc177488368a81" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/calidad/estrategia-pruebas/index.html"><a class="padding" href="/mvp/calidad/estrategia-pruebas/index.html">1. Estrategia de Pruebas</a></li>
+            <li class="" data-nav-id="/mvp/calidad/mapeo-pruebas/index.html"><a class="padding" href="/mvp/calidad/mapeo-pruebas/index.html">2. Mapeo de Pruebas</a></li>
+            <li class="" data-nav-id="/mvp/calidad/convenciones-prueba/index.html"><a class="padding" href="/mvp/calidad/convenciones-prueba/index.html">3. Convenciones de Prueba</a></li>
+            <li class="" data-nav-id="/mvp/calidad/puertas-calidad/index.html"><a class="padding" href="/mvp/calidad/puertas-calidad/index.html">4. Puertas de Calidad</a></li>
+            <li class="" data-nav-id="/mvp/calidad/notas-cobertura/index.html"><a class="padding" href="/mvp/calidad/notas-cobertura/index.html">5. Notas de Cobertura</a></li>
+            <li class="" data-nav-id="/mvp/calidad/evidencias/index.html"><input type="checkbox" id="R-section-3c5237d4a8bd797e244891ab1a7c41a8" aria-controls="R-subsections-3c5237d4a8bd797e244891ab1a7c41a8"><label for="R-section-3c5237d4a8bd797e244891ab1a7c41a8"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 6. Evidencias</span></label><a class="padding default-animation" href="/mvp/calidad/evidencias/index.html">6. Evidencias</a><ul id="R-subsections-3c5237d4a8bd797e244891ab1a7c41a8" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/calidad/evidencias/baseline-certification-plan/index.html"><a class="padding" href="/mvp/calidad/evidencias/baseline-certification-plan/index.html">6.1 Plan</a></li>
+            <li class="" data-nav-id="/mvp/calidad/evidencias/matriz-resultados-esperados/index.html"><a class="padding" href="/mvp/calidad/evidencias/matriz-resultados-esperados/index.html">6.2 Matriz</a></li>
+            <li class="" data-nav-id="/mvp/calidad/evidencias/registro-ejecuciones/index.html"><a class="padding" href="/mvp/calidad/evidencias/registro-ejecuciones/index.html">6.3 Registro</a></li>
+            <li class="" data-nav-id="/mvp/calidad/evidencias/desviaciones-aceptaciones/index.html"><a class="padding" href="/mvp/calidad/evidencias/desviaciones-aceptaciones/index.html">6.4 Desviaciones</a></li>
+            <li class="" data-nav-id="/mvp/calidad/evidencias/acta-certificacion-minima/index.html"><a class="padding" href="/mvp/calidad/evidencias/acta-certificacion-minima/index.html">6.5 Acta</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/calidad/modelo-evidencia/index.html"><a class="padding" href="/mvp/calidad/modelo-evidencia/index.html">7. Modelo de Evidencia</a></li>
+            <li class="" data-nav-id="/mvp/calidad/pruebas/index.html"><input type="checkbox" id="R-section-04bc0073dc2a85cc2f54e9db6a585ee6" aria-controls="R-subsections-04bc0073dc2a85cc2f54e9db6a585ee6"><label for="R-section-04bc0073dc2a85cc2f54e9db6a585ee6"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 8. Pruebas por Servicio</span></label><a class="padding default-animation" href="/mvp/calidad/pruebas/index.html">8. Pruebas por Servicio</a><ul id="R-subsections-04bc0073dc2a85cc2f54e9db6a585ee6" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/calidad/pruebas/servicio-identidad-acceso/index.html"><input type="checkbox" id="R-section-837180ca577b485f2916748008d912e3" aria-controls="R-subsections-837180ca577b485f2916748008d912e3"><label for="R-section-837180ca577b485f2916748008d912e3"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 1. Identidad y Acceso</span></label><a class="padding default-animation" href="/mvp/calidad/pruebas/servicio-identidad-acceso/index.html">1. Identidad y Acceso</a><ul id="R-subsections-837180ca577b485f2916748008d912e3" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/calidad/pruebas/servicio-identidad-acceso/unitarias/index.html"><a class="padding" href="/mvp/calidad/pruebas/servicio-identidad-acceso/unitarias/index.html">1. Unitarias</a></li>
+            <li class="" data-nav-id="/mvp/calidad/pruebas/servicio-identidad-acceso/integracion/index.html"><a class="padding" href="/mvp/calidad/pruebas/servicio-identidad-acceso/integracion/index.html">2. Integracion</a></li>
+            <li class="" data-nav-id="/mvp/calidad/pruebas/servicio-identidad-acceso/e2e/index.html"><a class="padding" href="/mvp/calidad/pruebas/servicio-identidad-acceso/e2e/index.html">3. E2E</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/calidad/pruebas/servicio-directorio/index.html"><input type="checkbox" id="R-section-9c6133b4bfd72de214b3330a02918472" aria-controls="R-subsections-9c6133b4bfd72de214b3330a02918472"><label for="R-section-9c6133b4bfd72de214b3330a02918472"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 2. Directorio</span></label><a class="padding default-animation" href="/mvp/calidad/pruebas/servicio-directorio/index.html">2. Directorio</a><ul id="R-subsections-9c6133b4bfd72de214b3330a02918472" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/calidad/pruebas/servicio-directorio/unitarias/index.html"><a class="padding" href="/mvp/calidad/pruebas/servicio-directorio/unitarias/index.html">1. Unitarias</a></li>
+            <li class="" data-nav-id="/mvp/calidad/pruebas/servicio-directorio/integracion/index.html"><a class="padding" href="/mvp/calidad/pruebas/servicio-directorio/integracion/index.html">2. Integracion</a></li>
+            <li class="" data-nav-id="/mvp/calidad/pruebas/servicio-directorio/e2e/index.html"><a class="padding" href="/mvp/calidad/pruebas/servicio-directorio/e2e/index.html">3. E2E</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/calidad/pruebas/servicio-catalogo/index.html"><input type="checkbox" id="R-section-19b70be96f3b87bd62f36e4bff2e7670" aria-controls="R-subsections-19b70be96f3b87bd62f36e4bff2e7670"><label for="R-section-19b70be96f3b87bd62f36e4bff2e7670"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 3. Catalogo</span></label><a class="padding default-animation" href="/mvp/calidad/pruebas/servicio-catalogo/index.html">3. Catalogo</a><ul id="R-subsections-19b70be96f3b87bd62f36e4bff2e7670" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/calidad/pruebas/servicio-catalogo/unitarias/index.html"><a class="padding" href="/mvp/calidad/pruebas/servicio-catalogo/unitarias/index.html">1. Unitarias</a></li>
+            <li class="" data-nav-id="/mvp/calidad/pruebas/servicio-catalogo/integracion/index.html"><a class="padding" href="/mvp/calidad/pruebas/servicio-catalogo/integracion/index.html">2. Integracion</a></li>
+            <li class="" data-nav-id="/mvp/calidad/pruebas/servicio-catalogo/e2e/index.html"><a class="padding" href="/mvp/calidad/pruebas/servicio-catalogo/e2e/index.html">3. E2E</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/calidad/pruebas/servicio-inventario/index.html"><input type="checkbox" id="R-section-e2cabedd8d07183995454650247a50e4" aria-controls="R-subsections-e2cabedd8d07183995454650247a50e4"><label for="R-section-e2cabedd8d07183995454650247a50e4"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 4. Inventario</span></label><a class="padding default-animation" href="/mvp/calidad/pruebas/servicio-inventario/index.html">4. Inventario</a><ul id="R-subsections-e2cabedd8d07183995454650247a50e4" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/calidad/pruebas/servicio-inventario/unitarias/index.html"><a class="padding" href="/mvp/calidad/pruebas/servicio-inventario/unitarias/index.html">1. Unitarias</a></li>
+            <li class="" data-nav-id="/mvp/calidad/pruebas/servicio-inventario/integracion/index.html"><a class="padding" href="/mvp/calidad/pruebas/servicio-inventario/integracion/index.html">2. Integracion</a></li>
+            <li class="" data-nav-id="/mvp/calidad/pruebas/servicio-inventario/e2e/index.html"><a class="padding" href="/mvp/calidad/pruebas/servicio-inventario/e2e/index.html">3. E2E</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/calidad/pruebas/servicio-pedidos/index.html"><input type="checkbox" id="R-section-839cc5c5c09b36a70edc98ffa98b6249" aria-controls="R-subsections-839cc5c5c09b36a70edc98ffa98b6249"><label for="R-section-839cc5c5c09b36a70edc98ffa98b6249"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 5. Pedidos</span></label><a class="padding default-animation" href="/mvp/calidad/pruebas/servicio-pedidos/index.html">5. Pedidos</a><ul id="R-subsections-839cc5c5c09b36a70edc98ffa98b6249" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/calidad/pruebas/servicio-pedidos/unitarias/index.html"><a class="padding" href="/mvp/calidad/pruebas/servicio-pedidos/unitarias/index.html">1. Unitarias</a></li>
+            <li class="" data-nav-id="/mvp/calidad/pruebas/servicio-pedidos/integracion/index.html"><a class="padding" href="/mvp/calidad/pruebas/servicio-pedidos/integracion/index.html">2. Integracion</a></li>
+            <li class="" data-nav-id="/mvp/calidad/pruebas/servicio-pedidos/e2e/index.html"><a class="padding" href="/mvp/calidad/pruebas/servicio-pedidos/e2e/index.html">3. E2E</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/calidad/pruebas/servicio-notificaciones/index.html"><input type="checkbox" id="R-section-4d23922698404c60e9dd3ec8cf88e61c" aria-controls="R-subsections-4d23922698404c60e9dd3ec8cf88e61c"><label for="R-section-4d23922698404c60e9dd3ec8cf88e61c"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 6. Notificaciones</span></label><a class="padding default-animation" href="/mvp/calidad/pruebas/servicio-notificaciones/index.html">6. Notificaciones</a><ul id="R-subsections-4d23922698404c60e9dd3ec8cf88e61c" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/calidad/pruebas/servicio-notificaciones/unitarias/index.html"><a class="padding" href="/mvp/calidad/pruebas/servicio-notificaciones/unitarias/index.html">1. Unitarias</a></li>
+            <li class="" data-nav-id="/mvp/calidad/pruebas/servicio-notificaciones/integracion/index.html"><a class="padding" href="/mvp/calidad/pruebas/servicio-notificaciones/integracion/index.html">2. Integracion</a></li>
+            <li class="" data-nav-id="/mvp/calidad/pruebas/servicio-notificaciones/e2e/index.html"><a class="padding" href="/mvp/calidad/pruebas/servicio-notificaciones/e2e/index.html">3. E2E</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/calidad/pruebas/servicio-reporteria/index.html"><input type="checkbox" id="R-section-707da04134e17b64a81ff85414fa6420" aria-controls="R-subsections-707da04134e17b64a81ff85414fa6420"><label for="R-section-707da04134e17b64a81ff85414fa6420"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 7. Reporteria</span></label><a class="padding default-animation" href="/mvp/calidad/pruebas/servicio-reporteria/index.html">7. Reporteria</a><ul id="R-subsections-707da04134e17b64a81ff85414fa6420" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/calidad/pruebas/servicio-reporteria/unitarias/index.html"><a class="padding" href="/mvp/calidad/pruebas/servicio-reporteria/unitarias/index.html">1. Unitarias</a></li>
+            <li class="" data-nav-id="/mvp/calidad/pruebas/servicio-reporteria/integracion/index.html"><a class="padding" href="/mvp/calidad/pruebas/servicio-reporteria/integracion/index.html">2. Integracion</a></li>
+            <li class="" data-nav-id="/mvp/calidad/pruebas/servicio-reporteria/e2e/index.html"><a class="padding" href="/mvp/calidad/pruebas/servicio-reporteria/e2e/index.html">3. E2E</a></li></ul></li></ul></li></ul></li>
+            <li class="" data-nav-id="/mvp/operacion/index.html"><input type="checkbox" id="R-section-77621f8c8ba012af615a793b1cfbb892" aria-controls="R-subsections-77621f8c8ba012af615a793b1cfbb892"><label for="R-section-77621f8c8ba012af615a793b1cfbb892"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú Operacion</span></label><a class="padding default-animation" href="/mvp/operacion/index.html">Operacion</a><ul id="R-subsections-77621f8c8ba012af615a793b1cfbb892" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/operacion/estrategia-operativa/index.html"><a class="padding" href="/mvp/operacion/estrategia-operativa/index.html">1. Estrategia Operativa</a></li>
+            <li class="" data-nav-id="/mvp/operacion/modelo-ambientes/index.html"><a class="padding" href="/mvp/operacion/modelo-ambientes/index.html">2. Modelo de Ambientes</a></li>
+            <li class="" data-nav-id="/mvp/operacion/gestion-configuracion-secretos/index.html"><a class="padding" href="/mvp/operacion/gestion-configuracion-secretos/index.html">3. Configuracion y Secretos</a></li>
+            <li class="" data-nav-id="/mvp/operacion/estrategia-releases-deployments/index.html"><a class="padding" href="/mvp/operacion/estrategia-releases-deployments/index.html">4. Releases y Deployments</a></li>
+            <li class="" data-nav-id="/mvp/operacion/observabilidad/index.html"><a class="padding" href="/mvp/operacion/observabilidad/index.html">5. Observabilidad</a></li>
+            <li class="" data-nav-id="/mvp/operacion/sli-slo-alertas/index.html"><a class="padding" href="/mvp/operacion/sli-slo-alertas/index.html">6. SLI/SLO y Alertas</a></li>
+            <li class="" data-nav-id="/mvp/operacion/runbooks/index.html"><input type="checkbox" id="R-section-ed99ca2a2c55601f127d7af06ca3a258" aria-controls="R-subsections-ed99ca2a2c55601f127d7af06ca3a258"><label for="R-section-ed99ca2a2c55601f127d7af06ca3a258"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 7. Runbooks</span></label><a class="padding default-animation" href="/mvp/operacion/runbooks/index.html">7. Runbooks</a><ul id="R-subsections-ed99ca2a2c55601f127d7af06ca3a258" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/operacion/runbooks/caida-servicio/index.html"><a class="padding" href="/mvp/operacion/runbooks/caida-servicio/index.html">1. Caida de Servicio</a></li>
+            <li class="" data-nav-id="/mvp/operacion/runbooks/aumento-errores-5xx/index.html"><a class="padding" href="/mvp/operacion/runbooks/aumento-errores-5xx/index.html">2. Aumento de Errores 5xx</a></li>
+            <li class="" data-nav-id="/mvp/operacion/runbooks/fallos-autenticacion/index.html"><a class="padding" href="/mvp/operacion/runbooks/fallos-autenticacion/index.html">3. Fallos de Autenticacion</a></li>
+            <li class="" data-nav-id="/mvp/operacion/runbooks/checkout-degradado/index.html"><a class="padding" href="/mvp/operacion/runbooks/checkout-degradado/index.html">4. Checkout Degradado</a></li>
+            <li class="" data-nav-id="/mvp/operacion/runbooks/reserva-inconsistente/index.html"><a class="padding" href="/mvp/operacion/runbooks/reserva-inconsistente/index.html">5. Reserva Inconsistente</a></li>
+            <li class="" data-nav-id="/mvp/operacion/runbooks/crecimiento-dlq/index.html"><a class="padding" href="/mvp/operacion/runbooks/crecimiento-dlq/index.html">6. Crecimiento de DLQ</a></li>
+            <li class="" data-nav-id="/mvp/operacion/runbooks/consumidor-atascado/index.html"><a class="padding" href="/mvp/operacion/runbooks/consumidor-atascado/index.html">7. Consumidor Atascado</a></li>
+            <li class="" data-nav-id="/mvp/operacion/runbooks/reporting-atrasado/index.html"><a class="padding" href="/mvp/operacion/runbooks/reporting-atrasado/index.html">8. Reporting Atrasado</a></li>
+            <li class="" data-nav-id="/mvp/operacion/runbooks/configuracion-pais-no-disponible/index.html"><a class="padding" href="/mvp/operacion/runbooks/configuracion-pais-no-disponible/index.html">9. Configuracion Pais No Disponible</a></li>
+            <li class="" data-nav-id="/mvp/operacion/runbooks/rotacion-urgente-secretos/index.html"><a class="padding" href="/mvp/operacion/runbooks/rotacion-urgente-secretos/index.html">10. Rotacion Urgente de Secretos</a></li>
+            <li class="" data-nav-id="/mvp/operacion/runbooks/rollback-release/index.html"><a class="padding" href="/mvp/operacion/runbooks/rollback-release/index.html">11. Rollback de Release</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/operacion/incidentes/index.html"><input type="checkbox" id="R-section-73e0b2de627f1aaca7ed642dd3e64490" aria-controls="R-subsections-73e0b2de627f1aaca7ed642dd3e64490"><label for="R-section-73e0b2de627f1aaca7ed642dd3e64490"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 8. Incidentes</span></label><a class="padding default-animation" href="/mvp/operacion/incidentes/index.html">8. Incidentes</a><ul id="R-subsections-73e0b2de627f1aaca7ed642dd3e64490" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/operacion/incidentes/gestion-incidentes/index.html"><a class="padding" href="/mvp/operacion/incidentes/gestion-incidentes/index.html">1. Gestion de Incidentes</a></li>
+            <li class="" data-nav-id="/mvp/operacion/incidentes/severidades-escalamiento/index.html"><a class="padding" href="/mvp/operacion/incidentes/severidades-escalamiento/index.html">2. Severidades y Escalamiento</a></li>
+            <li class="" data-nav-id="/mvp/operacion/incidentes/comunicacion-postmortem/index.html"><a class="padding" href="/mvp/operacion/incidentes/comunicacion-postmortem/index.html">3. Comunicacion y Postmortem</a></li>
+            <li class="" data-nav-id="/mvp/operacion/incidentes/registro-incidentes/index.html"><a class="padding" href="/mvp/operacion/incidentes/registro-incidentes/index.html">4. Registro de Incidentes</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/operacion/eventos-dlq/index.html"><input type="checkbox" id="R-section-d66ee23fb90ed6791fd7a1515dcbe8be" aria-controls="R-subsections-d66ee23fb90ed6791fd7a1515dcbe8be"><label for="R-section-d66ee23fb90ed6791fd7a1515dcbe8be"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 9. Eventos y DLQ</span></label><a class="padding default-animation" href="/mvp/operacion/eventos-dlq/index.html">9. Eventos y DLQ</a><ul id="R-subsections-d66ee23fb90ed6791fd7a1515dcbe8be" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/operacion/eventos-dlq/operacion-broker/index.html"><a class="padding" href="/mvp/operacion/eventos-dlq/operacion-broker/index.html">9.1 Broker</a></li>
+            <li class="" data-nav-id="/mvp/operacion/eventos-dlq/dlq-reprocesos/index.html"><a class="padding" href="/mvp/operacion/eventos-dlq/dlq-reprocesos/index.html">9.2 DLQ y Reprocesos</a></li>
+            <li class="" data-nav-id="/mvp/operacion/eventos-dlq/lag-reintentos-idempotencia/index.html"><a class="padding" href="/mvp/operacion/eventos-dlq/lag-reintentos-idempotencia/index.html">9.3 Lag, Reintentos e Idempotencia</a></li>
+            <li class="" data-nav-id="/mvp/operacion/eventos-dlq/trazabilidad-eventos/index.html"><a class="padding" href="/mvp/operacion/eventos-dlq/trazabilidad-eventos/index.html">9.4 Trazabilidad de Eventos</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/operacion/continuidad-recuperacion/index.html"><input type="checkbox" id="R-section-e8144435bdf78ccc57cb9d7ac8d7c0ef" aria-controls="R-subsections-e8144435bdf78ccc57cb9d7ac8d7c0ef"><label for="R-section-e8144435bdf78ccc57cb9d7ac8d7c0ef"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 10. Continuidad y Recuperacion</span></label><a class="padding default-animation" href="/mvp/operacion/continuidad-recuperacion/index.html">10. Continuidad y Recuperacion</a><ul id="R-subsections-e8144435bdf78ccc57cb9d7ac8d7c0ef" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/operacion/continuidad-recuperacion/estrategia-continuidad/index.html"><a class="padding" href="/mvp/operacion/continuidad-recuperacion/estrategia-continuidad/index.html">1. Estrategia de Continuidad</a></li>
+            <li class="" data-nav-id="/mvp/operacion/continuidad-recuperacion/restore-recuperacion/index.html"><a class="padding" href="/mvp/operacion/continuidad-recuperacion/restore-recuperacion/index.html">2. Restore y Recuperacion</a></li>
+            <li class="" data-nav-id="/mvp/operacion/continuidad-recuperacion/degradacion-controlada/index.html"><a class="padding" href="/mvp/operacion/continuidad-recuperacion/degradacion-controlada/index.html">3. Degradacion Controlada</a></li>
+            <li class="" data-nav-id="/mvp/operacion/continuidad-recuperacion/orden-recuperacion/index.html"><a class="padding" href="/mvp/operacion/continuidad-recuperacion/orden-recuperacion/index.html">4. Orden de Recuperacion</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/operacion/seguridad-operacional/index.html"><input type="checkbox" id="R-section-1431c5bab95b1402df107dfa991307f5" aria-controls="R-subsections-1431c5bab95b1402df107dfa991307f5"><label for="R-section-1431c5bab95b1402df107dfa991307f5"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenú 11. Seguridad Operacional</span></label><a class="padding default-animation" href="/mvp/operacion/seguridad-operacional/index.html">11. Seguridad Operacional</a><ul id="R-subsections-1431c5bab95b1402df107dfa991307f5" class="collapsible-menu">
+            <li class="" data-nav-id="/mvp/operacion/seguridad-operacional/accesos-operativos/index.html"><a class="padding" href="/mvp/operacion/seguridad-operacional/accesos-operativos/index.html">1. Accesos Operativos</a></li>
+            <li class="" data-nav-id="/mvp/operacion/seguridad-operacional/secretos-rotacion/index.html"><a class="padding" href="/mvp/operacion/seguridad-operacional/secretos-rotacion/index.html">2. Secretos y Rotacion</a></li>
+            <li class="" data-nav-id="/mvp/operacion/seguridad-operacional/eventos-seguridad/index.html"><a class="padding" href="/mvp/operacion/seguridad-operacional/eventos-seguridad/index.html">3. Eventos de Seguridad</a></li>
+            <li class="" data-nav-id="/mvp/operacion/seguridad-operacional/datos-sensibles-logs/index.html"><a class="padding" href="/mvp/operacion/seguridad-operacional/datos-sensibles-logs/index.html">4. Datos Sensibles en Logs</a></li>
+            <li class="" data-nav-id="/mvp/operacion/seguridad-operacional/hardening-diferido/index.html"><a class="padding" href="/mvp/operacion/seguridad-operacional/hardening-diferido/index.html">5. Hardening Diferido</a></li></ul></li>
+            <li class="" data-nav-id="/mvp/operacion/criterios-promocion-ambientes/index.html"><a class="padding" href="/mvp/operacion/criterios-promocion-ambientes/index.html">12. Promocion entre Ambientes</a></li>
+            <li class="" data-nav-id="/mvp/operacion/riesgos-operacionales/index.html"><a class="padding" href="/mvp/operacion/riesgos-operacionales/index.html">13. Riesgos Operacionales</a></li>
+            <li class="" data-nav-id="/mvp/operacion/trazabilidad-operativa/index.html"><a class="padding" href="/mvp/operacion/trazabilidad-operativa/index.html">14. Trazabilidad Operativa</a></li>
+            <li class="" data-nav-id="/mvp/operacion/evolucion-operativa/index.html"><a class="padding" href="/mvp/operacion/evolucion-operativa/index.html">15. Evolucion Operativa</a></li></ul></li>
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Tema</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-zen-light" value="zen-light" selected>Zen Light</option>
+                    <option id="R-select-variant-zen-dark" value="zen-dark">Zen Dark</option>
+                    <option id="R-select-variant-red" value="red">Red</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1774837038" defer></script>
+    <script src="/js/theme.min.js?1774837038" defer></script><script>
+  (function () {
+    function initCicloSwitcher() {
+      var cicloSelect = document.getElementById("R-select-ciclo");
+      if (!cicloSelect) return;
+
+      cicloSelect.addEventListener("change", function (event) {
+        var target = event.target.value;
+        if (!target) return;
+        window.location.href = target;
+      });
+    }
+
+    function initMermaidLightbox() {
+      var bodyOrigin = document.body && document.body.getAttribute("data-origin");
+      if (!bodyOrigin || bodyOrigin.indexOf("/arquitectura/") === -1) return;
+
+      var dragThreshold = 6;
+      var minScale = 0.25;
+      var maxScale = 6;
+      var bindScheduled = false;
+      var overlay;
+      var titleElement;
+      var stageElement;
+      var canvasElement;
+      var closeButton;
+      var zoomOutButton;
+      var zoomInButton;
+      var resetButton;
+      var active = null;
+
+      function ensureModal() {
+        if (overlay) return;
+
+        overlay = document.createElement("div");
+        overlay.id = "R-mermaid-lightbox";
+        overlay.className = "R-mermaid-lightbox";
+        overlay.setAttribute("aria-hidden", "true");
+        overlay.innerHTML =
+          '<div class="R-mermaid-lightbox__dialog" role="dialog" aria-modal="true" aria-label="Visor ampliado de diagrama Mermaid">' +
+          '<div class="R-mermaid-lightbox__toolbar">' +
+          '<div class="R-mermaid-lightbox__meta">' +
+          '<strong class="R-mermaid-lightbox__title">Diagrama Mermaid</strong>' +
+          '<span class="R-mermaid-lightbox__hint">Rueda para zoom, arrastra para recorrer.</span>' +
+          "</div>" +
+          '<div class="R-mermaid-lightbox__actions">' +
+          '<button type="button" class="R-mermaid-lightbox__button" data-action="zoom-out" aria-label="Alejar" title="Alejar"><i class="fa-fw fas fa-search-minus" aria-hidden="true"></i></button>' +
+          '<button type="button" class="R-mermaid-lightbox__button" data-action="zoom-in" aria-label="Acercar" title="Acercar"><i class="fa-fw fas fa-search-plus" aria-hidden="true"></i></button>' +
+          '<button type="button" class="R-mermaid-lightbox__button" data-action="reset" aria-label="Reiniciar vista" title="Reiniciar vista"><i class="fa-fw fas fa-undo-alt" aria-hidden="true"></i></button>' +
+          '<button type="button" class="R-mermaid-lightbox__button R-mermaid-lightbox__button--close" data-action="close" aria-label="Cerrar visor" title="Cerrar visor"><i class="fa-fw fas fa-times" aria-hidden="true"></i></button>' +
+          "</div>" +
+          "</div>" +
+          '<div class="R-mermaid-lightbox__stage">' +
+          '<div class="R-mermaid-lightbox__canvas"></div>' +
+          "</div>" +
+          "</div>";
+
+        document.body.appendChild(overlay);
+
+        titleElement = overlay.querySelector(".R-mermaid-lightbox__title");
+        stageElement = overlay.querySelector(".R-mermaid-lightbox__stage");
+        canvasElement = overlay.querySelector(".R-mermaid-lightbox__canvas");
+        closeButton = overlay.querySelector('[data-action="close"]');
+        zoomOutButton = overlay.querySelector('[data-action="zoom-out"]');
+        zoomInButton = overlay.querySelector('[data-action="zoom-in"]');
+        resetButton = overlay.querySelector('[data-action="reset"]');
+
+        overlay.addEventListener("click", function (event) {
+          if (event.target === overlay) {
+            closeModal();
+          }
+        });
+
+        closeButton.addEventListener("click", closeModal);
+        zoomOutButton.addEventListener("click", function () {
+          zoomFromCenter(1 / 1.2);
+        });
+        zoomInButton.addEventListener("click", function () {
+          zoomFromCenter(1.2);
+        });
+        resetButton.addEventListener("click", resetTransform);
+
+        stageElement.addEventListener(
+          "wheel",
+          function (event) {
+            if (!active) return;
+            event.preventDefault();
+            zoomAt(event.deltaY < 0 ? 1.12 : 1 / 1.12, event.clientX, event.clientY);
+          },
+          { passive: false }
+        );
+
+        canvasElement.addEventListener("pointerdown", function (event) {
+          if (!active || event.button !== 0) return;
+
+          active.dragging = true;
+          active.pointerId = event.pointerId;
+          active.dragStartX = event.clientX;
+          active.dragStartY = event.clientY;
+          active.dragOriginX = active.offsetX;
+          active.dragOriginY = active.offsetY;
+          canvasElement.classList.add("is-dragging");
+
+          if (canvasElement.setPointerCapture) {
+            canvasElement.setPointerCapture(event.pointerId);
+          }
+        });
+
+        canvasElement.addEventListener("pointermove", function (event) {
+          if (!active || !active.dragging || active.pointerId !== event.pointerId) return;
+
+          active.offsetX = active.dragOriginX + (event.clientX - active.dragStartX);
+          active.offsetY = active.dragOriginY + (event.clientY - active.dragStartY);
+          applyTransform();
+        });
+
+        canvasElement.addEventListener("pointerup", stopDragging);
+        canvasElement.addEventListener("pointercancel", stopDragging);
+        canvasElement.addEventListener("dragstart", function (event) {
+          event.preventDefault();
+        });
+
+        document.addEventListener("keydown", function (event) {
+          if (event.key === "Escape") {
+            closeModal();
+          }
+        });
+
+        window.addEventListener("resize", function () {
+          if (overlay.classList.contains("is-open")) {
+            resetTransform();
+          }
+        });
+      }
+
+      function stopDragging(event) {
+        if (!active || !active.dragging) return;
+        if (event && active.pointerId !== null && event.pointerId !== active.pointerId) return;
+
+        if (canvasElement.releasePointerCapture && active.pointerId !== null) {
+          try {
+            canvasElement.releasePointerCapture(active.pointerId);
+          } catch (error) {}
+        }
+
+        active.dragging = false;
+        active.pointerId = null;
+        canvasElement.classList.remove("is-dragging");
+      }
+
+      function clampScale(value) {
+        return Math.min(maxScale, Math.max(minScale, value));
+      }
+
+      function getSvgSize(svg) {
+        var widthAttr = svg.getAttribute("width") || "";
+        var heightAttr = svg.getAttribute("height") || "";
+        var width = parseFloat(widthAttr);
+        var height = parseFloat(heightAttr);
+        var viewBox = svg.viewBox && svg.viewBox.baseVal ? svg.viewBox.baseVal : null;
+
+        if (viewBox && viewBox.width > 0 && viewBox.height > 0) {
+          width = viewBox.width;
+          height = viewBox.height;
+        } else {
+          if (!Number.isFinite(width) || width <= 0 || /%$/.test(widthAttr)) {
+            width = svg.getBoundingClientRect().width;
+          }
+
+          if (!Number.isFinite(height) || height <= 0 || /%$/.test(heightAttr)) {
+            height = svg.getBoundingClientRect().height;
+          }
+        }
+
+        return {
+          width: width || 960,
+          height: height || 640,
+        };
+      }
+
+      function getDiagramTitle(sourceSvg) {
+        var container = sourceSvg.closest(".mermaid-container");
+        var previous = container ? container.previousElementSibling : null;
+
+        while (previous) {
+          if (/^H[1-6]$/.test(previous.tagName)) {
+            return previous.textContent.replace(/\s+/g, " ").trim();
+          }
+          previous = previous.previousElementSibling;
+        }
+
+        return document.title || "Diagrama Mermaid";
+      }
+
+      function applyTransform() {
+        if (!active) return;
+
+        canvasElement.style.transform =
+          "translate(-50%, -50%) translate(" +
+          active.offsetX +
+          "px, " +
+          active.offsetY +
+          "px) scale(" +
+          active.scale +
+          ")";
+      }
+
+      function resetTransform() {
+        if (!active) return;
+
+        var stageRect = stageElement.getBoundingClientRect();
+        var widthBudget = Math.max(stageRect.width - 48, 320);
+        var heightBudget = Math.max(stageRect.height - 48, 220);
+        var fitScale = Math.min(widthBudget / active.width, heightBudget / active.height);
+
+        active.scale = clampScale(fitScale);
+        active.offsetX = 0;
+        active.offsetY = 0;
+        applyTransform();
+      }
+
+      function zoomAt(factor, clientX, clientY) {
+        if (!active) return;
+
+        var stageRect = stageElement.getBoundingClientRect();
+        var pointerX = clientX - stageRect.left - stageRect.width / 2;
+        var pointerY = clientY - stageRect.top - stageRect.height / 2;
+        var nextScale = clampScale(active.scale * factor);
+
+        if (nextScale === active.scale) return;
+
+        var ratio = nextScale / active.scale;
+        active.offsetX = pointerX - (pointerX - active.offsetX) * ratio;
+        active.offsetY = pointerY - (pointerY - active.offsetY) * ratio;
+        active.scale = nextScale;
+        applyTransform();
+      }
+
+      function zoomFromCenter(factor) {
+        if (!active) return;
+
+        var stageRect = stageElement.getBoundingClientRect();
+        zoomAt(factor, stageRect.left + stageRect.width / 2, stageRect.top + stageRect.height / 2);
+      }
+
+      function closeModal() {
+        if (!overlay || !overlay.classList.contains("is-open")) return;
+
+        stopDragging();
+        overlay.classList.remove("is-open");
+        overlay.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("R-mermaid-lightbox-open");
+        canvasElement.innerHTML = "";
+
+        var sourceSvg = active && active.sourceSvg ? active.sourceSvg : null;
+        active = null;
+
+        if (sourceSvg && typeof sourceSvg.focus === "function") {
+          sourceSvg.focus({ preventScroll: true });
+        }
+      }
+
+      function openModal(sourceSvg, titleOverride) {
+        ensureModal();
+
+        var clone = sourceSvg.cloneNode(true);
+        var firstChild = clone.firstElementChild;
+        if (firstChild && firstChild.tagName && firstChild.tagName.toLowerCase() === "g") {
+          firstChild.removeAttribute("transform");
+        }
+
+        clone.classList.remove("R-mermaid-expandable");
+        clone.removeAttribute("tabindex");
+        clone.removeAttribute("role");
+        clone.removeAttribute("aria-label");
+
+        var size = getSvgSize(sourceSvg);
+        clone.style.width = size.width + "px";
+        clone.style.height = size.height + "px";
+        clone.style.maxWidth = "none";
+        clone.style.maxHeight = "none";
+
+        canvasElement.innerHTML = "";
+        canvasElement.appendChild(clone);
+
+        active = {
+          sourceSvg: sourceSvg,
+          width: size.width,
+          height: size.height,
+          scale: 1,
+          offsetX: 0,
+          offsetY: 0,
+          dragging: false,
+          pointerId: null,
+          dragStartX: 0,
+          dragStartY: 0,
+          dragOriginX: 0,
+          dragOriginY: 0,
+        };
+
+        titleElement.textContent = titleOverride || getDiagramTitle(sourceSvg);
+        overlay.classList.add("is-open");
+        overlay.setAttribute("aria-hidden", "false");
+        document.body.classList.add("R-mermaid-lightbox-open");
+
+        requestAnimationFrame(function () {
+          resetTransform();
+          closeButton.focus({ preventScroll: true });
+        });
+      }
+
+      function bindSvg(svg) {
+        if (!svg || svg.dataset.mermaidLightboxReady === "true") return;
+
+        svg.dataset.mermaidLightboxReady = "true";
+        svg.classList.add("R-mermaid-expandable");
+        svg.setAttribute("tabindex", "0");
+        svg.setAttribute("role", "button");
+        svg.setAttribute("aria-label", "Abrir diagrama Mermaid en pantalla completa");
+
+        var gesture = {
+          moved: false,
+          startX: 0,
+          startY: 0,
+        };
+
+        svg.addEventListener("pointerdown", function (event) {
+          gesture.moved = false;
+          gesture.startX = event.clientX;
+          gesture.startY = event.clientY;
+        });
+
+        svg.addEventListener("pointermove", function (event) {
+          if (
+            Math.abs(event.clientX - gesture.startX) > dragThreshold ||
+            Math.abs(event.clientY - gesture.startY) > dragThreshold
+          ) {
+            gesture.moved = true;
+          }
+        });
+
+        svg.addEventListener("click", function (event) {
+          if (gesture.moved) {
+            gesture.moved = false;
+            return;
+          }
+          if (event.target.closest("a")) return;
+          openModal(svg);
+        });
+
+        svg.addEventListener("keydown", function (event) {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            openModal(svg);
+          }
+        });
+      }
+
+      function bindDiagrams(root) {
+        root.querySelectorAll(".mermaid-container > .mermaid > svg").forEach(bindSvg);
+      }
+
+      var mermaidRuntimePromise = null;
+
+      function ensureMermaidRuntime() {
+        if (typeof mermaid !== "undefined" && typeof mermaid.render === "function") {
+          if (typeof mermaid.initialize === "function") {
+            mermaid.initialize(
+              Object.assign(
+                { securityLevel: "antiscript", startOnLoad: false },
+                (window.relearn && window.relearn.mermaidConfig) || {},
+                {
+                  theme:
+                    typeof getColorValue === "function"
+                      ? getColorValue("MERMAID-theme")
+                      : undefined,
+                }
+              )
+            );
+          }
+          return Promise.resolve(mermaid);
+        }
+
+        if (mermaidRuntimePromise) return mermaidRuntimePromise;
+
+        mermaidRuntimePromise = new Promise(function (resolve, reject) {
+          var script = document.createElement("script");
+          script.src = "/js/mermaid/mermaid.min.js";
+          script.defer = true;
+
+          script.onload = function () {
+            if (typeof mermaid === "undefined" || typeof mermaid.render !== "function") {
+              reject(new Error("Mermaid no disponible despues de cargar la libreria."));
+              return;
+            }
+
+            if (typeof mermaid.initialize === "function") {
+              mermaid.initialize(
+                Object.assign(
+                  { securityLevel: "antiscript", startOnLoad: false },
+                  (window.relearn && window.relearn.mermaidConfig) || {},
+                  {
+                    theme:
+                      typeof getColorValue === "function"
+                        ? getColorValue("MERMAID-theme")
+                        : undefined,
+                  }
+                )
+              );
+            }
+
+            resolve(mermaid);
+          };
+
+          script.onerror = function () {
+            reject(new Error("No se pudo cargar mermaid.min.js."));
+          };
+
+          document.head.appendChild(script);
+        }).catch(function (error) {
+          mermaidRuntimePromise = null;
+          console.error(error);
+          return null;
+        });
+
+        return mermaidRuntimePromise;
+      }
+
+      function renderTemplateDiagram(templateId) {
+        if (!templateId) {
+          return Promise.resolve(null);
+        }
+
+        var template = document.getElementById(templateId);
+        if (!template) return Promise.resolve(null);
+
+        var definition = template.textContent.trim();
+        if (!definition) return Promise.resolve(null);
+
+        var renderId = "R-tree-diagram-" + templateId + "-" + Date.now();
+
+        return ensureMermaidRuntime().then(function (runtime) {
+          if (!runtime || typeof runtime.render !== "function") return null;
+
+          return Promise.resolve(runtime.render(renderId, definition)).then(function (rendered) {
+            var svgMarkup = rendered && rendered.svg ? rendered.svg : rendered;
+            if (!svgMarkup) return null;
+
+            var wrapper = document.createElement("div");
+            wrapper.innerHTML = svgMarkup.trim();
+
+            if (rendered && typeof rendered.bindFunctions === "function") {
+              rendered.bindFunctions(wrapper);
+            }
+
+            return wrapper.querySelector("svg");
+          });
+        });
+      }
+
+      function openTemplateDiagram(templateId, title) {
+        renderTemplateDiagram(templateId).then(function (svg) {
+          if (!svg) return;
+          openModal(svg, title);
+        });
+      }
+
+      document.addEventListener("click", function (event) {
+        var trigger = event.target.closest(".R-tree-diagram-trigger, .R-tree-diagram-link");
+        if (!trigger || !trigger.dataset.diagramTemplate) return;
+
+        event.preventDefault();
+        openTemplateDiagram(
+          trigger.dataset.diagramTemplate,
+          trigger.dataset.diagramTitle || trigger.textContent.replace(/^\[|\]$/g, "").trim()
+        );
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key !== "Enter" && event.key !== " ") return;
+
+        var trigger = event.target.closest(".R-tree-diagram-trigger, .R-tree-diagram-link");
+        if (!trigger || !trigger.dataset.diagramTemplate) return;
+
+        event.preventDefault();
+        openTemplateDiagram(
+          trigger.dataset.diagramTemplate,
+          trigger.dataset.diagramTitle || trigger.textContent.replace(/^\[|\]$/g, "").trim()
+        );
+      });
+
+      function scheduleBind() {
+        if (bindScheduled) return;
+        bindScheduled = true;
+
+        requestAnimationFrame(function () {
+          bindScheduled = false;
+          bindDiagrams(document);
+        });
+      }
+
+      bindDiagrams(document);
+      new MutationObserver(scheduleBind).observe(document.body, {
+        childList: true,
+        subtree: true,
+      });
+    }
+
+    function refreshMermaidAfterInitialTabRestore() {
+      if (typeof initMermaid !== "function") return;
+
+      setTimeout(function () {
+        requestAnimationFrame(function () {
+          initMermaid(true);
+        });
+      }, 0);
+    }
+
+    function disableTabSelectionPersistence() {
+      if (typeof switchTab !== "function") return;
+
+      window.switchTab = function (tabGroup, tabId) {
+        var tabs = Array.from(
+          document.querySelectorAll('.tab-panel[data-tab-group="' + tabGroup + '"]')
+        ).filter(function (panel) {
+          return !!panel.querySelector('[data-tab-item="' + tabId + '"]');
+        });
+        var allTabItems =
+          tabs &&
+          tabs.reduce(function (acc, panel) {
+            return acc.concat(
+              Array.from(panel.querySelectorAll("[data-tab-item]")).filter(function (item) {
+                return item.parentNode.parentNode == panel;
+              })
+            );
+          }, []);
+        var targetTabItems =
+          tabs &&
+          tabs.reduce(function (acc, panel) {
+            return acc.concat(
+              Array.from(panel.querySelectorAll('[data-tab-item="' + tabId + '"]')).filter(
+                function (item) {
+                  return item.parentNode.parentNode == panel;
+                }
+              )
+            );
+          }, []);
+
+        var currentEvent = typeof event !== "undefined" ? event : null;
+        var isButtonEvent =
+          currentEvent && currentEvent.target && currentEvent.target.getBoundingClientRect;
+        var yposButton = isButtonEvent ? currentEvent.target.getBoundingClientRect().top : 0;
+
+        allTabItems &&
+          allTabItems.forEach(function (item) {
+            item.classList.remove("active");
+            item.setAttribute("aria-expanded", "false");
+            item.removeAttribute("tabindex");
+          });
+        targetTabItems &&
+          targetTabItems.forEach(function (item) {
+            item.classList.add("active");
+            item.setAttribute("aria-expanded", "true");
+            item.setAttribute("tabindex", "-1");
+          });
+
+        if (typeof initMermaid === "function") {
+          requestAnimationFrame(function () {
+            initMermaid(true);
+
+            if (isButtonEvent) {
+              var yposButtonDiff = currentEvent.target.getBoundingClientRect().top - yposButton;
+              window.scrollTo(window.scrollX, window.scrollY + yposButtonDiff);
+            }
+          });
+        }
+      };
+
+      switchTab = window.switchTab;
+
+      if (window.localStorage && window.relearn && window.relearn.absBaseUri) {
+        window.localStorage.removeItem(window.relearn.absBaseUri + "/tab-selections");
+      }
+
+      var seenGroups = new Set();
+      document.querySelectorAll(".tab-panel[data-tab-group]").forEach(function (panel) {
+        var tabGroup = panel.getAttribute("data-tab-group");
+        if (!tabGroup || seenGroups.has(tabGroup)) return;
+        seenGroups.add(tabGroup);
+
+        var firstButton = panel.querySelector(".tab-nav-button[data-tab-item]");
+        if (!firstButton) return;
+
+        window.switchTab(tabGroup, firstButton.getAttribute("data-tab-item"));
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      initCicloSwitcher();
+      disableTabSelectionPersistence();
+      initMermaidLightbox();
+      refreshMermaidAfterInitialTabRestore();
+    });
+  })();
+</script>
+
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

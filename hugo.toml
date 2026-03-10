@@ -1,3 +1,35 @@
-baseURL = 'https://example.org/'
-languageCode = 'en-us'
-title = 'My New Hugo Project'
+baseURL = "http://localhost:1313/"
+languageCode = "es-CO"
+defaultContentLanguage = "es"
+title = "ArkaB2B Docs"
+theme = "hugo-theme-relearn"
+
+[outputs]
+  home = ["html", "rss"]
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    noClasses = false
+
+[params]
+  disableLandingPageButton = true
+  showVisitedLinks = false
+  collapsibleMenu = true
+  alwaysopen = false
+  disableInlineCopyToClipBoard = true
+  themeVariant = [
+    { identifier = "auto", name = "Auto", auto = ["red", "zen-dark"] },
+    { identifier = "red", name = "Claro" },
+    { identifier = "zen-dark", name = "Oscuro" }
+  ]
+  sidebarmenus = []
+  sidebarheadermenus = [
+    { type = "custom", identifier = "ciclo", elements = [{ type = "cicloswitcher" }] },
+    { type = "divider" }
+  ]
+
+  [params.logo]
+    src = "/images/arka-docs-icon.svg"

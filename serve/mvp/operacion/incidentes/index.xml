@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>8. Incidentes :: ArkaB2B Docs</title>
+    <link>http://localhost:1313/mvp/operacion/incidentes/index.html</link>
+    <description>Marco de gestion de incidentes para MVP: severidades, escalamiento, comunicacion, postmortem y registro operativo.</description>
+    <generator>Hugo</generator>
+    <language>es-CO</language>
+    <atom:link href="http://localhost:1313/mvp/operacion/incidentes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gestion de Incidentes</title>
+      <link>http://localhost:1313/mvp/operacion/incidentes/gestion-incidentes/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/operacion/incidentes/gestion-incidentes/index.html</guid>
+      <description>Objetivo Establecer un proceso unico para detectar, contener, resolver y aprender de incidentes operativos en MVP.&#xA;Definicion de incidente Evento no planeado que degrada disponibilidad, integridad operativa, rendimiento o seguridad del baseline.&#xA;Ciclo operativo Deteccion por alerta, reporte o monitoreo. Triage inicial y asignacion de severidad. Contencion para limitar impacto. Recuperacion del servicio. Cierre tecnico y registro de evidencia. Postmortem cuando corresponda. Roles minimos Incident Commander: coordina respuesta. Owner de servicio: ejecuta diagnostico/remediacion. Plataforma/SRE: soporte de infraestructura y observabilidad. Comunicacion: actualiza stakeholders internos. Reglas Todo incidente en prod abre registro operativo. Todo Sev 1 exige timeline y postmortem. No se promueven releases durante incidente Sev 1/Sev 2 abierto.</description>
+    </item>
+    <item>
+      <title>Severidades y Escalamiento</title>
+      <link>http://localhost:1313/mvp/operacion/incidentes/severidades-escalamiento/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/operacion/incidentes/severidades-escalamiento/index.html</guid>
+      <description>Niveles de severidad Nivel Definicion Tiempo objetivo de respuesta Escalamiento Sev 1 caida o degradacion critica de flujo core en prod &lt;= 10 min inmediato a owners + plataforma + liderazgo tecnico Sev 2 degradacion relevante con workaround parcial &lt;= 20 min owner de servicio y plataforma Sev 3 impacto acotado, sin interrupcion total &lt;= 60 min owner de servicio Sev 4 incidencia menor o consulta operativa &lt;= 1 dia habil backlog operativo Criterios de escalamiento Aumentar severidad si impacto se expande a checkout/pedido. Aumentar severidad si hay riesgo de seguridad o datos. Mantener severidad hasta comprobar recuperacion estable. Reglas de guardia Sev 1 y Sev 2 requieren guardia activa hasta cierre tecnico. Toda transferencia de guardia deja handoff con estado y proximos pasos.</description>
+    </item>
+    <item>
+      <title>Comunicacion y Postmortem</title>
+      <link>http://localhost:1313/mvp/operacion/incidentes/comunicacion-postmortem/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/operacion/incidentes/comunicacion-postmortem/index.html</guid>
+      <description>Comunicacion durante incidente Abrir canal unico de incidente con timestamp de hitos. Emitir actualizacion periodica segun severidad: Sev 1: cada 15 min Sev 2: cada 30 min Sev 3: por hitos relevantes Comunicar impacto, estado, mitigacion y ETA tentativa. Postmortem Se requiere para:</description>
+    </item>
+    <item>
+      <title>Registro de Incidentes</title>
+      <link>http://localhost:1313/mvp/operacion/incidentes/registro-incidentes/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/operacion/incidentes/registro-incidentes/index.html</guid>
+      <description>Formato minimo de registro Campo Descripcion incidentId identificador unico fechaInicio / fechaFin ventana del incidente severidad Sev 1..Sev 4 serviciosAfectados servicios impactados impactoNegocio descripcion concreta deteccion alerta/reporte que lo disparo causaRaiz confirmada o preliminar acciones contencion y recuperacion runbookUsado referencia al runbook aplicado evidencias enlaces a dashboards/logs/trazas estado abierto, mitigado, cerrado Politica de conservacion El registro se conserva segun baseline de retencion de auditoria de seguridad y operacion definido en arquitectura.</description>
+    </item>
+  </channel>
+</rss>

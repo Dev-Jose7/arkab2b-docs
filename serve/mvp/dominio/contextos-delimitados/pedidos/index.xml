@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pedidos :: ArkaB2B Docs</title>
+    <link>http://localhost:1313/mvp/dominio/contextos-delimitados/pedidos/index.html</link>
+    <description>Contexto delimitado responsable de carrito, checkout, pedido y estado agregado de pago.</description>
+    <generator>Hugo</generator>
+    <language>es-CO</language>
+    <atom:link href="http://localhost:1313/mvp/dominio/contextos-delimitados/pedidos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Resumen</title>
+      <link>http://localhost:1313/mvp/dominio/contextos-delimitados/pedidos/resumen/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/contextos-delimitados/pedidos/resumen/index.html</guid>
+      <description>Marco del contexto Responde: que define este artefacto dentro del bounded context y como debe leerse su alcance. Resumen ejecutivo del bounded context order.&#xA;Mision del contexto Responde: que verdad local gobierna este bounded context y para que existe dentro del dominio.</description>
+    </item>
+    <item>
+      <title>Modelo</title>
+      <link>http://localhost:1313/mvp/dominio/contextos-delimitados/pedidos/modelo/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/contextos-delimitados/pedidos/modelo/index.html</guid>
+      <description>Marco del modelo Responde: que define este artefacto dentro del bounded context y como debe leerse su alcance. Modelo conceptual del BC order.&#xA;Entidades principales Responde: que entidades estructuran el modelo local.&#xA;Carrito. Item de carrito. Intento de checkout. Pedido. Linea de pedido. Pago registrado. Historial de estado. Value objects principales Responde: que objetos de valor expresan reglas relevantes sin identidad propia.</description>
+    </item>
+    <item>
+      <title>Agregados</title>
+      <link>http://localhost:1313/mvp/dominio/contextos-delimitados/pedidos/agregados/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/contextos-delimitados/pedidos/agregados/index.html</guid>
+      <description>Marco de agregados Responde: que define este artefacto dentro del bounded context y como debe leerse su alcance. Definir agregados e invariantes de order.&#xA;Agregados Responde: que agregados protegen consistencia dentro del contexto.&#xA;CartAggregate Esta subseccion detalla cartaggregate dentro del contexto del documento.</description>
+    </item>
+    <item>
+      <title>Comandos</title>
+      <link>http://localhost:1313/mvp/dominio/contextos-delimitados/pedidos/comandos/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/contextos-delimitados/pedidos/comandos/index.html</guid>
+      <description>Marco de comandos Responde: que define este artefacto dentro del bounded context y como debe leerse su alcance. Catalogo de comandos de order.&#xA;Lista de comandos Responde: que comandos admite el contexto y con que efecto semantico.&#xA;obtener_carrito_activo Esta subseccion detalla obtener_carrito_activo dentro del contexto del documento.</description>
+    </item>
+    <item>
+      <title>Eventos</title>
+      <link>http://localhost:1313/mvp/dominio/contextos-delimitados/pedidos/eventos/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/contextos-delimitados/pedidos/eventos/index.html</guid>
+      <description>Marco de eventos Responde: que define este artefacto dentro del bounded context y como debe leerse su alcance. Eventos emitidos/consumidos por order.&#xA;Eventos emitidos Responde: que hechos publica este contexto para otros consumidores.&#xA;CartItemAdded Esta subseccion detalla cartitemadded dentro del contexto del documento.</description>
+    </item>
+    <item>
+      <title>Politicas</title>
+      <link>http://localhost:1313/mvp/dominio/contextos-delimitados/pedidos/politicas/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/contextos-delimitados/pedidos/politicas/index.html</guid>
+      <description>Marco de politicas Responde: que define este artefacto dentro del bounded context y como debe leerse su alcance. Politicas de reaccion de order.&#xA;Politicas (if event -&gt; then command) Responde: que reacciones automatizadas ejecuta el contexto frente a eventos relevantes.&#xA;Trigger (evento) Condicion Accion (comando) Observaciones StockReservationExpired (inventory) reserva pertenece a item activo remover_item_carrito o marcar item_invalido evita confirmacion invalida VariantDiscontinued (catalog) item en carrito con SKU afectada remover_item_carrito evita checkout de SKU no operable CheckoutAddressValidated (directory) resultado asincrono de validacion recibido para organizationId + addressId actualizar_estado_validacion_checkout cierra la conciliacion asincrona de direccion sin reemplazar la validacion sync inicial UserBlocked (identity-access) usuario con pedidos no terminales cancelar_pedido (segun politica) contencion de riesgo OrderConfirmed pedido confirmado comercialmente solicitar_notificacion (notification) no bloqueante OrderPaymentRegistered pago valido solicitar_notificacion (notification) comunica avance de cobro timer_carrito inactividad &gt; umbral detectar_carritos_abandonados habilita FR-008 Retries / compensacion Responde: como maneja este contexto reintentos y compensaciones sin romper su modelo.</description>
+    </item>
+    <item>
+      <title>Repositorios y Puertos</title>
+      <link>http://localhost:1313/mvp/dominio/contextos-delimitados/pedidos/repositorios-puertos/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/contextos-delimitados/pedidos/repositorios-puertos/index.html</guid>
+      <description>Marco de puertos Responde: que define este artefacto dentro del bounded context y como debe leerse su alcance. Definir puertos de entrada/salida y contratos de persistencia/integracion de order.&#xA;Puertos de entrada (in) Responde: que puertos de entrada exponen casos de uso o capacidades del contexto.</description>
+    </item>
+    <item>
+      <title>Anti-Corrupcion</title>
+      <link>http://localhost:1313/mvp/dominio/contextos-delimitados/pedidos/anti-corrupcion/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/contextos-delimitados/pedidos/anti-corrupcion/index.html</guid>
+      <description>Marco de traduccion Responde: que define este artefacto dentro del bounded context y como debe leerse su alcance. Documentar ACLs semanticas de order con BCs externos.&#xA;Mapeos principales Responde: que traducciones principales hace el contexto al cruzar sus fronteras.&#xA;Upstream/Downstream Termino externo Termino en order Regla inventory -&gt; order StockReserved/StockReservationExpired/StockReservationConfirmed item_reservable/no_reservable/confirmado checkout usa estado traducido por item catalog -&gt; order PriceUpdated price_snapshot snapshot inmutable al confirmar pedido directory -&gt; order AddressUpdated address_snapshot_valida validacion en checkout antes de confirmar identity-access -&gt; order SessionRevoked/UserBlocked operacion_no_permitida denegar mutaciones y cancelar segun politica order -&gt; notification OrderConfirmed/OrderPaymentRegistered solicitud_notificacion no bloqueante order -&gt; reporting OrderConfirmed/OrderPaymentStatusUpdated hecho_venta/hecho_cobro eventual consistency Normalizacion de errores Responde: como traduce este contexto errores externos a su lenguaje canonico.</description>
+    </item>
+  </channel>
+</rss>

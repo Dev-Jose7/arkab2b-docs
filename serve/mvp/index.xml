@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MVP :: ArkaB2B Docs</title>
+    <link>http://localhost:1313/mvp/index.html</link>
+    <description>Objetivo del ciclo de vida MVP define el baseline funcional y no funcional del sistema ArkaB2B para salir a operacion inicial con alcance controlado.&#xA;Este ciclo concentra el trabajo de definicion, validacion y trazabilidad de requerimientos que habilitan la primera entrega util del producto.&#xA;Convencion y versionado Ciclo vigente: mvp. Version documental del baseline: 0.1.0. Alcance actual Catalogo funcional (FR) y no funcional (NFR) del ciclo. Trazabilidad de producto entre SRS, FR/NFR y estado. Lenguaje comun mediante glosario. Baseline de dominio por bounded context, reglas, eventos y contratos. Baseline de arquitectura con vistas globales, servicios y cierre de trazabilidad tecnica. Estado rapido del ciclo Pilar Estado Comentario 00-producto En progreso Definicion y trazabilidad activa del ciclo. 01-dominio En progreso Baseline de dominio materializado y trazado a FR/NFR de MVP. 02-arquitectura En progreso Pilar materializado desde dominio con vistas globales, dossiers por servicio y trazabilidad tecnica. 03-calidad En progreso Baseline de calidad y estrategia global de pruebas iniciados sobre los tres pilares. 04-operacion En progreso Pilar operativo construido para ambientes, observabilidad, incidentes y continuidad sobre baseline congelado. Artefactos disponibles en MVP Producto SRS Ligero Catalogo RF Catalogo RNF Trazabilidad Glosario Dominio Mapa de Contexto Lenguaje Ubicuo Eventos de Dominio Reglas e Invariantes Contratos de Integracion Contextos Delimitados Arquitectura arc42 Servicios Trazabilidad de Arquitectura Evolucion de Arquitectura Calidad Estrategia de Pruebas Operacion Runbooks Operativos Flujo recomendado Revisar SRS Ligero para entender outcomes del ciclo. Validar FR/NFR del grupo MVP. Confirmar prioridades y estado en trazabilidad. Consumir dominio como baseline semantico ejecutable. Revisar arquitectura para definir servicios, contratos, seguridad, runtime, datos y despliegue del ciclo. Ejecutar los pilares restantes tomando como entrada los IDs aprobados y la salida del pilar anterior. Regla de evolucion En este repositorio, cada ciclo de vida agrega nuevos requerimientos o deltas sobre IDs existentes. No se reescribe informacion sin cambio: se referencia por ID y se documenta la diferencia.</description>
+    <generator>Hugo</generator>
+    <language>es-CO</language>
+    <atom:link href="http://localhost:1313/mvp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Producto</title>
+      <link>http://localhost:1313/mvp/producto/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/producto/index.html</guid>
+      <description>Pilar de producto para ArkaB2B: alcance, requisitos funcionales y no funcionales, trazabilidad y lenguaje canonico.&#xA;Este espacio concentra la definicion funcional del ciclo, el estado de avance del backlog y las decisiones de alcance que guian el trabajo de los demas pilares en MVP.</description>
+    </item>
+    <item>
+      <title>Dominio</title>
+      <link>http://localhost:1313/mvp/dominio/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/index.html</guid>
+      <description>Pilar de dominio para ArkaB2B: baseline semantico del ciclo MVP que fija fronteras de negocio, lenguaje canonico, reglas obligatorias, comportamiento global, integraciones entre contextos y detalle tactico por bounded context.&#xA;El contenido sigue un orden abstracto -&gt; concreto: vista estrategica (Mapa de Contexto), vista semantica (Lenguaje Ubicuo y Conceptos), verdad del modelo (Reglas e Invariantes), dinamica del dominio (Comportamiento Global, Eventos de Dominio, Contratos de Integracion), detalle interno (Contextos Delimitados) y cierre del pilar (Trazabilidad y Evolucion).</description>
+    </item>
+    <item>
+      <title>Arquitectura</title>
+      <link>http://localhost:1313/mvp/arquitectura/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/arquitectura/index.html</guid>
+      <description>Pilar de arquitectura para ArkaB2B: traduccion estructural del baseline semantico de MVP hacia servicios, contratos tecnicos, runtime, datos, seguridad, rendimiento y despliegue.&#xA;Este pilar consume directamente el baseline aprobado de dominio del ciclo actual. El contenido sigue un orden tecnico: vistas globales (arc42), detalle local por servicio (Servicios) y cierre del pilar (Trazabilidad y Evolucion).</description>
+    </item>
+    <item>
+      <title>Calidad</title>
+      <link>http://localhost:1313/mvp/calidad/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/calidad/index.html</guid>
+      <description>Pilar de calidad para MVP: define estrategia, mapeo, convenciones, puertas, paquete de certificacion minima y modelo de evidencia para mantener trazabilidad verificable entre Producto, Dominio y Arquitectura, separando diseno, implementacion, ejecucion y validacion con evidencia.</description>
+    </item>
+    <item>
+      <title>Operacion</title>
+      <link>http://localhost:1313/mvp/operacion/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/operacion/index.html</guid>
+      <description>Pilar operacional de MVP: traduce el baseline cerrado de producto, dominio, arquitectura y calidad a una operacion realista, trazable y accionable para ambientes reales.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,37 @@
+{{- $currentRel := .page.RelPermalink -}}
+{{- $ciclos := slice -}}
+{{- range site.Home.Sections -}}
+  {{- $sectionName := .Section -}}
+  {{- if or (hasPrefix $sectionName "mvp") (hasPrefix $sectionName "post-") -}}
+    {{- $displayName := .Title | default (upper $sectionName) -}}
+    {{- $ciclos = $ciclos | append (dict
+      "name" $displayName
+      "url" .RelPermalink
+    ) -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if gt (len $ciclos) 0 -}}
+  {{- $currentCicloURL := "" -}}
+  {{- range $ciclos -}}
+    {{- if hasPrefix $currentRel .url -}}
+      {{- $currentCicloURL = .url -}}
+    {{- end -}}
+  {{- end -}}
+            <li class="R-cicloswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-road"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-ciclo">Ciclo de vida</label>
+                  <select id="R-select-ciclo" aria-label="Seleccionar ciclo de vida">
+                    <option value="" disabled {{ if eq $currentCicloURL "" }}selected{{ end }}>Seleccionar ciclo</option>
+                    {{- range $ciclos }}
+                    <option value="{{ .url }}" {{ if eq $currentCicloURL .url }}selected data-selected{{ end }}>{{ .name }}</option>
+                    {{- end }}
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+{{- end }}

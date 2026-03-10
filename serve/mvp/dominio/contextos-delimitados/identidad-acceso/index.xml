@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Identidad y Acceso :: ArkaB2B Docs</title>
+    <link>http://localhost:1313/mvp/dominio/contextos-delimitados/identidad-acceso/index.html</link>
+    <description>Contexto delimitado responsable de autenticacion, sesiones y autorizacion por tenant.</description>
+    <generator>Hugo</generator>
+    <language>es-CO</language>
+    <atom:link href="http://localhost:1313/mvp/dominio/contextos-delimitados/identidad-acceso/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Resumen</title>
+      <link>http://localhost:1313/mvp/dominio/contextos-delimitados/identidad-acceso/resumen/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/contextos-delimitados/identidad-acceso/resumen/index.html</guid>
+      <description>Marco del contexto Responde: que define este artefacto dentro del bounded context y como debe leerse su alcance. Resumen ejecutivo del bounded context identity-access.&#xA;Mision del contexto Responde: que verdad local gobierna este bounded context y para que existe dentro del dominio.</description>
+    </item>
+    <item>
+      <title>Modelo</title>
+      <link>http://localhost:1313/mvp/dominio/contextos-delimitados/identidad-acceso/modelo/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/contextos-delimitados/identidad-acceso/modelo/index.html</guid>
+      <description>Marco del modelo Responde: que define este artefacto dentro del bounded context y como debe leerse su alcance. Modelo conceptual del BC identity-access.&#xA;Entidades principales Responde: que entidades estructuran el modelo local.&#xA;user_account. credential / credential_password. user_session. role. user_role_assignment. auth_audit como evidencia tecnica de seguridad. Value objects principales Responde: que objetos de valor expresan reglas relevantes sin identidad propia.</description>
+    </item>
+    <item>
+      <title>Agregados</title>
+      <link>http://localhost:1313/mvp/dominio/contextos-delimitados/identidad-acceso/agregados/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/contextos-delimitados/identidad-acceso/agregados/index.html</guid>
+      <description>Marco de agregados Responde: que define este artefacto dentro del bounded context y como debe leerse su alcance. Definir agregados e invariantes de identity-access.&#xA;Agregados Responde: que agregados protegen consistencia dentro del contexto.&#xA;UserAggregate Esta subseccion detalla useraggregate dentro del contexto del documento.</description>
+    </item>
+    <item>
+      <title>Comandos</title>
+      <link>http://localhost:1313/mvp/dominio/contextos-delimitados/identidad-acceso/comandos/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/contextos-delimitados/identidad-acceso/comandos/index.html</guid>
+      <description>Marco de comandos Responde: que define este artefacto dentro del bounded context y como debe leerse su alcance. Catalogo de comandos de identity-access.&#xA;Lista de comandos Responde: que comandos admite el contexto y con que efecto semantico.&#xA;autenticar_usuario Esta subseccion detalla autenticar_usuario dentro del contexto del documento.</description>
+    </item>
+    <item>
+      <title>Eventos</title>
+      <link>http://localhost:1313/mvp/dominio/contextos-delimitados/identidad-acceso/eventos/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/contextos-delimitados/identidad-acceso/eventos/index.html</guid>
+      <description>Marco de eventos Responde: que define este artefacto dentro del bounded context y como debe leerse su alcance. Eventos emitidos/consumidos por identity-access.&#xA;Eventos emitidos Responde: que hechos publica este contexto para otros consumidores.&#xA;UserLoggedIn Esta subseccion detalla userloggedin dentro del contexto del documento.</description>
+    </item>
+    <item>
+      <title>Politicas</title>
+      <link>http://localhost:1313/mvp/dominio/contextos-delimitados/identidad-acceso/politicas/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/contextos-delimitados/identidad-acceso/politicas/index.html</guid>
+      <description>Marco de politicas Responde: que define este artefacto dentro del bounded context y como debe leerse su alcance. Politicas de reaccion de identity-access.&#xA;Politicas (if event -&gt; then command) Responde: que reacciones automatizadas ejecuta el contexto frente a eventos relevantes.&#xA;Trigger (evento) Condicion Accion (comando) Observaciones OrganizationSuspended (directory) tenant con usuarios operables en IAM bloquear_usuario (por lote) cada bloqueo revoca sesiones activas dentro del mismo caso AuthFailedThreshold umbral de fallos excedido para usuario/tenant bloquear_usuario politica anti abuso; el bloqueo cierra la superficie operativa y deja evidencia tecnica Retries / compensacion Responde: como maneja este contexto reintentos y compensaciones sin romper su modelo.</description>
+    </item>
+    <item>
+      <title>Repositorios y Puertos</title>
+      <link>http://localhost:1313/mvp/dominio/contextos-delimitados/identidad-acceso/repositorios-puertos/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/contextos-delimitados/identidad-acceso/repositorios-puertos/index.html</guid>
+      <description>Marco de puertos Responde: que define este artefacto dentro del bounded context y como debe leerse su alcance. Definir puertos de entrada/salida y contratos de persistencia/integracion de identity-access.&#xA;Puertos de entrada (in) Responde: que puertos de entrada exponen casos de uso o capacidades del contexto.</description>
+    </item>
+    <item>
+      <title>Anti-Corrupcion</title>
+      <link>http://localhost:1313/mvp/dominio/contextos-delimitados/identidad-acceso/anti-corrupcion/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/contextos-delimitados/identidad-acceso/anti-corrupcion/index.html</guid>
+      <description>Marco de traduccion Responde: que define este artefacto dentro del bounded context y como debe leerse su alcance. Documentar traducciones semanticas entre identity-access y otros BC para evitar fuga de significado.&#xA;Mapeos principales Responde: que traducciones principales hace el contexto al cruzar sus fronteras.</description>
+    </item>
+  </channel>
+</rss>
