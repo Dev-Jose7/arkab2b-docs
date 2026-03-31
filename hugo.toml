@@ -33,3 +33,7 @@ theme = "hugo-theme-relearn"
 
   [params.logo]
     src = "/images/arka-docs-icon.svg"
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
