@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Reporteria :: ArkaB2B Docs</title>
+    <link>http://localhost:1313/mvp/dominio/contextos-delimitados/reporteria/index.html</link>
+    <description>Contexto delimitado responsable de proyecciones y reportes derivados, no transaccionales.</description>
+    <generator>Hugo</generator>
+    <language>es-CO</language>
+    <atom:link href="http://localhost:1313/mvp/dominio/contextos-delimitados/reporteria/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Resumen</title>
+      <link>http://localhost:1313/mvp/dominio/contextos-delimitados/reporteria/resumen/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/contextos-delimitados/reporteria/resumen/index.html</guid>
+      <description>Marco del contexto Responde: que define este artefacto dentro del bounded context y como debe leerse su alcance. Resumen ejecutivo del bounded context reporting.&#xA;Mision del contexto Responde: que verdad local gobierna este bounded context y para que existe dentro del dominio.</description>
+    </item>
+    <item>
+      <title>Modelo</title>
+      <link>http://localhost:1313/mvp/dominio/contextos-delimitados/reporteria/modelo/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/contextos-delimitados/reporteria/modelo/index.html</guid>
+      <description>Marco del modelo Responde: que define este artefacto dentro del bounded context y como debe leerse su alcance. Modelo conceptual del BC reporting.&#xA;Entidades principales Responde: que entidades estructuran el modelo local.&#xA;HechoAnalitico. VistaVentasSemanal. VistaAbastecimientoSemanal. EjecucionReporteSemanal. Value objects principales Responde: que objetos de valor expresan reglas relevantes sin identidad propia.</description>
+    </item>
+    <item>
+      <title>Agregados</title>
+      <link>http://localhost:1313/mvp/dominio/contextos-delimitados/reporteria/agregados/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/contextos-delimitados/reporteria/agregados/index.html</guid>
+      <description>Marco de agregados Responde: que define este artefacto dentro del bounded context y como debe leerse su alcance. Definir agregados e invariantes de reporting.&#xA;Agregados Responde: que agregados protegen consistencia dentro del contexto.&#xA;ReportingViewAggregate Esta subseccion detalla reportingviewaggregate dentro del contexto del documento.</description>
+    </item>
+    <item>
+      <title>Comandos</title>
+      <link>http://localhost:1313/mvp/dominio/contextos-delimitados/reporteria/comandos/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/contextos-delimitados/reporteria/comandos/index.html</guid>
+      <description>Marco de comandos Responde: que define este artefacto dentro del bounded context y como debe leerse su alcance. Catalogo de comandos internos de proyeccion de reporting.&#xA;Lista de comandos Responde: que comandos admite el contexto y con que efecto semantico. Nota semantica:</description>
+    </item>
+    <item>
+      <title>Eventos</title>
+      <link>http://localhost:1313/mvp/dominio/contextos-delimitados/reporteria/eventos/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/contextos-delimitados/reporteria/eventos/index.html</guid>
+      <description>Marco de eventos Responde: que define este artefacto dentro del bounded context y como debe leerse su alcance. Eventos emitidos/consumidos por reporting.&#xA;Eventos emitidos Responde: que hechos publica este contexto para otros consumidores.&#xA;AnalyticFactUpdated Esta subseccion detalla analyticfactupdated dentro del contexto del documento.</description>
+    </item>
+    <item>
+      <title>Politicas</title>
+      <link>http://localhost:1313/mvp/dominio/contextos-delimitados/reporteria/politicas/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/contextos-delimitados/reporteria/politicas/index.html</guid>
+      <description>Marco de politicas Responde: que define este artefacto dentro del bounded context y como debe leerse su alcance. Politicas de reaccion de reporting.&#xA;Politicas (if event -&gt; then command) Responde: que reacciones automatizadas ejecuta el contexto frente a eventos relevantes.&#xA;Trigger (evento) Condicion Accion (comando) Observaciones OrderConfirmed evento valido refrescar_vista_ventas suma ventas confirmadas por periodo OrderPaymentRegistered evento valido refrescar_vista_ventas FR-010 actualiza estado de cobro OrderPaymentStatusUpdated evento valido refrescar_vista_ventas FR-010 recalcula metricas de cobro StockUpdated evento valido refrescar_vista_abastecimiento ajusta disponibilidad y riesgo StockReservationExpired evento valido refrescar_vista_abastecimiento refleja perdida de cobertura ProductUpdated evento valido refrescar_vista_ventas contexto comercial de dimension de catalogo PriceUpdated evento valido refrescar_vista_ventas contexto de revenue PriceScheduled evento valido refrescar_vista_ventas anticipa timeline comercial futuro sin mutar pricing core timer_fin_semana corte semanal alcanzado generar_reporte_semanal FR-003/FR-007 lag_consumo_alto backlog sobre umbral recalcular_vista_completa recuperacion de consistencia Retries / compensacion Responde: como maneja este contexto reintentos y compensaciones sin romper su modelo.</description>
+    </item>
+    <item>
+      <title>Repositorios y Puertos</title>
+      <link>http://localhost:1313/mvp/dominio/contextos-delimitados/reporteria/repositorios-puertos/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/contextos-delimitados/reporteria/repositorios-puertos/index.html</guid>
+      <description>Marco de puertos Responde: que define este artefacto dentro del bounded context y como debe leerse su alcance. Definir puertos de entrada/salida y contratos de persistencia/integracion de reporting.&#xA;Puertos de entrada (in) Responde: que puertos de entrada exponen casos de uso o capacidades del contexto.</description>
+    </item>
+    <item>
+      <title>Anti-Corrupcion</title>
+      <link>http://localhost:1313/mvp/dominio/contextos-delimitados/reporteria/anti-corrupcion/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/contextos-delimitados/reporteria/anti-corrupcion/index.html</guid>
+      <description>Marco de traduccion Responde: que define este artefacto dentro del bounded context y como debe leerse su alcance. Documentar ACLs semanticas de reporting con BCs productores.&#xA;Mapeos principales Responde: que traducciones principales hace el contexto al cruzar sus fronteras.&#xA;Upstream/Downstream Termino externo Termino en reporting Regla order -&gt; reporting OrderConfirmed fact_venta_confirmada revenue confirmado por pedido order -&gt; reporting OrderPaymentStatusUpdated fact_cobro_actualizado no altera estado de pedido inventory -&gt; reporting StockUpdated fact_stock disponibilidad para abastecimiento catalog -&gt; reporting ProductUpdated fact_contexto_catalogo proyecciones comerciales se enriquecen sin mutar producto catalog -&gt; reporting PriceUpdated/PriceScheduled fact_precio contexto comercial actual y futuro de venta notification -&gt; reporting NotificationFailed fact_comunicacion_fallida KPI operativo de canal Normalizacion de errores Responde: como traduce este contexto errores externos a su lenguaje canonico.</description>
+    </item>
+  </channel>
+</rss>

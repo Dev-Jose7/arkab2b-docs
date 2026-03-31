@@ -1,0 +1,499 @@
+/* Horizontal scroll inside table container, not the whole section/page */
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-scroll > table {
+  min-width: max-content;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+/* Keep dense columns readable */
+.table-scroll > table th,
+.table-scroll > table td {
+  white-space: nowrap;
+}
+
+/* Catalog indexes after ciclo-de-vida-first flattening */
+body[data-origin="/mvp/producto/catalogo-rf/index.html"] #R-body-inner table,
+body[data-origin="/mvp/producto/catalogo-rnf/index.html"] #R-body-inner table,
+body[data-origin="/mvp/00-producto/02-catalogo-rf/index.html"] #R-body-inner table,
+body[data-origin="/mvp/00-producto/03-catalogo-rnf/index.html"] #R-body-inner table,
+body[data-origin="/mvp/00-producto/02-fr-catalog/index.html"] #R-body-inner table,
+body[data-origin="/mvp/00-producto/03-nfr-catalog/index.html"] #R-body-inner table {
+  display: table;
+  width: 100%;
+  table-layout: auto;
+}
+
+body[data-origin="/mvp/producto/catalogo-rf/index.html"] #R-body-inner th,
+body[data-origin="/mvp/producto/catalogo-rf/index.html"] #R-body-inner td,
+body[data-origin="/mvp/producto/catalogo-rnf/index.html"] #R-body-inner th,
+body[data-origin="/mvp/producto/catalogo-rnf/index.html"] #R-body-inner td,
+body[data-origin="/mvp/00-producto/02-catalogo-rf/index.html"] #R-body-inner th,
+body[data-origin="/mvp/00-producto/02-catalogo-rf/index.html"] #R-body-inner td,
+body[data-origin="/mvp/00-producto/03-catalogo-rnf/index.html"] #R-body-inner th,
+body[data-origin="/mvp/00-producto/03-catalogo-rnf/index.html"] #R-body-inner td,
+body[data-origin="/mvp/00-producto/02-fr-catalog/index.html"] #R-body-inner th,
+body[data-origin="/mvp/00-producto/02-fr-catalog/index.html"] #R-body-inner td,
+body[data-origin="/mvp/00-producto/03-nfr-catalog/index.html"] #R-body-inner th,
+body[data-origin="/mvp/00-producto/03-nfr-catalog/index.html"] #R-body-inner td {
+  white-space: normal;
+}
+
+/* Attachments index as simple card list */
+body[data-origin="/mvp/producto/adjuntos/index.html"] #R-body-inner ul,
+body[data-origin="/mvp/00-producto/adjuntos/index.html"] #R-body-inner ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 1rem;
+}
+
+body[data-origin="/mvp/producto/adjuntos/index.html"] #R-body-inner ul li,
+body[data-origin="/mvp/00-producto/adjuntos/index.html"] #R-body-inner ul li {
+  margin: 0 0 0.7rem 0;
+}
+
+body[data-origin="/mvp/producto/adjuntos/index.html"] #R-body-inner ul li a,
+body[data-origin="/mvp/00-producto/adjuntos/index.html"] #R-body-inner ul li a {
+  display: block;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid rgba(120, 128, 140, 0.35);
+  border-radius: 0.5rem;
+  text-decoration: none;
+  background: rgba(120, 128, 140, 0.08);
+}
+
+body[data-origin="/mvp/producto/adjuntos/index.html"] #R-body-inner ul li a:hover,
+body[data-origin="/mvp/00-producto/adjuntos/index.html"] #R-body-inner ul li a:hover {
+  background: rgba(120, 128, 140, 0.14);
+}
+
+#R-content-wrapper > .R-shortcutmenu-ciclo > ul.collapsible-menu.enlarge > li {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+#R-content-wrapper > .R-shortcutmenu-ciclo > ul.collapsible-menu.enlarge > li > :is(a, span) {
+  box-sizing: border-box;
+  padding-inline-end: 1rem;
+  padding-inline-start: 2rem;
+  width: 100%;
+}
+
+#R-content-wrapper > .R-shortcutmenu-ciclo > ul.collapsible-menu.enlarge > li.active > a {
+  padding-inline-end: 1rem;
+  padding-inline-start: 2rem;
+  width: 100%;
+}
+
+#R-content-wrapper > .R-shortcutmenu-ciclo > ul.collapsible-menu.enlarge > li > ul {
+  padding-inline-start: 2rem;
+}
+
+#R-content-wrapper > .R-shortcutmenu-ciclo > ul.collapsible-menu.enlarge > li > input,
+#R-content-wrapper > .R-shortcutmenu-ciclo > ul.collapsible-menu.enlarge > li > label {
+  inset-inline-start: 1rem;
+}
+
+#R-content-wrapper > .R-shortcutmenu-ciclo ul.collapsible-menu > li > input:checked + label > .fa-chevron-right {
+  transform: rotate(90deg) translateY(0rem);
+}
+
+/* Main pillar index pages: keep full vertical scroll, center text layout only */
+body[data-origin$="/producto/index.html"] #R-body-inner,
+body[data-origin$="/dominio/index.html"] #R-body-inner,
+body[data-origin$="/arquitectura/index.html"] #R-body-inner,
+body[data-origin$="/calidad/index.html"] #R-body-inner,
+body[data-origin$="/operacion/index.html"] #R-body-inner,
+body[data-origin$="/00-producto/index.html"] #R-body-inner,
+body[data-origin$="/01-dominio/index.html"] #R-body-inner,
+body[data-origin$="/02-arquitectura/index.html"] #R-body-inner,
+body[data-origin$="/03-calidad/index.html"] #R-body-inner,
+body[data-origin$="/04-operacion/index.html"] #R-body-inner {
+  justify-content: flex-start;
+}
+
+body[data-origin$="/producto/index.html"] #R-body-inner > .flex-block-wrapper article,
+body[data-origin$="/dominio/index.html"] #R-body-inner > .flex-block-wrapper article,
+body[data-origin$="/arquitectura/index.html"] #R-body-inner > .flex-block-wrapper article,
+body[data-origin$="/calidad/index.html"] #R-body-inner > .flex-block-wrapper article,
+body[data-origin$="/operacion/index.html"] #R-body-inner > .flex-block-wrapper article,
+body[data-origin$="/00-producto/index.html"] #R-body-inner > .flex-block-wrapper article,
+body[data-origin$="/01-dominio/index.html"] #R-body-inner > .flex-block-wrapper article,
+body[data-origin$="/02-arquitectura/index.html"] #R-body-inner > .flex-block-wrapper article,
+body[data-origin$="/03-calidad/index.html"] #R-body-inner > .flex-block-wrapper article,
+body[data-origin$="/04-operacion/index.html"] #R-body-inner > .flex-block-wrapper article {
+  text-align: center;
+}
+
+body[data-origin$="/producto/index.html"] #R-body-inner > .flex-block-wrapper article p,
+body[data-origin$="/dominio/index.html"] #R-body-inner > .flex-block-wrapper article p,
+body[data-origin$="/arquitectura/index.html"] #R-body-inner > .flex-block-wrapper article p,
+body[data-origin$="/calidad/index.html"] #R-body-inner > .flex-block-wrapper article p,
+body[data-origin$="/operacion/index.html"] #R-body-inner > .flex-block-wrapper article p,
+body[data-origin$="/00-producto/index.html"] #R-body-inner > .flex-block-wrapper article p,
+body[data-origin$="/01-dominio/index.html"] #R-body-inner > .flex-block-wrapper article p,
+body[data-origin$="/02-arquitectura/index.html"] #R-body-inner > .flex-block-wrapper article p,
+body[data-origin$="/03-calidad/index.html"] #R-body-inner > .flex-block-wrapper article p,
+body[data-origin$="/04-operacion/index.html"] #R-body-inner > .flex-block-wrapper article p {
+  margin-inline: auto;
+  max-width: 52rem;
+}
+
+/* Vertical center for pillar indexes without breaking scroll on longer pages */
+body[data-origin$="/producto/index.html"] #R-body-inner > .flex-block-wrapper,
+body[data-origin$="/dominio/index.html"] #R-body-inner > .flex-block-wrapper,
+body[data-origin$="/arquitectura/index.html"] #R-body-inner > .flex-block-wrapper,
+body[data-origin$="/calidad/index.html"] #R-body-inner > .flex-block-wrapper,
+body[data-origin$="/operacion/index.html"] #R-body-inner > .flex-block-wrapper,
+body[data-origin$="/00-producto/index.html"] #R-body-inner > .flex-block-wrapper,
+body[data-origin$="/01-dominio/index.html"] #R-body-inner > .flex-block-wrapper,
+body[data-origin$="/02-arquitectura/index.html"] #R-body-inner > .flex-block-wrapper,
+body[data-origin$="/03-calidad/index.html"] #R-body-inner > .flex-block-wrapper,
+body[data-origin$="/04-operacion/index.html"] #R-body-inner > .flex-block-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(100svh - 9rem);
+}
+
+/* Flat tab design with horizontal scrolling */
+#R-body .tab-panel {
+  margin-block: 1.5rem;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  overflow: visible;
+}
+
+#R-body .tab-nav {
+  display: flex;
+  align-items: flex-end;
+  gap: 0;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-gutter: auto;
+  padding: 0;
+  border-bottom: 0;
+  background: transparent;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(127, 127, 127, 0.5) transparent;
+}
+
+#R-body .tab-nav::-webkit-scrollbar {
+  height: 0.45rem;
+}
+
+#R-body .tab-nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#R-body .tab-nav::-webkit-scrollbar-thumb {
+  background: rgba(127, 127, 127, 0.35);
+  border-radius: 999px;
+}
+
+#R-body .tab-nav::-webkit-scrollbar-thumb:hover {
+  background: rgba(127, 127, 127, 0.55);
+}
+
+#R-body .tab-nav-title,
+#R-body .tab-nav-button {
+  flex: 0 0 auto;
+}
+
+#R-body .tab-nav-title {
+  margin-inline-start: 0;
+  padding: 0;
+  font-weight: 600;
+  color: var(--MAIN-TITLES-TEXT-color);
+}
+
+#R-body .tab-nav-button {
+  margin-inline-start: 0;
+  border: 0;
+  background: transparent;
+  color: var(--MAIN-TEXT-color);
+  margin-bottom: -1px;
+}
+
+#R-body .tab-nav-button > .tab-nav-text {
+  display: block;
+  white-space: nowrap;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid transparent;
+  border-top-left-radius: 0.65rem;
+  border-top-right-radius: 0.65rem;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  background: transparent;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+#R-body .tab-nav-button:not(.active):hover > .tab-nav-text,
+#R-body .tab-nav-button:not(.active):focus > .tab-nav-text {
+  border-color: rgba(127, 127, 127, 0.18) rgba(127, 127, 127, 0.18)
+    var(--MENU-BORDER-color, rgba(128, 128, 128, 0.28));
+  background: rgba(127, 127, 127, 0.04);
+}
+
+#R-body .tab-nav-button.active {
+  background: transparent;
+  border: 0;
+}
+
+#R-body .tab-nav-button.active > .tab-nav-text {
+  color: var(--MAIN-TEXT-color);
+  border-color: rgba(127, 127, 127, 0.18) rgba(127, 127, 127, 0.18)
+    var(--MENU-BORDER-color, rgba(128, 128, 128, 0.28));
+  background: rgba(127, 127, 127, 0.04);
+  text-shadow: none;
+}
+
+@supports (-webkit-text-stroke-width: 0.09ex) {
+  #R-body .tab-nav-button.active > .tab-nav-text {
+    -webkit-text-stroke-width: 0;
+  }
+}
+
+#R-body .tab-content {
+  margin-top: 0;
+  border: 0;
+  background: transparent;
+}
+
+#R-body .tab-content.active {
+  border: 1px solid var(--MENU-BORDER-color, rgba(128, 128, 128, 0.28));
+  border-radius: 0 0.9rem 0.9rem 0.9rem;
+  background: var(--VARIABLE-BOX-BG-color, var(--MAIN-BG-color));
+}
+
+#R-body .tab-content-text {
+  padding: 1.05rem 1.15rem 1.2rem;
+  background: var(--VARIABLE-BOX-BG-color, var(--MAIN-BG-color));
+  border-radius: inherit;
+}
+
+@media (max-width: 768px) {
+  #R-body .tab-nav {
+    padding: 0;
+  }
+
+  #R-body .tab-nav-button > .tab-nav-text {
+    padding: 0.5rem 0.78rem;
+    font-size: 0.88rem;
+  }
+}
+
+/* Mermaid fullscreen viewer for architecture pages */
+.mermaid-container > .mermaid > svg.R-mermaid-expandable {
+  cursor: zoom-in;
+}
+
+.mermaid-container > .mermaid > svg.R-mermaid-expandable:focus {
+  outline: 2px solid var(--PRIMARY-color);
+  outline-offset: 0.35rem;
+  border-radius: 0.5rem;
+}
+
+body.R-mermaid-lightbox-open {
+  overflow: hidden;
+}
+
+#R-mermaid-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(10, 14, 20, 0.78);
+  backdrop-filter: blur(0.35rem);
+}
+
+#R-mermaid-lightbox.is-open {
+  display: flex;
+}
+
+#R-mermaid-lightbox .R-mermaid-lightbox__dialog {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: min(96vw, 112rem);
+  height: min(92vh, 72rem);
+  padding: 1rem;
+  border: 1px solid var(--MENU-BORDER-color, rgba(128, 128, 128, 0.35));
+  border-radius: 1rem;
+  background: var(--MAIN-BG-color);
+  color: var(--MAIN-TEXT-color);
+  box-shadow: 0 1.25rem 3rem rgba(0, 0, 0, 0.28);
+}
+
+#R-mermaid-lightbox .R-mermaid-lightbox__toolbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+#R-mermaid-lightbox .R-mermaid-lightbox__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: min(100%, 18rem);
+}
+
+#R-mermaid-lightbox .R-mermaid-lightbox__title {
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+#R-mermaid-lightbox .R-mermaid-lightbox__hint {
+  font-size: 0.88rem;
+  opacity: 0.78;
+}
+
+#R-mermaid-lightbox .R-mermaid-lightbox__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.55rem;
+}
+
+#R-mermaid-lightbox .R-mermaid-lightbox__button {
+  min-height: 2.4rem;
+  min-width: 2.75rem;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid var(--MENU-BORDER-color, rgba(128, 128, 128, 0.35));
+  border-radius: 0.65rem;
+  background: var(--BOX-BG-color);
+  color: var(--MAIN-TEXT-color);
+  cursor: pointer;
+}
+
+#R-mermaid-lightbox .R-mermaid-lightbox__button:hover,
+#R-mermaid-lightbox .R-mermaid-lightbox__button:focus {
+  border-color: var(--PRIMARY-color);
+  color: var(--PRIMARY-color);
+}
+
+#R-mermaid-lightbox .R-mermaid-lightbox__stage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid var(--MENU-BORDER-color, rgba(128, 128, 128, 0.25));
+  border-radius: 0.9rem;
+  background:
+    linear-gradient(rgba(120, 128, 140, 0.08), rgba(120, 128, 140, 0.08)),
+    var(--MAIN-BG-color);
+}
+
+#R-mermaid-lightbox .R-mermaid-lightbox__canvas {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  transform-origin: center center;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  will-change: transform;
+}
+
+#R-mermaid-lightbox .R-mermaid-lightbox__canvas.is-dragging {
+  cursor: grabbing;
+}
+
+#R-mermaid-lightbox .R-mermaid-lightbox__canvas svg {
+  display: block;
+  overflow: visible;
+  max-width: none;
+  max-height: none;
+}
+
+.list-tree .R-tree-diagram-trigger,
+.list-tree .R-tree-diagram-link {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: var(--PRIMARY-color);
+  cursor: pointer;
+  text-align: left;
+}
+
+.list-tree .R-tree-diagram-trigger code,
+.list-tree .R-tree-diagram-link code {
+  color: inherit;
+  background: transparent;
+  padding: 0;
+}
+
+.list-tree .R-tree-diagram-trigger:hover,
+.list-tree .R-tree-diagram-trigger:focus-visible,
+.list-tree .R-tree-diagram-link:hover,
+.list-tree .R-tree-diagram-link:focus-visible {
+  color: var(--MAIN-TEXT-color);
+  text-decoration: underline;
+}
+
+@media (max-width: 48rem) {
+  #R-mermaid-lightbox {
+    padding: 0.75rem;
+  }
+
+  #R-mermaid-lightbox .R-mermaid-lightbox__dialog {
+    width: 100%;
+    height: 94vh;
+    padding: 0.85rem;
+  }
+
+  #R-mermaid-lightbox .R-mermaid-lightbox__actions {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  #R-mermaid-lightbox .R-mermaid-lightbox__button {
+    flex: 1 1 7rem;
+  }
+}
+
+#R-logo.R-default {
+  margin-block: 1.5rem;
+}
+
+#R-logo.R-default .logo-title {
+  font-weight: 500;
+}
+
+#R-logo.R-default .logo-image {
+  width: 2em;
+}
+
+#R-logo.R-default .logo-image > * {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+#R-logo.figure-image{
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.R-cicloswitcher{
+  font-weight: 700;
+}

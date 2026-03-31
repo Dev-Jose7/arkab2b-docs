@@ -1,55 +1,72 @@
-# Documentación basada en Ingeniería de Software para ArkaB2B
-### *Framework de Documentación-as-Code (DaC)*
+# ArkaB2B - Repositorio Documental Oficial
 
----
+Este repositorio contiene la **documentacion base oficial** de ArkaB2B para disenar, implementar, verificar y operar el sistema.  
+No contiene el codigo fuente de los microservicios: su funcion es actuar como **fuente de verdad documental** para la construccion del backend.
 
-## Resumen Ejecutivo
-Este repositorio constituye el **vínculo de verdad técnica** para el ecosistema ArkaB2B. Implementa un enfoque de ingeniería de software **minimalista, trazable y verificable**, optimizado para un flujo de trabajo liderado por humanos y potenciado por Inteligencia Artificial (Copilots/Agentes).
+## Estado actual del baseline
 
-El objetivo es garantizar que cada cambio en el sistema tenga una ruta de impacto clara y bidireccional:
-**Requerimientos (FR/NFR) ↔ Dominio ↔ Arquitectura ↔ Calidad ↔ Operación.**
+- **Lifecycle actual:** `mvp`
+- **Version documental del baseline:** `0.1.0`
+- **Estado del baseline:** **cerrado y listo para implementacion**
 
----
+Este baseline documenta de forma integrada producto, dominio, arquitectura, calidad y operacion para un backend B2B multi-tenant.
 
-## Convenciones y Contexto
-* **Identidad:** Este repositorio es la implementación técnica del marco de ingeniería aplicado específicamente al sistema **ArkaB2B**.
-* **Equipo Objetivo:** Un desarrollador (*Solo-Dev*) asistido por capacidades de IA.
-* **Soberanía de Decisión:** La IA propone e implementa; el **Ingeniero Responsable** valida y toma las decisiones finales de dominio y arquitectura.
+## Alcance funcional del sistema (MVP)
 
----
+El alcance vigente cubre catalogo, variantes, stock, reservas, carrito, checkout, pedidos, pago manual, notificaciones no bloqueantes y reporting derivado, con readiness regional para Colombia, Ecuador, Peru y Chile.  
+Tambien incluye controles base de identidad y acceso por organizacion/rol para operacion multi-tenant.
 
-## Principios Rectores (The Golden Rules)
+## Organizacion de la documentacion
 
-1. **Diseño Antes que Código:** *Especificación/Modelo > Tests > Código.* El desarrollo es la ejecución de un diseño previamente validado.
-2. **Ciclo Operativo Cerrado:** Despliegue mediante CI/CD con observabilidad mínima integrada para garantizar el feedback en tiempo real.
-3. **Validación por Evidencia:** No existe el estado **"Done"** (Hecho) sin evidencia técnica. Los tests mandan: son el único validador del avance real del proyecto.
+Toda la documentacion vigente esta en `content/mvp/` y se organiza en cinco pilares:
 
----
+- `00-producto`: alcance, FR/NFR, glosario y trazabilidad de negocio.
+- `01-dominio`: bounded contexts, lenguaje ubicuo, reglas e invariantes, contratos semanticos y eventos.
+- `02-arquitectura`: decisiones tecnicas, vistas globales, contratos/datos/seguridad/rendimiento por servicio.
+- `03-calidad`: estrategia de pruebas, mapeo FR/NFR, compuertas, cobertura, evidencia y certificacion minima.
+- `04-operacion`: ambientes, releases/promocion, observabilidad, SLI/SLO, runbooks, continuidad y seguridad operacional.
 
-## Estructura de Ingeniería (Los 5 Pilares)
+## Relacion entre lifecycle y version
 
-La documentación de **ArkaB2B** se organiza en cinco niveles de profundidad lógica:
+- `mvp` identifica la etapa del producto.
+- `0.1.0` identifica la version documental del baseline dentro de esa etapa.
 
-### Producto (`/content/00-product/`)
-* **SRS-Lite & Catálogos:** Requerimientos funcionales y no funcionales esenciales.
-* **Trazabilidad & Glosario:** Conexión entre necesidades de negocio y definiciones técnicas.
+No deben confundirse con versiones de runtime o versionado de artefactos de despliegue.
 
-### Dominio (`/content/01-domain/`)
-* **Domain-Driven Design (DDD):** Mapas de contexto, lenguaje ubicuo y eventos de dominio.
-* **Bounded Contexts:** Dossiers detallados de cada subdominio del sistema.
+## Reproducibilidad tecnica y baseline tecnico
 
-### Arquitectura (`/content/02-architecture/`)
-* **arc42 Global:** Estructura de arquitectura de sistemas bajo el estándar arc42.
-* **Service Specs:** Documentación técnica individual por cada microservicio.
+La documentacion del baseline incorpora empaquetado reproducible por servicio e inicio reproducible de stacks de desarrollo/integracion (incluyendo Docker y `docker compose`) como parte de la definicion tecnica.  
+Este repositorio sigue siendo documental: especifica que debe implementarse y como validarlo, pero no es el runtime productivo del sistema.
 
-### Calidad (`/content/03-quality/`)
-* **Estrategia de Pruebas:** Definición de mapping de tests y convenciones.
-* **Quality Gates:** Evidencias de cobertura y criterios de aceptación verificables.
+## Como usar este repositorio
 
-### Operaciones (`/content/04-operation/`)
-* **Platform:** Pipelines de CI/CD, infraestructura como código (IaC) y contenedores.
-* **Reliability:** Runbooks de incidentes, observabilidad y métricas de rendimiento (DORA-lite).
+Este repositorio se usa para:
 
----
+- onboarding tecnico de equipo y revisores;
+- guiar implementacion de servicios y contratos sin abrir decisiones fuera de baseline;
+- guiar diseno y ejecucion de pruebas;
+- guiar criterios operativos y respuesta ante incidentes;
+- alinear trabajo asistido por copilotos con una unica verdad documental.
 
-> **Estado de la Documentación:** 🟢 Operativo y en mantenimiento activo.
+## Implementacion asistida por copiloto
+
+El baseline actual esta preparado para implementacion asistida por copilotos (por ejemplo Codex, Windsurf o Kiro) con riesgo bajo de deriva, siempre que consuman `content/mvp/**` como fuente de verdad.  
+Los copilotos no deben inventar capacidades, reglas ni contratos fuera de lo documentado en este repositorio.
+
+## Frontend documental (Hugo)
+
+El sitio documental se renderiza con **Hugo** y **hugo-theme-relearn**.
+
+Comandos habituales:
+
+```bash
+hugo server
+```
+
+```bash
+hugo
+```
+
+## Declaracion de cierre del baseline
+
+El baseline documental `mvp` version `0.1.0` se considera **cerrado y listo para implementacion** del sistema ArkaB2B conforme a los cinco pilares documentados.

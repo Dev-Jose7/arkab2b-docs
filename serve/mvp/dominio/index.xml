@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dominio :: ArkaB2B Docs</title>
+    <link>http://localhost:1313/mvp/dominio/index.html</link>
+    <description>Pilar de dominio para ArkaB2B: baseline semantico del ciclo MVP que fija fronteras de negocio, lenguaje canonico, reglas obligatorias, comportamiento global, integraciones entre contextos y detalle tactico por bounded context.&#xA;El contenido sigue un orden abstracto -&gt; concreto: vista estrategica (Mapa de Contexto), vista semantica (Lenguaje Ubicuo y Conceptos), verdad del modelo (Reglas e Invariantes), dinamica del dominio (Comportamiento Global, Eventos de Dominio, Contratos de Integracion), detalle interno (Contextos Delimitados) y cierre del pilar (Trazabilidad y Evolucion).</description>
+    <generator>Hugo</generator>
+    <language>es-CO</language>
+    <atom:link href="http://localhost:1313/mvp/dominio/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mapa de Contexto</title>
+      <link>http://localhost:1313/mvp/dominio/mapa-contexto/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/mapa-contexto/index.html</guid>
+      <description>Marco estrategico Responde: que realidad del negocio modela este mapa, para que existe y hasta donde llega su autoridad semantica.&#xA;Definir la vista estrategica del dominio ArkaB2B para el MVP backend: bounded contexts, fronteras, relaciones upstream/downstream y reglas de integracion semantica.&#xA;Modelar la operacion B2B de Arka desde la autenticacion por tenant hasta el ciclo comercial de carrito, reserva, pedido, pago manual, notificacion y reporte semanal, preservando verdad de negocio, aislamiento por organizacion y regionalizacion por pais.</description>
+    </item>
+    <item>
+      <title>Lenguaje Ubicuo</title>
+      <link>http://localhost:1313/mvp/dominio/lenguaje-ubicuo/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/lenguaje-ubicuo/index.html</guid>
+      <description>Gobierno del lenguaje Responde: para que existe este lenguaje, de donde obtiene su autoridad semantica y con que artefactos debe mantenerse alineado.&#xA;Unificar lenguaje semantico del dominio ArkaB2B para comandos, eventos, errores y estados, evitando sinonimos no controlados entre Producto, Dominio y Arquitectura.&#xA;RF/RNF aprobados en /mvp/producto/catalogo-rf/ y /mvp/producto/catalogo-rnf/. Fronteras estrategicas definidas en /mvp/dominio/mapa-contexto/. Terminos funcionales base definidos en /mvp/producto/glosario/. Evidencia funcional en adjuntos de producto (/mvp/producto/adjuntos/). Normas del lenguaje Responde: que reglas gobiernan el uso correcto del vocabulario y como debe aplicarse en el resto del pilar.</description>
+    </item>
+    <item>
+      <title>Conceptos</title>
+      <link>http://localhost:1313/mvp/dominio/conceptos/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/conceptos/index.html</guid>
+      <description>Marco de conceptos Responde: para que existe esta guia y que tipo de conceptos o patrones aclara dentro del pilar de dominio.&#xA;Definir, en lenguaje operativo, el significado de los patrones y conceptos tecnicos usados en el pilar de dominio para evitar interpretaciones distintas entre contextos.&#xA;Uso de la guia Responde: como debe consultarse esta guia para mantener consistencia al leer y extender el dominio.</description>
+    </item>
+    <item>
+      <title>Reglas e Invariantes</title>
+      <link>http://localhost:1313/mvp/dominio/reglas-invariantes/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/reglas-invariantes/index.html</guid>
+      <description>Marco normativo Responde: para que existe este documento, que protege dentro del dominio y de donde obtiene su autoridad semantica.&#xA;Registrar reglas de negocio e invariantes de dominio que no pueden violarse en ArkaB2B para preservar integridad comercial, seguridad de tenant y trazabilidad en MVP.&#xA;RF/RNF aprobados en /mvp/producto/catalogo-rf/ y /mvp/producto/catalogo-rnf/. Lenguaje canonico del dominio en /mvp/dominio/lenguaje-ubicuo/. Fronteras y relaciones estrategicas en /mvp/dominio/mapa-contexto/. Cobertura consolidada en /mvp/dominio/trazabilidad/. Gobierno de consistencia Responde: que principios globales rigen la integridad del modelo y como se clasifica el universo de reglas que deben cumplirse.</description>
+    </item>
+    <item>
+      <title>Comportamiento Global</title>
+      <link>http://localhost:1313/mvp/dominio/comportamiento-global/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/comportamiento-global/index.html</guid>
+      <description>Marco del comportamiento Responde: para que existe esta vista dinamica del dominio, que cubre y de donde obtiene su autoridad semantica.&#xA;Describir como evoluciona el dominio ArkaB2B a traves del tiempo en MVP: procesos criticos, escenarios clave, comandos validos, hechos publicados, politicas reactivas, transiciones de estado y ownership de decisiones entre bounded contexts.&#xA;Mapa de Contexto para fronteras, relaciones y ownership semantico. Lenguaje Ubicuo y Conceptos para significado de comandos, eventos y estados. Reglas e Invariantes para precondiciones, postcondiciones y enforcement. Eventos de Dominio y Contratos de Integracion para hechos e interacciones sync/async. Dossiers de Contextos Delimitados para detalle tactico por BC. Dinamica operativa Responde: cuales son los procesos principales del MVP y como se materializan en escenarios representativos del flujo de negocio. Procesos criticos del dominio:</description>
+    </item>
+    <item>
+      <title>Eventos de Dominio</title>
+      <link>http://localhost:1313/mvp/dominio/eventos-dominio/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/eventos-dominio/index.html</guid>
+      <description>Marco de eventos Responde: para que existe este catalogo, que cubre dentro del dominio y de donde obtiene su autoridad semantica.&#xA;Catalogar eventos de dominio de ArkaB2B con semantica estable para integraciones entre bounded contexts en MVP.&#xA;RF/RNF aprobados en /mvp/producto/catalogo-rf/ y /mvp/producto/catalogo-rnf/. Fronteras y relaciones entre BCs en /mvp/dominio/mapa-contexto/. Vocabulario canonico del dominio en /mvp/dominio/lenguaje-ubicuo/. Procesos, ownership y transiciones globales en /mvp/dominio/comportamiento-global/. Reglas e invariantes de negocio en /mvp/dominio/reglas-invariantes/. Gobierno del catalogo Responde: que principios rigen el uso de eventos y como se clasifica el catalogo para mantener significado estable entre productores y consumidores.</description>
+    </item>
+    <item>
+      <title>Contratos de Integracion</title>
+      <link>http://localhost:1313/mvp/dominio/contratos-integracion/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/contratos-integracion/index.html</guid>
+      <description>Marco de integracion Responde: para que existe este documento, que regula dentro de la colaboracion entre bounded contexts y de donde obtiene su autoridad semantica.&#xA;Definir contratos de integracion semantica entre bounded contexts para operaciones sync/async, garantias, errores de negocio, idempotencia y compatibilidad de MVP.&#xA;RF/RNF aprobados en /mvp/producto/catalogo-rf/ y /mvp/producto/catalogo-rnf/. Fronteras y relaciones en /mvp/dominio/mapa-contexto/. Lenguaje canonico en /mvp/dominio/lenguaje-ubicuo/. Procesos, ownership e idempotencia global en /mvp/dominio/comportamiento-global/. Eventos de dominio en /mvp/dominio/eventos-dominio/. Reglas e invariantes en /mvp/dominio/reglas-invariantes/. Gobierno de integracion Responde: que principios gobiernan las integraciones, cuando deben ser sincronas o asincronas y que limites de confianza deben respetarse entre bounded contexts.</description>
+    </item>
+    <item>
+      <title>Contextos Delimitados</title>
+      <link>http://localhost:1313/mvp/dominio/contextos-delimitados/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/contextos-delimitados/index.html</guid>
+      <description>Marco tactico Responde: que organiza esta capa tactica del dominio y como debe leerse el detalle de cada contexto delimitado.&#xA;Catalogo tactico de bounded contexts del dominio MVP con su responsabilidad local y detalle por artefacto (overview, modelo, agregados, comandos, eventos, politicas, repositories/ports y anti-corruption).&#xA;Contextos Responde: que bounded contexts componen la capa tactica y donde consultar el detalle de cada uno.</description>
+    </item>
+    <item>
+      <title>Trazabilidad de Dominio</title>
+      <link>http://localhost:1313/mvp/dominio/trazabilidad/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/trazabilidad/index.html</guid>
+      <description>Marco de trazabilidad Responde: para que existe esta matriz, que considera cubierto en dominio y como se conecta el pilar con sus salidas y evidencias.&#xA;Consolidar la trazabilidad del pilar de dominio para MVP, relacionando RF/RNF con bounded contexts y con evidencia explicita en los artefactos del propio pilar.&#xA;Criterio de cierre Responde: bajo que criterio un requisito se considera cubierto en dominio o se deja trazado fuera de su alcance directo.</description>
+    </item>
+    <item>
+      <title>Evolucion</title>
+      <link>http://localhost:1313/mvp/dominio/evolucion/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/dominio/evolucion/index.html</guid>
+      <description>Marco de evolucion Responde: para que existe esta vista de evolucion y que cambios del dominio gobierna sin romper su baseline semantico.&#xA;Gobernar como cambia el dominio de ArkaB2B sin perder coherencia conceptual: que cambios son compatibles, cuando existe ruptura semantica, que decisiones ya estan cerradas y que deuda conceptual se acepta explicitamente en MVP.&#xA;Compatibilidad semantica Responde: que tipos de cambios son compatibles y cuales rompen el significado actual del dominio. Cambios compatibles:</description>
+    </item>
+  </channel>
+</rss>

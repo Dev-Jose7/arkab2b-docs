@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>9. Eventos y DLQ :: ArkaB2B Docs</title>
+    <link>http://localhost:1313/mvp/operacion/eventos-dlq/index.html</link>
+    <description>Operacion del bus de eventos, control de DLQ, reprocesos, lag de consumidores e idempotencia operacional.</description>
+    <generator>Hugo</generator>
+    <language>es-CO</language>
+    <atom:link href="http://localhost:1313/mvp/operacion/eventos-dlq/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Operacion del Broker</title>
+      <link>http://localhost:1313/mvp/operacion/eventos-dlq/operacion-broker/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/operacion/eventos-dlq/operacion-broker/index.html</guid>
+      <description>Objetivo Operar el broker compatible Kafka como canal oficial de eventos de dominio, con confiabilidad suficiente para core y proyecciones.&#xA;Controles operativos minimos Monitorear disponibilidad de cluster, throughput y latencia de publish. Monitorear lag por consumer group y particion. Monitorear ratio de retries y entradas a DLQ. Auditar cambios de topicos, particiones y ACL. Politica de topicos Naming versionado (&lt;bc&gt;.&lt;event-name&gt;.v&lt;major&gt;). Cambios breaking requieren nueva version y convivencia. Prohibido reutilizar topico para semantica diferente. Operacion de productores Outbox obligatorio para hechos de negocio materializados. Relay asincrono con reintentos controlados. Si falla publicacion, se conserva estado de negocio y se atiende por retry/DLQ sin rollback transaccional indebido. Operacion de consumidores Dedupe por eventId + referencia de consumidor. Retry solo en fallos transitorios. En fallo no recuperable: enrutar a DLQ y registrar evidencia.</description>
+    </item>
+    <item>
+      <title>DLQ y Reprocesos</title>
+      <link>http://localhost:1313/mvp/operacion/eventos-dlq/dlq-reprocesos/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/operacion/eventos-dlq/dlq-reprocesos/index.html</guid>
+      <description>Objetivo Definir cuando enviar mensajes a DLQ y como reprocesarlos sin romper idempotencia ni semantica del dominio.&#xA;Criterios de enrutamiento a DLQ payload invalido/no compatible con contrato vigente; error no recuperable de negocio en consumidor; agotamiento de reintentos transitorios. Criterios de reproceso existe causa raiz identificada y corregida; mensaje mapeable a contrato vigente; impacto de replay evaluado y idempotencia confirmada; ventana de reproceso aprobada por responsable del servicio. Procedimiento de reproceso Congelar nuevas promociones si el incidente es activo. Clasificar lote (reprocesable/descartable). Reinyectar mensajes controladamente por lote. Verificar dedupe, side effects y convergencia. Registrar evidencia de resultado y cierre. Criterios de descarte evento corrupto sin recuperacion confiable; semantica obsoleta fuera de ventana de convivencia; duplicado confirmado sin side effects pendientes.</description>
+    </item>
+    <item>
+      <title>Lag, Reintentos e Idempotencia</title>
+      <link>http://localhost:1313/mvp/operacion/eventos-dlq/lag-reintentos-idempotencia/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/operacion/eventos-dlq/lag-reintentos-idempotencia/index.html</guid>
+      <description>Objetivo Operar backlog y reintentos del plano async manteniendo idempotencia operacional y tiempos de convergencia aceptables.&#xA;Senales clave consumer_lag por grupo/topico. ratio de retries por consumidor. tasa de dedupe (processed_event / noop idempotente). tiempo de convergencia a estado estable. Reglas de reintento Retry con backoff para fallos transitorios. Sin retry infinito. Escalar a DLQ cuando supere umbral de intentos. Reglas de idempotencia operacional Repeticion de mensaje no debe duplicar mutacion. Consumidor debe registrar consumo aplicado o noop. Reproceso debe validar no duplicidad de efectos de negocio. Acciones ante lag alto Confirmar salud de consumidor y dependencias. Validar si hay cuello de botella en DB/cache/red. Ajustar paralelismo/lote segun runbook. Si persiste, aplicar degradacion controlada y escalamiento.</description>
+    </item>
+    <item>
+      <title>Trazabilidad de Eventos</title>
+      <link>http://localhost:1313/mvp/operacion/eventos-dlq/trazabilidad-eventos/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/operacion/eventos-dlq/trazabilidad-eventos/index.html</guid>
+      <description>Objetivo Asegurar trazabilidad operativa de extremo a extremo para eventos publicados, consumidos, reprocesados o descartados.&#xA;Metadata minima eventId, eventType, eventVersion, occurredAt. tenantId, traceId, correlationId. producer, consumerRef, processingResult. Cadena de trazabilidad esperada decision de dominio -&gt; outbox -&gt; broker -&gt; consumidor -&gt; side effect -&gt; auditoria</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ADR :: ArkaB2B Docs</title>
+    <link>http://localhost:1313/mvp/arquitectura/arc42/adr/index.html</link>
+    <description>Marco de decisiones Responde: que decisiones estructurales quedaron registradas como ADR y como debe leerse su historial.&#xA;Los ADR consolidan decisiones que cambian estilo arquitectonico, estrategia de integracion, versionado de contratos, aislamiento multi-tenant o limites estructurales del sistema.&#xA;Registro Responde: que ADR componen el baseline actual del ciclo.</description>
+    <generator>Hugo</generator>
+    <language>es-CO</language>
+    <atom:link href="http://localhost:1313/mvp/arquitectura/arc42/adr/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ADR-001 Estilo Arquitectonico por Contexto</title>
+      <link>http://localhost:1313/mvp/arquitectura/arc42/adr/adr-001-estilo-arquitectonico-por-contexto/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/arquitectura/arc42/adr/adr-001-estilo-arquitectonico-por-contexto/index.html</guid>
+      <description>Estado Accepted&#xA;Contexto El dominio ArkaB2B esta definido por bounded contexts con reglas de negocio fuertes y necesidades de evolucion independiente.&#xA;Decision Adoptar microservicios por BC con arquitectura hexagonal interna (adapter-in, application, domain, adapter-out).</description>
+    </item>
+    <item>
+      <title>ADR-002 Integracion Sync-Async con Outbox</title>
+      <link>http://localhost:1313/mvp/arquitectura/arc42/adr/adr-002-integracion-sync-async-outbox/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/arquitectura/arc42/adr/adr-002-integracion-sync-async-outbox/index.html</guid>
+      <description>Estado Accepted&#xA;Contexto El checkout requiere validaciones criticas inmediatas, pero notificaciones y reportes deben ser desacoplados para resiliencia.&#xA;Decision Usar integracion mixta: sync para validaciones criticas (order con inventory/directory/catalog) y async por eventos para propagacion, con outbox en productores e idempotencia en consumidores.</description>
+    </item>
+    <item>
+      <title>ADR-003 Separacion Catalogo e Inventario</title>
+      <link>http://localhost:1313/mvp/arquitectura/arc42/adr/adr-003-separacion-catalogo-inventario/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/arquitectura/arc42/adr/adr-003-separacion-catalogo-inventario/index.html</guid>
+      <description>Estado Accepted&#xA;Contexto En enfoques legacy se fusionaba producto/precio con stock, aumentando ambiguedad semantica y riesgo de sobreventa.&#xA;Decision Separar catalog-service (vendible/precio) de inventory-service (stock/reservas/disponibilidad reservable) con contratos explicitos.</description>
+    </item>
+    <item>
+      <title>ADR-004 Versionado de Contratos</title>
+      <link>http://localhost:1313/mvp/arquitectura/arc42/adr/adr-004-versionado-de-contratos/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/arquitectura/arc42/adr/adr-004-versionado-de-contratos/index.html</guid>
+      <description>Estado Accepted&#xA;Contexto El frontend externo y consumidores de eventos requieren estabilidad de integracion y control de cambios breaking.&#xA;Decision Versionar APIs por path major (/api/v1) y eventos por eventVersion + topic versionado. Cambios breaking obligan nueva major y ventana de convivencia.</description>
+    </item>
+    <item>
+      <title>ADR-005 Multitenancy y Auditoria</title>
+      <link>http://localhost:1313/mvp/arquitectura/arc42/adr/adr-005-multitenancy-y-auditoria/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/arquitectura/arc42/adr/adr-005-multitenancy-y-auditoria/index.html</guid>
+      <description>Estado Accepted&#xA;Contexto ArkaB2B requiere segregacion estricta por organizacion y trazabilidad de mutaciones de stock/pedido/pago.&#xA;Decision Aplicar validacion de tenant/rol en borde y dominio, y exigir metadata de auditoria (actorId, tenantId, traceId, correlationId) en mutaciones criticas.</description>
+    </item>
+  </channel>
+</rss>

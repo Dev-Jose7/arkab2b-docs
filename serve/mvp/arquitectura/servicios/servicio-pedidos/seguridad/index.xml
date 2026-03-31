@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Seguridad :: ArkaB2B Docs</title>
+    <link>http://localhost:1313/mvp/arquitectura/servicios/servicio-pedidos/seguridad/index.html</link>
+    <description>Marco de la categoria Responde: que tipo de decisiones locales concentra esta carpeta dentro del servicio. Seguridad del servicio de pedidos.&#xA;Artefactos Responde: que documentos concretos componen esta categoria.&#xA;Arquitectura de Seguridad</description>
+    <generator>Hugo</generator>
+    <language>es-CO</language>
+    <atom:link href="http://localhost:1313/mvp/arquitectura/servicios/servicio-pedidos/seguridad/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Arquitectura de Seguridad</title>
+      <link>http://localhost:1313/mvp/arquitectura/servicios/servicio-pedidos/seguridad/arquitectura-seguridad/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/arquitectura/servicios/servicio-pedidos/seguridad/arquitectura-seguridad/index.html</guid>
+      <description>Proposito Definir controles de seguridad para order-service sobre operaciones de carrito, checkout, pedido y pago manual, protegiendo integridad de compra, aislamiento tenant y trazabilidad.&#xA;Alcance y fronteras Incluye amenazas principales (STRIDE), controles preventivos/detectivos y hardening de endpoints. Incluye tratamiento de datos sensibles operativos y auditoria. Excluye requisitos regulatorios legales de cada pais fuera del alcance tecnico de la fase. Threat model (resumen) Categoria Amenaza Impacto Control principal Spoofing actor no autorizado intenta confirmar pedido o registrar pago fraude y corrupcion de datos JWT validado en api-gateway-service + autorizacion contextual (RBAC + tenant checks) en order-service Tampering alteracion de montos/lineas durante checkout pedido/pago inconsistente snapshots inmutables + validacion dominio Repudiation operador niega cambios de estado o pago manual perdida de trazabilidad order_audit + traceId/correlationId Information disclosure exposicion de pedidos de otro tenant incidente de seguridad tenant isolation en app+dominio DoS spam de checkout o pagos manuales degradacion de flujo core rate limit + backpressure + cuotas Elevation of privilege usuario B2B intenta usar endpoints de operador fraude operativo permisos granulares por endpoint Superficie de ataque flowchart LR EXT[&#34;Frontend B2B / Backoffice&#34;] --&gt; GW[&#34;API Gateway&#34;] GW --&gt; ORD[&#34;order-service&#34;] ORD --&gt; DB[&#34;Order DB&#34;] ORD --&gt; REDIS[&#34;redis-cache&#34;] ORD --&gt; KAFKA[&#34;kafka-cluster&#34;] ORD --&gt; EXTCORE[&#34;Inventory/Directory/Catalog&#34;] ORD --&gt; OBS[&#34;logs/metrics/traces&#34;] Controles de autenticacion/autorizacion Operacion Control requerido carrito y checkout rol tenant_user + match tenant_id/organization_id cancelar pedido y transicion de estado rol arka_operator + permiso ORDER_STATE_WRITE registrar pago manual rol arka_operator o arka_admin + permiso ORDER_PAYMENT_WRITE consultas por operador rol interno autorizado + scoping por tenant/organizacion scheduler interno identidad tecnica system_scheduler Regla de hardening posterior:</description>
+    </item>
+  </channel>
+</rss>

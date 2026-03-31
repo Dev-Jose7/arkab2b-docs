@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>11. Seguridad Operacional :: ArkaB2B Docs</title>
+    <link>http://localhost:1313/mvp/operacion/seguridad-operacional/index.html</link>
+    <description>Controles operativos de seguridad: accesos, secretos, eventos de seguridad, proteccion de datos sensibles en logs y hardening diferido.</description>
+    <generator>Hugo</generator>
+    <language>es-CO</language>
+    <atom:link href="http://localhost:1313/mvp/operacion/seguridad-operacional/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Accesos Operativos</title>
+      <link>http://localhost:1313/mvp/operacion/seguridad-operacional/accesos-operativos/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/operacion/seguridad-operacional/accesos-operativos/index.html</guid>
+      <description>Politica base Acceso operacional por minimo privilegio y cuentas nominales.&#xA;Reglas separar accesos de lectura y administracion. registrar todo acceso privilegiado. prohibido compartir credenciales entre personas/equipos. limitar duracion de accesos elevados a ventana de trabajo. revocar accesos temporales al cierre de incidente/cambio. Roles operativos minimos operador Arka administrador/soporte Arka owner tecnico de servicio Acceso por entorno Entorno Acceso humano Acceso maquina dev equipos tecnicos autorizados cuentas de servicio de desarrollo qa equipos tecnicos + QA autorizado cuentas de servicio dedicadas prod guardia/operaciones y owners autorizados cuentas de servicio de produccion aisladas Separacion humano vs maquina Personas operan con cuentas nominales auditables. Servicios operan con cuentas de servicio y secretos dedicados. Ninguna cuenta de servicio debe usarse para acceso humano. Contenedores/imagenes no portan credenciales embebidas; consumen identidades tecnicas inyectadas por entorno. Auditoria operativa minima alta/baja/cambio de permisos; accesos a recursos sensibles; ejecucion de acciones administrativas criticas. Nota de baseline MFA administrativo queda diferido como hardening futuro no bloqueante. No es requisito de cierre del baseline MVP.</description>
+    </item>
+    <item>
+      <title>Secretos y Rotacion</title>
+      <link>http://localhost:1313/mvp/operacion/seguridad-operacional/secretos-rotacion/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/operacion/seguridad-operacional/secretos-rotacion/index.html</guid>
+      <description>Baseline operativo secretos gestionados por entorno en canal oficial de secretos. prohibido hardcodear secretos en codigo o repositorio documental. cambios de secretos con auditoria y doble validacion operativa. secretos inyectados al runtime por entorno; nunca embebidos en imagen Docker. Rotacion rotacion planificada periodica para secretos criticos. rotacion urgente via runbook ante compromiso. validar servicio dependiente inmediatamente tras rotacion. Tipos de secretos operativos aplicacion (tokens internos, claves API externas); base de datos por servicio; broker/event bus (publish/consume); observabilidad (ingesta de metricas/trazas si aplica); material criptografico de IAM relacionado con JWT/JWKS. Triggers de rotacion urgente sospecha de exposicion por incidente de seguridad; uso no autorizado detectado en auditoria; fuga potencial por error de configuracion. Validacion post-rotacion Verificar conectividad/autenticacion al recurso protegido. Confirmar ausencia de errores de autenticacion en logs. Validar flujo critico del servicio en smoke operativo. Confirmar que secreto revocado no siga en uso. Confirmar reinicio/recarga controlada de contenedores afectados cuando aplique al entorno. Evidencia minima identificador de secreto fecha de rotacion servicios impactados verificacion posterior</description>
+    </item>
+    <item>
+      <title>Eventos de Seguridad</title>
+      <link>http://localhost:1313/mvp/operacion/seguridad-operacional/eventos-seguridad/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/operacion/seguridad-operacional/eventos-seguridad/index.html</guid>
+      <description>Eventos a monitorear intentos fallidos de autenticacion anormal errores de validacion JWT/JWKS cambios de configuracion critica acceso privilegiado fuera de patron rotaciones de secretos y fallas post-rotacion errores de autorizacion con potencial cross-tenant fallos de arranque por configuracion/secretos faltantes en contenedor Respuesta clasificar severidad segun impacto abrir incidente cuando corresponda registrar evidencia y accion de contencion Fuentes operativas logs estructurados de gateway e IAM; auditoria de accesos y cambios operativos; metricas de error authn/authz por servicio; trazas de flujos criticos con fallo de seguridad. JWKS JWKS es postura oficial del baseline para publicacion de llaves y validacion interoperable de JWT en consumidores autorizados.</description>
+    </item>
+    <item>
+      <title>Datos Sensibles en Logs</title>
+      <link>http://localhost:1313/mvp/operacion/seguridad-operacional/datos-sensibles-logs/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/operacion/seguridad-operacional/datos-sensibles-logs/index.html</guid>
+      <description>Regla base No registrar payloads sensibles completos ni datos personales innecesarios.&#xA;Permitido identificadores tecnicos codigos de error metadatos de trazabilidad (traceId, correlationId, tenantId) actorId tecnico cuando corresponda a auditoria No permitido tokens completos secretos payloads completos con PII sensible credenciales de broker, DB o proveedores externos llaves privadas o material criptografico sensible Politica minima de masking/redaction enmascarar correos, telefonos y documentos personales cuando se requiera log. registrar solo ultimos caracteres de identificadores sensibles si se necesita correlacion operativa. aplicar redaccion de campos sensibles antes de persistir logs. Control operacional revisiones periodicas de logs y sanitizacion en adaptadores de entrada/salida. validacion de que errores de negocio no expongan payloads sensibles. evidencia de revision en incidentes de seguridad y postmortems aplicables. centralizar lectura de logs desde stdout/stderr del runtime del contenedor.</description>
+    </item>
+    <item>
+      <title>Hardening Diferido</title>
+      <link>http://localhost:1313/mvp/operacion/seguridad-operacional/hardening-diferido/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/operacion/seguridad-operacional/hardening-diferido/index.html</guid>
+      <description>Fuera del baseline operativo actual MFA administrativo obligatorio (no es requisito de salida de MVP) federacion enterprise completa con IdP externo permisos hipergranulares por pais/segmento cumplimiento regulatorio exhaustivo por pais hardening profundo por servicio Clasificacion Estas capacidades quedan como evolucion posterior y no bloquean el freeze operativo de MVP.</description>
+    </item>
+  </channel>
+</rss>

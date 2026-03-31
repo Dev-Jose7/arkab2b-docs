@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Trazabilidad :: ArkaB2B Docs</title>
+    <link>http://localhost:1313/mvp/producto/trazabilidad/index.html</link>
+    <description>Proposito del archivo Tablero de trazabilidad del pilar Producto para conectar:&#xA;01-SRS-Ligero.md (outcomes de negocio) 02-Catalogo-RF/ (que funcional) 03-Catalogo-RNF/ (que no funcional) Este archivo no define el detalle interno de otros pilares; solo gestiona relaciones y estado de producto.&#xA;Alcance de la trazabilidad Incluye: cobertura de outcomes, estado de requisitos, dependencias funcionales, evidencia documental de producto. No incluye: decisiones internas de dominio, diseno tecnico, implementacion tecnica o runbooks operativos. Convenciones IDs validos: FR-001... y NFR-001.... Estado de aprobacion permitido: Draft | Approved | Rejected. Estado de implementacion permitido: Pendiente | En progreso | Hecho | Deprecado. Ciclo de vida actual: MVP. Outcomes SRS vigentes: M1..M5 (definidos en SRS Ligero). N/A en Outcome significa que el requisito es habilitador y no mide directamente un outcome del SRS. Definicion de trazabilidad (Producto) Cadena oficial de trazabilidad: Outcome (SRS) -&gt; FR/NFR -&gt; Evidencia de producto -&gt; Estado</description>
+    <generator>Hugo</generator>
+    <language>es-CO</language>
+    <atom:link href="http://localhost:1313/mvp/producto/trazabilidad/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

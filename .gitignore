@@ -1,2 +1,6 @@
 .idea/
 governance/
+legacy/
+public/
+.hugo_build.lock
+resources/_gen/

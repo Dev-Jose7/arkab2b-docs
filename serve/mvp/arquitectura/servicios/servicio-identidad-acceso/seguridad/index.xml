@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Seguridad :: ArkaB2B Docs</title>
+    <link>http://localhost:1313/mvp/arquitectura/servicios/servicio-identidad-acceso/seguridad/index.html</link>
+    <description>Marco de la categoria Responde: que tipo de decisiones locales concentra esta carpeta dentro del servicio. Seguridad del servicio de identidad y acceso.&#xA;Artefactos Responde: que documentos concretos componen esta categoria.&#xA;Arquitectura de Seguridad</description>
+    <generator>Hugo</generator>
+    <language>es-CO</language>
+    <atom:link href="http://localhost:1313/mvp/arquitectura/servicios/servicio-identidad-acceso/seguridad/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Arquitectura de Seguridad</title>
+      <link>http://localhost:1313/mvp/arquitectura/servicios/servicio-identidad-acceso/seguridad/arquitectura-seguridad/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/mvp/arquitectura/servicios/servicio-identidad-acceso/seguridad/arquitectura-seguridad/index.html</guid>
+      <description>Proposito Definir el diseno de seguridad y privacidad de identity-access-service, cubriendo amenazas, controles tecnicos, manejo de secretos, sesiones y cumplimiento base.&#xA;Alcance y fronteras Incluye seguridad de autenticacion, autorizacion, token, sesion y APIs administrativas IAM. Incluye controles de datos sensibles y auditoria. Excluye hardening de infraestructura de red (documentado a nivel plataforma). Excluye oauth2 y api_key como flujos activos del MVP. MFA para cuentas administrativas Arka (arka_admin) queda diferido a hardening posterior; no bloquea el freeze del baseline arquitectonico MVP ni obliga a redisenar ahora identity-access-service. La ruta evolutiva prevista para credenciales mantiene OAuth2 solo si se formaliza SSO corporativo y API key unicamente para integraciones tecnicas no humanas. Estado actual del servicio El flujo activo del servicio se basa en autenticacion local con password, emision/verificacion JWT, sesiones revocables, APIs administrativas IAM y listeners de seguridad. JwksProviderPort y JwksKeyProviderAdapter soportan resolucion de llaves por kid para firma y verificacion. JWKS se documenta como contrato estandar para distribuir llaves publicas a verificadores autorizados. auth_audit registra evidencia operativa de seguridad; la correlacion (traceId, correlationId) se conserva hoy a traves del payload tecnico y de los eventos de dominio publicados por outbox. Ruta evolutiva de credenciales Credencial Estado actual Rol esperado en IAM Regla de activacion PASSWORD activa credencial primaria de usuarios humanos B2B se mantiene como baseline del MVP actual MFA preparada, no obligatoria en baseline actual segundo factor para endurecer autenticacion interactiva de alto privilegio activar en etapa de hardening/operacion posterior al freeze documental del MVP OAUTH2 preparado en modelo, no activo credencial primaria alternativa para SSO corporativo activar solo si existe decision formal de federacion con IdP externo API_KEY preparada en modelo, no activa credencial tecnica para integraciones y automatizaciones activar como canal separado del login humano Reglas aplicadas:</description>
+    </item>
+  </channel>
+</rss>
