@@ -3,7 +3,7 @@ title: "MVP"
 weight: 10
 params:
   ciclo: "mvp"
-  baselineVersion: "0.1.0"
+  baselineVersion: "0.1.1"
   sidebarmenus:
     - type: page
       identifier: ciclo
@@ -30,7 +30,7 @@ Este ciclo concentra el trabajo de definicion, validacion y trazabilidad de requ
 ## Convencion y versionado
 
 - Ciclo vigente: `mvp`.
-- Version documental del baseline: `0.1.0`.
+- Version documental del baseline: `0.1.1`.
 
 ## Alcance actual
 
@@ -44,11 +44,11 @@ Este ciclo concentra el trabajo de definicion, validacion y trazabilidad de requ
 
 | Pilar | Estado | Comentario |
 |---|---|---|
-| 00-producto | En progreso | Definicion y trazabilidad activa del ciclo. |
-| 01-dominio | En progreso | Baseline de dominio materializado y trazado a FR/NFR de MVP. |
-| 02-arquitectura | En progreso | Pilar materializado desde dominio con vistas globales, dossiers por servicio y trazabilidad tecnica. |
-| 03-calidad | En progreso | Baseline de calidad y estrategia global de pruebas iniciados sobre los tres pilares. |
-| 04-operacion | En progreso | Pilar operativo construido para ambientes, observabilidad, incidentes y continuidad sobre baseline congelado. |
+| 00-producto | Cerrado | Alcance, FR/NFR, glosario y trazabilidad funcional congelados para `mvp`. |
+| 01-dominio | Cerrado | Semantica, reglas, eventos y contratos de integracion alineados al baseline vigente. |
+| 02-arquitectura | Cerrado | Vistas globales y dossiers por servicio coherentes con decisiones tecnicas congeladas. |
+| 03-calidad | Cerrado | Sistema de verificacion y certificacion minima definido de forma auditable. |
+| 04-operacion | Cerrado | Baseline operativo listo para despliegue, observabilidad e incidentes en `v0.1.1`. |
 
 ## Artefactos disponibles en MVP
 
@@ -82,7 +82,7 @@ Este ciclo concentra el trabajo de definicion, validacion y trazabilidad de requ
 3. Confirmar prioridades y estado en trazabilidad.
 4. Consumir dominio como baseline semantico ejecutable.
 5. Revisar arquitectura para definir servicios, contratos, seguridad, runtime, datos y despliegue del ciclo.
-6. Ejecutar los pilares restantes tomando como entrada los IDs aprobados y la salida del pilar anterior.
+6. Usar calidad y operacion como guia de verificacion y ejecucion sobre el baseline cerrado.
 
 ## Regla de evolucion
 

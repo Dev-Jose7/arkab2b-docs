@@ -6,7 +6,7 @@ No contiene el codigo fuente de los microservicios: su funcion es actuar como **
 ## Estado actual del baseline
 
 - **Lifecycle actual:** `mvp`
-- **Version documental del baseline:** `0.1.0`
+- **Version documental del baseline:** `0.1.1`
 - **Estado del baseline:** **cerrado y listo para implementacion**
 
 Este baseline documenta de forma integrada producto, dominio, arquitectura, calidad y operacion para un backend B2B multi-tenant.
@@ -29,7 +29,7 @@ Toda la documentacion vigente esta en `content/mvp/` y se organiza en cinco pila
 ## Relacion entre lifecycle y version
 
 - `mvp` identifica la etapa del producto.
-- `0.1.0` identifica la version documental del baseline dentro de esa etapa.
+- `0.1.1` identifica la version documental del baseline dentro de esa etapa.
 
 No deben confundirse con versiones de runtime o versionado de artefactos de despliegue.
 
@@ -69,4 +69,4 @@ hugo
 
 ## Declaracion de cierre del baseline
 
-El baseline documental `mvp` version `0.1.0` se considera **cerrado y listo para implementacion** del sistema ArkaB2B conforme a los cinco pilares documentados.
+El baseline documental `mvp` version `0.1.1` se considera **cerrado y listo para implementacion** del sistema ArkaB2B conforme a los cinco pilares documentados.
