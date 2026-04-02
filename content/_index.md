@@ -7,13 +7,13 @@ url = "/"
 ## Propósito
 
 Este sitio es la fuente de verdad documental de ArkaB2B.
-Su objetivo es organizar los pilares de ingeniería de software y sus artefactos por ciclo de vida, manteniendo trazabilidad clara a lo largo del proceso entre producto, diseño e implementación.
+Su objetivo es organizar los pilares de ingeniería de software y sus artefactos por ciclo de vida, manteniendo trazabilidad clara entre producto, dominio, arquitectura, calidad y operación.
 
 ## Estado actual
 
-| Ciclo de vida | Version documental baseline | Pilar de producto | Pilar de dominio | Pilar de arquitectura | Próximo foco |
-|---|---|---|---|---|---|
-| MVP | 0.1.0 | Activo | Activo | Activo | 03-calidad |
+| Ciclo de vida | Version documental baseline | Producto | Dominio | Arquitectura | Calidad | Operacion | Estado |
+|---|---|---|---|---|---|---|---|
+| MVP | 0.1.1 | Cerrado | Cerrado | Cerrado | Cerrado | Cerrado | Baseline listo para implementacion |
 
 ## Cómo navegar (ciclo-de-vida-first)
 
@@ -31,4 +31,6 @@ Su objetivo es organizar los pilares de ingeniería de software y sus artefactos
 4. Continúa en `01-dominio` para validar mapa de contexto, lenguaje ubicuo, reglas y contratos.
 5. Revisa la trazabilidad de dominio para cobertura RF/RNF por componente.
 6. Usa el glosario y la trazabilidad de dominio para validar semántica antes de pasar a arquitectura.
-7. Revisa `02-arquitectura` para aterrizar servicios, contratos técnicos, vistas globales y decisiones de despliegue del ciclo.
+7. Revisa `02-arquitectura` para aterrizar servicios, contratos tecnicos, vistas globales y decisiones de despliegue del ciclo.
+8. Usa `03-calidad` para implementar y verificar el sistema con mapeo FR/NFR, compuertas y evidencia.
+9. Usa `04-operacion` para ejecutar despliegue, observabilidad, runbooks e incidentes en el baseline vigente.
