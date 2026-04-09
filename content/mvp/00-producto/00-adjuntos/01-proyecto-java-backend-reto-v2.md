@@ -4,14 +4,14 @@ weight: 1
 url: "/mvp/producto/adjuntos/proyecto-java-backend-reto-v2/"
 ---
 
-# RETO PROGRESIVO POR MÓDULOS
-## JAVA BACKEND - V2
+## RETO PROGRESIVO POR MÓDULOS
+### JAVA BACKEND - V2
 
 ---
 
 > Nota editorial: este adjunto se conserva como antecedente historico de contexto y no define aperturas vigentes del baseline `mvp`.
 
-# I. DESCRIPCIÓN DEL RETO
+## I. DESCRIPCIÓN DEL RETO
 
 Arka es una empresa colombiana distribuidora de accesorios para PC.
 
@@ -25,7 +25,7 @@ Además, Arka comenzó su plan de expansión en diferentes países de Latinoamé
 
 ---
 
-## Contexto del Negocio
+### Contexto del Negocio
 
 Aparte de gestionar los pedidos, Arka busca la **autogestión de sus clientes** al momento de:
 
@@ -48,7 +48,7 @@ Para que el negocio pueda crecer como se espera, es necesario:
 
 ---
 
-## Necesidades del Sistema
+### Necesidades del Sistema
 
 La compañía requiere un sistema que permita automatizar:
 
@@ -67,7 +67,7 @@ El objetivo es:
 
 ---
 
-## Problemas Actuales
+### Problemas Actuales
 
 Actualmente, la empresa enfrenta varios inconvenientes:
 
@@ -83,7 +83,7 @@ Estas situaciones han obstaculizado el plan de expansión.
 
 ---
 
-## Características del Catálogo
+### Características del Catálogo
 
 Arka:
 
@@ -98,7 +98,7 @@ Esto implica que los clientes necesitan:
 
 ---
 
-## Enfoque de Transformación Digital
+### Enfoque de Transformación Digital
 
 Arka ha decidido enfocar su inversión en transformación digital para fortalecer:
 
@@ -112,7 +112,7 @@ Arka ha decidido enfocar su inversión en transformación digital para fortalece
 
 ---
 
-## Alcance Inicial
+### Alcance Inicial
 
 Inicialmente, la solución estará enfocada en el **backend**, debido a la urgencia del negocio.
 

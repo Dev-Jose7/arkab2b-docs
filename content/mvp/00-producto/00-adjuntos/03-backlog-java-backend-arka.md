@@ -4,9 +4,9 @@ weight: 3
 url: "/mvp/producto/adjuntos/backlog-java-backend-arka/"
 ---
 
-# Backlog del Proyecto Java Backend - Arka
+## Backlog del Proyecto Java Backend - Arka
 
-## 1. Introducción
+### 1. Introducción
 
 Este backlog contiene las historias de usuario que se desarrollarán a lo largo del curso para la implementación del backend del sistema de Arka.
 
@@ -14,11 +14,11 @@ Su objetivo es garantizar que la empresa pueda gestionar eficientemente su inven
 
 ---
 
-## 2. Historias de Usuario
+### 2. Historias de Usuario
 
-### Módulo 1: Gestión de Inventario y Abastecimiento
+#### Módulo 1: Gestión de Inventario y Abastecimiento
 
-#### HU1 - Registrar productos en el sistema
+##### HU1 - Registrar productos en el sistema
 
 **Como** administrador  
 **Quiero** registrar nuevos productos con sus características  
@@ -37,7 +37,7 @@ Su objetivo es garantizar que la empresa pueda gestionar eficientemente su inven
 
 ---
 
-#### HU2 - Actualizar stock de productos
+##### HU2 - Actualizar stock de productos
 
 **Como** administrador  
 **Quiero** actualizar la cantidad de productos en stock  
@@ -51,7 +51,7 @@ Su objetivo es garantizar que la empresa pueda gestionar eficientemente su inven
 
 ---
 
-#### HU3 - Generar reportes de productos por abastecer
+##### HU3 - Generar reportes de productos por abastecer
 
 **Como** administrador  
 **Quiero** recibir reportes de productos con bajo stock  
@@ -65,9 +65,9 @@ Su objetivo es garantizar que la empresa pueda gestionar eficientemente su inven
 
 ---
 
-### Módulo 2: Gestión de Órdenes de Compra
+#### Módulo 2: Gestión de Órdenes de Compra
 
-#### HU4 - Registrar una orden de compra
+##### HU4 - Registrar una orden de compra
 
 **Como** cliente  
 **Quiero** poder registrar una orden de compra con múltiples productos  
@@ -81,7 +81,7 @@ Su objetivo es garantizar que la empresa pueda gestionar eficientemente su inven
 
 ---
 
-#### HU5 - Modificar una orden de compra
+##### HU5 - Modificar una orden de compra
 
 **Como** cliente  
 **Quiero** modificar mi pedido antes de su confirmación  
@@ -94,7 +94,7 @@ Su objetivo es garantizar que la empresa pueda gestionar eficientemente su inven
 
 ---
 
-#### HU6 - Notificación de cambio de estado de pedido
+##### HU6 - Notificación de cambio de estado de pedido
 
 **Como** cliente  
 **Quiero** recibir notificaciones sobre el estado de mi pedido  
@@ -111,9 +111,9 @@ Su objetivo es garantizar que la empresa pueda gestionar eficientemente su inven
 
 ---
 
-### Módulo 3: Reportes y Análisis de Ventas
+#### Módulo 3: Reportes y Análisis de Ventas
 
-#### HU7 - Generar reportes de ventas semanales
+##### HU7 - Generar reportes de ventas semanales
 
 **Como** administrador  
 **Quiero** generar reportes semanales de ventas  
@@ -129,7 +129,7 @@ Su objetivo es garantizar que la empresa pueda gestionar eficientemente su inven
 
 ---
 
-#### HU8 - Identificar carritos abandonados
+##### HU8 - Identificar carritos abandonados
 
 **Como** administrador  
 **Quiero** visualizar los carritos abandonados  
@@ -142,7 +142,7 @@ Su objetivo es garantizar que la empresa pueda gestionar eficientemente su inven
 
 ---
 
-## 3. Priorización
+### 3. Priorización
 
 Se recomienda priorizar las historias de usuario en el siguiente orden:
 
@@ -157,7 +157,7 @@ Se recomienda priorizar las historias de usuario en el siguiente orden:
 
 ---
 
-## 4. Conclusión
+### 4. Conclusión
 
 Este backlog proporciona una estructura clara para el desarrollo del backend del sistema de Arka.
 
@@ -171,9 +171,9 @@ A continuación, se desarrollarán los diagramas gráficos requeridos:
 
 ---
 
-# Diagramas del Sistema Arka
+## Diagramas del Sistema Arka
 
-## Diagrama de Base de Datos
+### Diagrama de Base de Datos
 
 Representa las entidades principales y sus relaciones:
 
@@ -185,7 +185,7 @@ Representa las entidades principales y sus relaciones:
 
 ---
 
-## Diagrama de Infraestructura
+### Diagrama de Infraestructura
 
 Muestra la interacción entre los diferentes componentes del sistema:
 
@@ -197,14 +197,14 @@ Muestra la interacción entre los diferentes componentes del sistema:
 
 ---
 
-## Diagrama de Arquitectura
+### Diagrama de Arquitectura
 
 Representa las diferentes capas del sistema:
 
-### 1. Capa de Presentación
+#### 1. Capa de Presentación
 - Frontend
 
-### 2. Capa de Aplicación
+#### 2. Capa de Aplicación
 - API Gateway
 - Servicios Backend:
     - Autenticación
@@ -212,17 +212,17 @@ Representa las diferentes capas del sistema:
     - Pedidos
     - Notificaciones
 
-### 3. Capa de Datos
+#### 3. Capa de Datos
 - Base de Datos
 - Conexión con Proveedores Externos
 
 ---
 
-# Plan de Acción
+## Plan de Acción
 
-## 1. Entregar una Base de Datos Lista para Usar
+### 1. Entregar una Base de Datos Lista para Usar
 
-### Opción 1: Archivo SQL predefinido
+#### Opción 1: Archivo SQL predefinido
 
 Crear un script SQL con:
 
@@ -232,18 +232,18 @@ Crear un script SQL con:
 
 Compatible con PostgreSQL o MySQL (AWS RDS)
 
-### Opción 2: Base de Datos en AWS RDS
+#### Opción 2: Base de Datos en AWS RDS
 
 - Configurar una instancia de Amazon RDS con la estructura ya creada
 - Proporcionar credenciales temporales
 
 ---
 
-## 2. Explicar Cómo Se Relaciona con Microservicios
+### 2. Explicar Cómo Se Relaciona con Microservicios
 
 - Crear guía o diagrama explicando cómo cada microservicio interactúa con la base de datos
 
-### Estrategias posibles:
+#### Estrategias posibles:
 
 **Opción 1:**  
 Base de datos única con esquemas separados por servicio
@@ -253,7 +253,7 @@ Cada microservicio tiene su propia base de datos y se comunican vía APIs
 
 ---
 
-## 3. Proporcionar Código Base y Ejemplos
+### 3. Proporcionar Código Base y Ejemplos
 
 Subir un repositorio en GitHub con un microservicio base que incluya:
 
@@ -263,7 +263,7 @@ Subir un repositorio en GitHub con un microservicio base que incluya:
 
 ---
 
-## 4. Sesión de Re-alineación
+### 4. Sesión de Re-alineación
 
 - Organizar sesión en vivo
 - Explicar conexión con AWS
@@ -271,7 +271,7 @@ Subir un repositorio en GitHub con un microservicio base que incluya:
 
 ---
 
-# Configuración de Conexión a Base de Datos (Spring Boot + AWS)
+## Configuración de Conexión a Base de Datos (Spring Boot + AWS)
 
 ```java
 package com.arka.config;

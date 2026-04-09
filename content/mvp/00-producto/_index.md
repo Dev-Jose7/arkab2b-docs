@@ -2,10 +2,19 @@
 title: "Producto"
 weight: 1
 url: "/mvp/producto/"
+aliases:
+  - "/mvp/producto/srs-ligero/"
+  - "/mvp/producto/trazabilidad/"
 ---
 
-Pilar de producto para ArkaB2B: alcance, requisitos funcionales y no funcionales,
-trazabilidad y lenguaje canonico.
+<div style="text-align:center; max-width: 900px; margin: 0 auto;">
 
-Este espacio concentra la definicion funcional del ciclo y las decisiones de alcance
-que guian implementacion, verificacion y operacion del baseline cerrado en `MVP`.
+<p>
+El pilar de Producto define el resultado de negocio que ArkaB2B debe lograr en el ciclo <code>MVP</code>, partiendo del problema real, los objetivos del sistema y el contexto de uso que justifica cada decision funcional.
+</p>
+
+<p>
+Su salida formal organiza capacidades funcionales, restricciones relevantes con impacto semantico, glosario preliminar y prioridades inmediatas, dejando una base clara y trazable para que Dominio formalice la verdad del negocio sin ambiguedad. La interfaz metodologica de esta salida se documenta en <a href="/mvp/producto/transicion-a-dominio/">Transicion a Dominio</a>.
+</p>
+
+</div>

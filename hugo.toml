@@ -3,6 +3,7 @@ languageCode = "es-CO"
 defaultContentLanguage = "es"
 title = "ArkaB2B Docs"
 theme = "hugo-theme-relearn"
+ignoreFiles = ['^content/mvp/docs(/|$)']
 
 [outputs]
   home = ["html", "rss"]

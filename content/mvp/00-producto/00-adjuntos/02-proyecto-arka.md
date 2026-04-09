@@ -4,12 +4,12 @@ weight: 2
 url: "/mvp/producto/adjuntos/proyecto-arka/"
 ---
 
-# PROYECTO ARKA
+## PROYECTO ARKA
 **Alejandro Marcano**
 
 ---
 
-# Definición General del Proyecto
+## Definición General del Proyecto
 
 Desarrollar una arquitectura de microservicios para una plataforma e-commerce, que permita gestionar de forma eficiente:
 
@@ -26,9 +26,9 @@ Garantizando:
 
 ---
 
-# Módulos del Proyecto
+## Módulos del Proyecto
 
-## 1. Gestión de Órdenes
+### 1. Gestión de Órdenes
 
 Orquestación del proceso de creación de órdenes.
 
@@ -42,7 +42,7 @@ Orquestación del proceso de creación de órdenes.
 
 ---
 
-## 2. Carrito
+### 2. Carrito
 
 Gestión del carrito de compras:
 
@@ -51,7 +51,7 @@ Gestión del carrito de compras:
 
 ---
 
-## 3. Catálogo
+### 3. Catálogo
 
 - Visualización del catálogo mediante integración con microservicios
 - Uso de **Spring Cloud**
@@ -59,7 +59,7 @@ Gestión del carrito de compras:
 
 ---
 
-## 4. Shipping
+### 4. Shipping
 
 Migración del servicio de envíos desde arquitectura monolítica hacia microservicios usando el patrón:
 
@@ -67,7 +67,7 @@ Migración del servicio de envíos desde arquitectura monolítica hacia microser
 
 ---
 
-## 5. Proveedores
+### 5. Proveedores
 
 - Administración de proveedores
 - Gestión de almacenes
@@ -77,7 +77,7 @@ Migración del servicio de envíos desde arquitectura monolítica hacia microser
 
 ---
 
-# Patrones de Microservicio
+## Patrones de Microservicio
 
 - API Gateway
 - Registro de Servicios
@@ -90,7 +90,7 @@ Migración del servicio de envíos desde arquitectura monolítica hacia microser
 
 ---
 
-# Servicios de AWS Utilizados
+## Servicios de AWS Utilizados
 
 - S3
 - SQS
@@ -105,23 +105,23 @@ Migración del servicio de envíos desde arquitectura monolítica hacia microser
 
 ---
 
-# Actividades del Proyecto
+## Actividades del Proyecto
 
 ---
 
-## Actividad 1
+### Actividad 1
 
-### Objetivo principal:
+#### Objetivo principal:
 Implementar sistema básico de órdenes.
 
-### Estructuras:
+#### Estructuras:
 - EC2
 - RDS
 
-### Opcional:
+#### Opcional:
 - API Gateway
 
-### Componentes:
+#### Componentes:
 - Órdenes (RDS)
 - Inventario (RDS)
 - API Gateway
@@ -132,20 +132,20 @@ Funcionalidad:
 
 ---
 
-## Actividad 2
+### Actividad 2
 
-### Objetivo principal:
+#### Objetivo principal:
 Implementar patrón Saga para dividir el proceso de creación de órdenes.
 
-### Estructuras:
+#### Estructuras:
 - SNS
 - SQS
 - Lambda
 
-### Opcional:
+#### Opcional:
 - Patrón Saga
 
-### Flujo:
+#### Flujo:
 1. Orden creada
 2. Actualizar inventario
 3. Crear orden de shipping
@@ -153,31 +153,31 @@ Implementar patrón Saga para dividir el proceso de creación de órdenes.
 
 ---
 
-## Actividad 3
+### Actividad 3
 
-### Objetivo principal:
+#### Objetivo principal:
 Finalizar proceso de compra y notificaciones.
 
-### Estructuras:
+#### Estructuras:
 - S3
 - SES
 
-### Funcionalidades:
+#### Funcionalidades:
 - Envío de correos
 - Estado de orden
 - Plantillas de correo
 
 ---
 
-## Actividad 4
+### Actividad 4
 
-### Objetivo principal:
+#### Objetivo principal:
 Implementar servicios de carrito.
 
-### Estructuras:
+#### Estructuras:
 - Spring Cloud Services con AWS
 
-### Funcionalidades:
+#### Funcionalidades:
 - Agregar al carrito
 - Editar carrito
 - Eliminar del carrito
@@ -185,29 +185,29 @@ Implementar servicios de carrito.
 
 ---
 
-## Actividad 5
+### Actividad 5
 
-### Objetivo principal:
+#### Objetivo principal:
 Despliegue de BFF y recomendaciones.
 
-### Estructuras:
+#### Estructuras:
 - BFF
 - DocumentDB
 
 ---
 
-## Actividad 6
+### Actividad 6
 
-### Objetivo principal:
+#### Objetivo principal:
 Aplicar patrón Strangler Fig.
 
 Separar la calculadora de shipping en múltiples microservicios.
 
 ---
 
-## Actividad 7
+### Actividad 7
 
-### Objetivo principal:
+#### Objetivo principal:
 Refactorización general.
 
 - Aplicar estrategias de refactor
@@ -215,36 +215,36 @@ Refactorización general.
 
 ---
 
-## Actividad 8
+### Actividad 8
 
-### Objetivo principal:
+#### Objetivo principal:
 Diseñar sistema para proveedores y órdenes de compra.
 
-### Estructuras:
+#### Estructuras:
 - Creación de diagramas
 
 Nota: Solo propuesta de diseño, sin implementación.
 
 ---
 
-## Actividad 9
+### Actividad 9
 
-### Objetivo principal:
+#### Objetivo principal:
 Generar servicios adicionales.
 
-### Estructuras:
+#### Estructuras:
 - CronJob
 - EventBridge
 
-### Funcionalidades:
+#### Funcionalidades:
 - Servicio de notificaciones
 - Servicio de reportes
 
 ---
 
-# DevOps y Calidad
+## DevOps y Calidad
 
-## Actividad DevOps 1
+### Actividad DevOps 1
 Finalizar proyecto optimizando tareas y calidad del código.
 
 Tareas:
@@ -254,32 +254,32 @@ Tareas:
 
 ---
 
-## Actividad DevOps 2
+### Actividad DevOps 2
 - Pair Programming
 - Code Review
 
 ---
 
-## Actividad DevOps 3
+### Actividad DevOps 3
 Generación de Pipeline EC2:
 
 Develop → Push → Build → Deploy
 
 ---
 
-## Actividad DevOps 4
+### Actividad DevOps 4
 Pipeline Lambda:
 
 Develop → Push → Test → Lint → Build → Deploy
 
 ---
 
-## Actividad DevOps 5
+### Actividad DevOps 5
 Generación de archivos de infraestructura.
 
 ---
 
-## Actividad DevOps 6 – Observabilidad
+### Actividad DevOps 6 – Observabilidad
 
 Objetivos:
 
@@ -292,9 +292,9 @@ Objetivos:
 
 ---
 
-# Hitos de Entrega
+## Hitos de Entrega
 
-## AWS
+### AWS
 
 - Actividad requerida 1: Actividad 1 a 3 (Sistema de Órdenes)
 - Actividad requerida 2: Actividad 4 a 6 (Sistemas Cloud)
@@ -302,7 +302,7 @@ Objetivos:
 
 ---
 
-## DevOps
+### DevOps
 
 - Actividad requerida 1: Actividad 1 a 4 (Inicialización DevOps)
 - Actividad requerida 2: Actividad 5 (Infraestructura)
@@ -310,7 +310,7 @@ Objetivos:
 
 ---
 
-# Resumen de Patrones Utilizados
+## Resumen de Patrones Utilizados
 
 - API Gateway
 - Registro de Servicios
