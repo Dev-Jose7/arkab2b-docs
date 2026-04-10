@@ -23,10 +23,10 @@ congelan para reducir ambigüedad en el modelado posterior.
 | Tipo                   | Definicion                                                                                                                                                   | Como condiciona el producto                                       |
 |------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
 | Decision congelada     | el alcance aprobado en requisitos funcionales y no funcionales queda congelado para este ciclo                                                               | evita reabrir semantica core durante la implementacion            |
-| Decision congelada     | no se reabre la semantica core de carrito, checkout, pedido, pago manual, stock, reserva, catalogo vendible ni aislamiento por organizacion/perfil de acceso | dominio y arquitectura deben consumir esa verdad sin reinventarla |
+| Decision congelada     | no se reabre la semantica core de carrito, checkout, pedido, pago manual, stock, reserva, catalogo vendible ni aislamiento organizacional por legitimidad de actor | dominio y arquitectura deben consumir esa verdad sin reinventarla |
 | Decision congelada     | la regionalizacion operativa se resuelve por `countryCode` y no admite fallback global implicito en operaciones criticas                                     | obliga a resolver operaciones criticas con configuracion por pais |
 | Decision congelada     | el empaquetado tecnico y la ejecucion reproducible por servicio forman parte del baseline de entrega                                                         | calidad, arquitectura y operacion deben sostener reproducibilidad |
-| Restriccion de partida | aislamiento por organizacion y perfil de acceso en toda mutacion                                                                                             | impide operaciones cruzadas entre organizaciones                  |
+| Restriccion de partida | aislamiento por organizacion y legitimidad de actor en toda mutacion                                                                                         | impide operaciones cruzadas entre organizaciones                  |
 | Restriccion de partida | trazabilidad auditable de cambios criticos (stock, pedido, pago)                                                                                             | obliga evidencia operativa en mutaciones del flujo comercial      |
 | Restriccion de partida | retencion y borrado/anonimizacion segun politica vigente por pais                                                                                            | condiciona tratamiento y ciclo de vida de datos operativos        |
 
@@ -35,4 +35,4 @@ congelan para reducir ambigüedad en el modelado posterior.
 |------------------------------------------------------------------------------|-------------------------------------------------------|
 | trazabilidad auditable de cambios en stock, estado de pedido y pagos         | toda mutacion critica debe dejar evidencia operativa  |
 | retencion y borrado o anonimizacion de datos segun politica vigente por pais | la operacion regional condiciona tratamiento de datos |
-| segregacion de datos por organizacion en toda consulta y mutacion            | el aislamiento por organizacion es parte del baseline |
+| segregacion de datos por organizacion en toda consulta y mutacion            | el aislamiento por organizacion y legitimidad de actor es parte del baseline |

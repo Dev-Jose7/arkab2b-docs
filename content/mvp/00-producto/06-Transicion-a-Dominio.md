@@ -26,11 +26,11 @@ trazable dentro del pilar:
 | 3       | objetivos del sistema                                  | `01-estrategica/03-Objetivos-del-Sistema.md`                 |
 | 4       | alcance y no alcance                                   | `01-estrategica/04-Alcance-No-Alcance.md`                    |
 | 5       | actores del sistema                                    | `02-contexto-de-uso/01-Actores-del-Sistema.md`               |
-| 6       | escenarios de negocio                                  | `02-contexto-de-uso/02-Escenarios-de-Negocio.md`              |
+| 6       | escenarios de negocio                                  | `02-contexto-de-uso/02-Escenarios-de-Negocio.md`             |
 | 7       | supuestos y decisiones base                            | `02-contexto-de-uso/03-Supuestos-y-Decisiones-Base.md`       |
 | 8       | casos de uso funcionales                               | `03-definicion-funcional/01-Casos-de-Uso-Funcionales.md`     |
 | 9       | requisitos funcionales                                 | `03-definicion-funcional/02-Requisitos-Funcionales.md`       |
-| 10      | requisitos no funcionales / `NFR` con impacto semantico | `03-definicion-funcional/03-Requisitos-No-Funcionales.md` |
+| 10      | requisitos no funcionales                              | `03-definicion-funcional/03-Requisitos-No-Funcionales.md`    |
 | 11      | glosario preliminar                                    | `04-semantica-inicial/01-Glosario-Preliminar.md`             |
 | 12      | prioridades del `MVP` / roadmap inmediato              | `05-direccion/01-Prioridades-del-MVP-Roadmap-Inmediato.md`   |
 

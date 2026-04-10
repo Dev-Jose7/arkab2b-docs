@@ -14,7 +14,8 @@ se dejan explicitamente para una etapa posterior.
 - gestion de carrito, confirmacion de pedido y seguimiento de estado;
 - notificaciones de cambio de estado y recordatorios de carrito abandonado;
 - reportes semanales de ventas y de productos por abastecer;
-- control de acceso por organizacion y rol de negocio;
+- condiciones operativas de legitimidad de actor y aislamiento por organizacion
+  consumidas desde capacidad transversal;
 - registro de pago manual para reflejar estado de pago del pedido.
 
 ## No alcance del `MVP`
@@ -30,7 +31,7 @@ se dejan explicitamente para una etapa posterior.
 ## Frontera operativa del ciclo
 | Entra ahora | Se difiere |
 |---|---|
-| flujo core de catalogo, disponibilidad, pedido y acceso | automatizaciones complejas y hardening enterprise |
+| flujo core de catalogo, disponibilidad, pedido y legitimidad operativa de actor | automatizaciones complejas y hardening enterprise |
 | readiness regional controlado por configuracion | cumplimiento juridico exhaustivo por pais |
 | soporte operativo por notificacion y reportes semanales | fulfillment y analitica avanzada |
 | pago manual `MVP` | pagos online y conciliacion automatica bancaria |

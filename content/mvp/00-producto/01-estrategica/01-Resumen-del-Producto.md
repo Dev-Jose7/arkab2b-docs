@@ -20,7 +20,7 @@ que valor promete entregar en el ciclo `MVP`.
 | Grupo | Necesidad principal | Valor esperado |
 |---|---|---|
 | Comprador B2B recurrente | comprar por volumen con disponibilidad confiable | menos friccion para convertir catalogo en pedido |
-| Administrador de cuenta B2B | operar en nombre de su organizacion con control | gestion ordenada del acceso y del contexto comercial |
+| Administrador de cuenta B2B | operar en nombre de su organizacion bajo condiciones de legitimidad y aislamiento | gestion ordenada del uso del producto y del contexto comercial |
 | Operacion Arka | controlar pedidos, stock y pagos manuales | trazabilidad y menor carga manual |
 | Ventas y abastecimiento | leer comportamiento comercial y faltantes | reportes accionables para decision semanal |
 
@@ -30,5 +30,5 @@ que valor promete entregar en el ciclo `MVP`.
 | Compra digital con menor friccion | el comprador puede autogestionar carrito, pedido y seguimiento sin depender del canal manual para todo |
 | Menor sobreventa | la promesa comercial se apoya en validacion de disponibilidad y reglas de reserva coherentes |
 | Mayor trazabilidad | stock, pedido, pago y cambios de estado deben quedar registrados y consultables |
-| Preparacion regional controlada | el `MVP` opera en Colombia y deja readiness para Ecuador, Peru y Chile sin bifurcar el core |
+| Preparacion regional controlada | el `MVP` opera en Colombia y deja readiness para Ecuador, Peru y Chile; la operacion cambia por politica regional vigente sin bifurcar el core |
 | Soporte operativo accionable | notificaciones y reportes sostienen la operacion comercial sin redefinir el core transaccional |

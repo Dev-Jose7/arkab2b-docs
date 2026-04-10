@@ -25,12 +25,12 @@ Su propósito es servir como puente entre el problema de negocio y los casos de 
 |------|--------------------------------------------------------------|-------------------------------------|---------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
 | EN01 | `Compra B2B confiable con validación de disponibilidad`      | Comprador B2B                       | Confirmar una compra con información confiable de oferta y disponibilidad | La compra se realiza sin depender de validaciones manuales informales y sin comprometer stock inexistente |
 | EN02 | `Confirmación de pedido con promesa comercial protegida`     | Comprador B2B / Operación comercial | Formalizar un pedido cuya disponibilidad ya fue validada                  | El sistema protege la promesa comercial y reduce sobreventa y reprocesos                                  |
-| EN03 | `Seguimiento visible del estado del pedido`                  | Comprador B2B                       | Consultar el avance de su pedido sin depender de seguimiento manual       | El comprador obtiene visibilidad clara y trazable del estado de su pedido                                 |
-| EN04 | `Seguimiento operativo interno del ciclo del pedido`         | Operación Arka                      | Controlar y dar seguimiento al pedido durante su ciclo operativo          | La operación trabaja con evidencia verificable y reduce tiempos muertos y consultas manuales              |
+| EN03 | `Seguimiento visible del estado del pedido`                  | Comprador B2B                       | Consultar el estado vigente y entendible del pedido sin depender de seguimiento manual | El comprador obtiene visibilidad clara del estado actual del pedido                                       |
+| EN04 | `Seguimiento operativo interno del ciclo del pedido`         | Operación Arka                      | Registrar y revisar cambios operativos del pedido durante su ciclo        | La operación conserva trazabilidad verificable de cambios y reduce tiempos muertos                        |
 | EN05 | `Registro y control trazable del pago manual`                | Operación comercial / financiera    | Registrar pagos manuales asociados a pedidos de forma controlada          | El ciclo comercial queda trazable y auditable sin depender de registros dispersos                         |
-| EN06 | `Coordinación de cambios relevantes mediante notificaciones` | Comprador B2B / Operación Arka      | Recibir y reaccionar a cambios relevantes del ciclo comercial             | Los actores se mantienen informados sin depender de avisos manuales fuera del sistema                     |
+| EN06 | `Coordinación de cambios relevantes mediante notificaciones` | Comprador B2B / Operación Arka      | Recibir comunicación oportuna ante cambios relevantes del ciclo comercial | Los actores se mantienen informados sin reemplazar la consulta de estado ni el historial verificable      |
 | EN07 | `Seguimiento semanal de ventas y abastecimiento`             | Ventas / Inventario / Operación     | Revisar el comportamiento comercial y operativo del periodo               | El negocio obtiene lectura accionable para reposición, control y decisión semanal                         |
-| EN08 | `Operación preparada para crecimiento regional`              | Negocio / Operación                 | Operar bajo reglas regionales sin rehacer la solución base                | El sistema puede crecer por país o región con reglas claras y configurables                               |
+| EN08 | `Operación preparada para crecimiento regional`              | Negocio / Operación                 | Operar bajo reglas regionales por pais sin rehacer la solucion base       | El sistema puede crecer por pais o region, cambiando condiciones operativas sin alterar el flujo core     |
 
 ## Relación con el problema de negocio
 
@@ -44,6 +44,13 @@ Su propósito es servir como puente entre el problema de negocio y los casos de 
 | EN06      | baja visibilidad del estado del pedido; soporte manual para seguimiento                 |
 | EN07      | reprocesos operativos; necesidad de lectura confiable para abastecimiento y control     |
 | EN08      | baja preparación para crecimiento regional                                              |
+
+## Separacion semantica obligatoria
+| Capacidad | Que resuelve | Que no reemplaza |
+|---|---|---|
+| `Visibilidad del pedido` | consulta del estado vigente y entendible del pedido | no reemplaza historial de cambios ni notificaciones |
+| `Historial / trazabilidad` | evidencia verificable de cambios ya ocurridos | no reemplaza estado vigente ni notificacion oportuna |
+| `Notificacion` | comunicacion derivada por cambios relevantes | no reemplaza el hecho de negocio ni la trazabilidad completa |
 
 ## Lectura metodologica
 

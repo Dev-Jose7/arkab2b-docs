@@ -13,7 +13,7 @@ aprobadas.
 ## 1. Que va primero
 | Orden | Bloque de avance |
 |---|---|
-| 1 | acceso y aislamiento |
+| 1 | legitimidad operativa y aislamiento |
 | 2 | catalogo y stock |
 | 3 | pedido y pago manual |
 | 4 | readiness regional |
@@ -24,7 +24,7 @@ aprobadas.
 |---|---|
 | FR (Must) | FR-001, FR-002, FR-004, FR-005, FR-009, FR-011 |
 | NFR (Must) | NFR-001, NFR-003, NFR-004, NFR-005, NFR-006, NFR-007, NFR-010, NFR-011 |
-| Areas de foco inmediato | Acceso por organizacion y rol; Catalogo vendible y stock confiable; Checkout, pedido y pago manual; Parametros por pais; Trazabilidad y observabilidad minima |
+| Areas de foco inmediato | Legitimidad de actor y aislamiento por organizacion; Catalogo vendible y stock confiable; Checkout, pedido y pago manual; Parametros por pais; Trazabilidad y observabilidad minima |
 
 ## 3. Que puede esperar
 | Diferido | Motivo |
@@ -37,7 +37,7 @@ aprobadas.
 ## 4. Que secuencia de avance tiene sentido
 | Paso | Bloque | Dependencias base |
 |---|---|---|
-| 1 | acceso y aislamiento | FR-009, NFR-005, NFR-006, NFR-007 |
+| 1 | legitimidad operativa y aislamiento | FR-009, NFR-005, NFR-006, NFR-007 |
 | 2 | catalogo y stock | FR-001, FR-002, NFR-004 |
 | 3 | pedido y pago manual | FR-004, FR-005, FR-010, NFR-001, NFR-008 |
 | 4 | readiness regional | FR-011, NFR-010, NFR-011 |
@@ -46,7 +46,7 @@ aprobadas.
 ## 5. Que areas requieren mayor profundidad inmediata
 | Area | Profundidad requerida ahora |
 |---|---|
-| Acceso por organizacion y rol | definir y asegurar aislamiento operacional desde el inicio |
+| Legitimidad de actor y aislamiento por organizacion | definir y asegurar restriccion operacional desde el inicio mediante capacidad transversal |
 | Catalogo vendible y stock confiable | estabilizar oferta valida y disponibilidad coherente |
 | Checkout, pedido y pago manual | consolidar flujo transaccional principal del ciclo |
 | Parametros por pais | habilitar operacion regional sin reabrir el core |

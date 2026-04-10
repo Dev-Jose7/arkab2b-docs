@@ -4,14 +4,14 @@ weight: 2
 url: "/mvp/dominio/"
 ---
 
-Pilar de dominio para ArkaB2B: baseline semantico del ciclo `MVP`
-que fija fronteras de negocio, lenguaje canonico, reglas obligatorias,
-comportamiento global, integraciones entre contextos y detalle tactico
-por bounded context.
+<div style="text-align:center; max-width: 900px; margin: 0 auto;">
 
-El contenido sigue un orden abstracto -> concreto: vista estrategica
-(`Mapa de Contexto`), vista semantica (`Lenguaje Ubicuo` y `Conceptos`),
-verdad del modelo (`Reglas e Invariantes`), dinamica del dominio
-(`Comportamiento Global`, `Eventos de Dominio`, `Contratos de Integracion`),
-detalle interno (`Contextos Delimitados`) y cierre del pilar
-(`Trazabilidad` y `Evolucion`).
+<p>
+El pilar de Dominio formaliza la verdad del negocio de ArkaB2B a partir de la salida vigente de Producto, descubriendo comportamiento, reglas, consistencia y fronteras semanticas que explican como opera realmente el sistema.
+</p>
+
+<p>
+Su salida organiza eventos, comandos, actores/reglas/politicas, agregados, contextos delimitados, lenguaje, conceptos, contratos, trazabilidad y evolucion, dejando una base estable para que Arquitectura disene sin reinterpretacion arbitraria. La interfaz metodologica de esta salida se documenta en <a href="/mvp/dominio/transicion-a-arquitectura/">Transicion a Arquitectura</a>.
+</p>
+
+</div>

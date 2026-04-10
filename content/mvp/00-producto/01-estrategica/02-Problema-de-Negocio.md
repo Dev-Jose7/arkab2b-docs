@@ -13,7 +13,9 @@ antes de modelar dominio o arquitectura.
 Arka atiende clientes B2B de alto volumen y hoy combina procesos manuales con
 validaciones de stock no sincronizadas. La operación comercial depende en exceso
 de verificaciones fuera de sistema para confirmar disponibilidad, estado de
-pedido y cambios relevantes.
+pedido y cambios relevantes. Ademas, la operacion regional no tiene una
+politica operativa suficientemente explicita para aplicar reglas por pais sin
+retrabajo.
 
 ## Fricciones principales
 | Friccion                                       | Quien la sufre                      | Impacto                                             |
@@ -22,14 +24,16 @@ pedido y cambios relevantes.
 | stock no sincronizado con la promesa comercial | comprador, inventario y despacho    | genera sobreventa y reprocesos                      |
 | baja visibilidad del estado del pedido         | comprador B2B y operacion Arka      | aumenta consultas manuales y tiempos muertos        |
 | soporte manual para seguimiento y pagos        | operacion comercial y financiera    | reduce trazabilidad y dificulta auditoria           |
-| baja preparacion para crecimiento regional     | negocio y operacion                 | limita expansion sin rehacer reglas o configuracion |
+| baja preparacion para crecimiento regional     | negocio y operacion                 | limita expansion porque no queda explicito que cambia por pais y que permanece estable |
 
 ## Impacto del problema
 - afecta conversion y recompra porque la compra digital no es suficientemente
   confiable;
 - incrementa reprocesos en despacho y en corrección de pedidos;
 - reduce la capacidad de seguimiento operativo con evidencia verificable;
-- dificulta planificar abastecimiento y crecimiento regional con reglas claras.
+- dificulta planificar abastecimiento y crecimiento regional con reglas claras;
+- mantiene ambigua la diferencia entre reglas operativas por pais y semantica
+  transaccional que debe mantenerse estable en el core.
 
 ## Por que vale la pena resolverlo
 Resolver este problema permite convertir el canal digital B2B en una via util de

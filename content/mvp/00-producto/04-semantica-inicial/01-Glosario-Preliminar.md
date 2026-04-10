@@ -23,8 +23,8 @@ los requisitos, en la lectura del baseline y en el modelado posterior.
 | Termino | Definicion preliminar | Expresion de uso | Candidato | Motivo |
 |---|---|---|---|---|
 | Organizacion | Cliente B2B con identidad comercial propia dentro del sistema. | "El pedido pertenece a la organizacion ORG-001." | Si | Define frontera de operacion y aislamiento por contexto organizacional. |
-| Comprador B2B | Persona autenticada asociada a una organizacion que participa en el ciclo comercial de compra. | "El comprador B2B confirma el pedido." | Si | Participa en la validacion, confirmacion y seguimiento de la compra. |
-| Rol de acceso | Perfil de autorizacion para ejecutar acciones sobre el producto. | "El rol de acceso operador puede registrar pago manual." | Si | Condiciona permisos, visibilidad y reglas de acceso operacional. |
+| Comprador B2B | Persona legitimada y asociada a una organizacion que participa en el ciclo comercial de compra. | "El comprador B2B confirma el pedido." | Si | Participa en la validacion, confirmacion y seguimiento de la compra. |
+| Legitimidad de actor (capacidad transversal) | Condicion de uso permitido del sistema validada por una capacidad tecnica externa al dominio de negocio. | "La operacion se ejecuta con actor legitimado." | Si | Condiciona acceso operativo y aislamiento sin modelar un dominio interno de IAM. |
 | Producto | Agrupador comercial de variantes vendibles. | "El producto SSD NVMe tiene varias variantes." | Si | Concepto comercial central para catalogo y oferta vendible. |
 | Variante (SKU) | Unidad vendible concreta con atributos definidos. | "SKU SSD-1TB-NVME-980PRO" | Si | Unidad vendible con reglas de identificacion y consistencia. |
 | Stock fisico | Unidades realmente existentes en inventario. | "El stock fisico del SKU es 120." | Si | Base para calculo de disponibilidad y control de inventario. |
@@ -42,8 +42,8 @@ los requisitos, en la lectura del baseline y en el modelado posterior.
 | Termino canonico | Sinonimos prohibidos |
 |---|---|
 | Organizacion | cliente global, cuenta global |
-| Usuario B2B | usuario global, usuario libre |
-| Rol de negocio | admin total, permiso libre |
+| Comprador B2B | usuario global, usuario libre |
+| Legitimidad de actor | admin total, permiso libre, rol de negocio |
 | Producto | item maestro |
 | Variante (SKU) | item suelto, referencia ambigua |
 | Stock fisico | stock comercial |

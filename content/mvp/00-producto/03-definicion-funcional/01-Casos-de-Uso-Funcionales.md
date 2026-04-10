@@ -19,12 +19,12 @@ antes de formalizar los `FR`.
 | CUF03 | `Gestionar carrito de compra` | EN01 | Comprador B2B | Consolidar una intención de compra antes del pedido | El actor reúne y ajusta los productos que desea comprar |
 | CUF04 | `Crear pedido a partir del carrito` | EN01, EN02 | Comprador B2B | Formalizar una compra | El sistema registra un pedido trazable a partir de una intención validada |
 | CUF05 | `Ajustar pedido antes de cierre` | EN02 | Comprador B2B / Operación comercial | Corregir o modificar el pedido dentro de la ventana permitida | El pedido puede corregirse sin romper consistencia operacional |
-| CUF06 | `Consultar estado del pedido` | EN03 | Comprador B2B | Conocer el avance del pedido | El actor obtiene visibilidad clara del estado del pedido |
-| CUF07 | `Actualizar estado operativo del pedido` | EN04 | Operación Arka | Reflejar el avance operativo real del pedido | El sistema conserva trazabilidad verificable del ciclo del pedido |
+| CUF06 | `Consultar estado del pedido` | EN03 | Comprador B2B | Conocer el estado vigente del pedido | El actor obtiene visibilidad clara del estado actual del pedido |
+| CUF07 | `Actualizar estado operativo del pedido` | EN04 | Operación Arka | Reflejar el avance operativo real del pedido | El sistema registra transiciones operativas y conserva trazabilidad verificable |
 | CUF08 | `Registrar pago manual` | EN05 | Operación comercial / financiera | Registrar evidencia de pago asociada a un pedido | El pedido queda trazado con información de pago manual |
 | CUF09 | `Consultar estado financiero del pedido` | EN05 | Operación comercial / financiera | Verificar si el pedido tiene pago pendiente, registrado o validado | El seguimiento comercial y financiero se realiza con evidencia consistente |
-| CUF10 | `Emitir notificación por cambio relevante` | EN06 | Sistema / Operación Arka | Informar cambios importantes del ciclo comercial | Los actores reciben visibilidad oportuna ante cambios de estado |
-| CUF11 | `Consultar historial de cambios relevantes` | EN03, EN04, EN06 | Comprador B2B / Operación Arka | Revisar trazabilidad de cambios ocurridos sobre el pedido | El actor accede a evidencia de seguimiento y cambios relevantes |
+| CUF10 | `Emitir notificación por cambio relevante` | EN06 | Sistema / Operación Arka | Informar cambios importantes del ciclo comercial | Los actores reciben comunicacion oportuna sin reemplazar consulta de estado ni historial |
+| CUF11 | `Consultar historial de cambios relevantes` | EN03, EN04, EN06 | Comprador B2B / Operación Arka | Revisar trazabilidad cronologica de cambios ocurridos sobre el pedido | El actor accede a evidencia verificable del cambio ya ocurrido |
 | CUF12 | `Actualizar stock operativo` | EN01, EN02, EN07 | Operación / Inventario | Mantener el stock alineado con la realidad operativa | La disponibilidad publicada se sostiene sobre stock confiable |
 | CUF13 | `Recalcular disponibilidad comprometible` | EN01, EN02, EN07 | Sistema / Inventario | Reflejar el impacto de cambios de stock o reservas en la disponibilidad | El sistema mantiene una promesa comercial coherente |
 | CUF14 | `Generar reporte semanal de ventas` | EN07 | Ventas / Operación | Obtener lectura consolidada del desempeño comercial del periodo | El negocio dispone de visibilidad semanal accionable |
@@ -44,6 +44,13 @@ antes de formalizar los `FR`.
 | EN06 `Coordinación de cambios relevantes mediante notificaciones` | CUF10, CUF11 |
 | EN07 `Seguimiento semanal de ventas y abastecimiento` | CUF12, CUF13, CUF14, CUF15 |
 | EN08 `Operación preparada para crecimiento regional` | CUF16, CUF17 |
+
+## Separacion semantica entre capacidades relacionadas
+| Capacidad funcional | Caso(s) de uso | Foco principal |
+|---|---|---|
+| `Visibilidad de estado` | CUF06 | estado vigente del pedido para consulta inmediata |
+| `Historial / trazabilidad` | CUF07, CUF11 | evidencia verificable y cronologica de cambios operativos |
+| `Notificacion derivada` | CUF10 | comunicacion oportuna ante cambios relevantes ya confirmados |
 
 ## Lectura metodologica
 

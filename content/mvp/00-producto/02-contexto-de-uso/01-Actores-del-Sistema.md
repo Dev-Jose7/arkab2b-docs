@@ -13,7 +13,7 @@ relacion guardan con el sistema.
 | Actor | Rol de negocio | Interes dentro del producto | Relacion con el producto |
 |---|---|---|---|
 | Comprador B2B recurrente | realiza compra y seguimiento | comprar por volumen con disponibilidad confiable y estado visible | usuario principal del flujo comercial digital (carrito, pedido y seguimiento) |
-| Administrador de cuenta B2B | administra la operacion de su organizacion | asegurar acceso, datos y uso correcto del producto para su organizacion | responsable de gobernar el uso del producto dentro de su organizacion |
+| Administrador de cuenta B2B | administra la operacion de su organizacion | asegurar segregacion de datos, uso permitido y operacion correcta para su organizacion | responsable de gobernar el uso del producto dentro de su organizacion |
 | Operador Arka (comercial/operaciones) | gestiona pedidos, stock y pagos manuales | mantener continuidad operativa y resolver incidencias | actor interno que mantiene el control operativo del ciclo comercial |
 | Analista de inventario | monitorea disponibilidad y faltantes | anticipar reposicion y controlar stock | consumidor de salidas del producto para decisiones de abastecimiento |
 | Coordinador de despacho | consulta estado y preparacion operativa del pedido | alinear el avance comercial con la atencion posterior | actor interno que conecta el estado comercial con la ejecucion operativa posterior |
@@ -29,4 +29,4 @@ relacion guardan con el sistema.
 ## Lectura de actores para el modelado posterior
 Los actores anteriores no describen pantallas ni perfiles UI aislados. Describen
 perspectivas reales de negocio y operacion que luego condicionan capacidades,
-seguridad, trazabilidad y prioridades del dominio.
+trazabilidad, restricciones operativas de legitimidad y prioridades del dominio.
