@@ -14,7 +14,7 @@ El pilar de Producto define el resultado de negocio que ArkaB2B debe lograr en e
 </p>
 
 <p>
-Su salida formal organiza capacidades funcionales, restricciones relevantes con impacto semantico, glosario preliminar y prioridades inmediatas, dejando una base clara y trazable para que Dominio formalice la verdad del negocio sin ambiguedad. La interfaz metodologica de esta salida se documenta en <a href="/mvp/producto/transicion-a-dominio/">Transicion a Dominio</a>.
+Su salida formal organiza capacidades funcionales, requisitos no funcionales con impacto semantico, glosario preliminar y prioridades inmediatas, dejando una base clara y trazable para que Dominio formalice la verdad del negocio sin ambiguedad. La interfaz metodologica de esta salida se documenta en <a href="/mvp/producto/transicion-a-dominio/">Transicion a Dominio</a>.
 </p>
 
 </div>

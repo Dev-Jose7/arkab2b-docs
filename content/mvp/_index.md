@@ -23,9 +23,11 @@ url: "/mvp/"
 
 ## Objetivo del ciclo de vida
 
-`MVP` define el baseline funcional y no funcional del sistema ArkaB2B para salir a operacion inicial con alcance controlado.
+`MVP` define el baseline funcional y no funcional del sistema ArkaB2B para salir
+a operacion inicial con alcance controlado.
 
-Este ciclo concentra el trabajo de definicion, validacion y trazabilidad de requerimientos que habilitan la primera entrega util del producto.
+Este ciclo concentra el trabajo de definicion, validacion y trazabilidad de
+requerimientos que habilitan la primera entrega util del producto.
 
 ## Convencion y versionado
 
@@ -34,17 +36,17 @@ Este ciclo concentra el trabajo de definicion, validacion y trazabilidad de requ
 
 ## Alcance actual
 
-- Catalogo funcional (FR) y no funcional (NFR) del ciclo.
-- Trazabilidad de producto entre SRS, FR/NFR y estado.
-- Lenguaje comun mediante glosario.
+- Definicion de producto organizada por estrategia, contexto de uso, capacidades,
+  restricciones, semantica inicial y prioridades.
 - Baseline de dominio por bounded context, reglas, eventos y contratos.
-- Baseline de arquitectura con vistas globales, servicios y cierre de trazabilidad tecnica.
+- Baseline de arquitectura con vistas globales, servicios y cierre de
+  trazabilidad tecnica.
 
 ## Estado rapido del ciclo
 
 | Pilar | Estado | Comentario |
 |---|---|---|
-| 00-producto | Cerrado | Alcance, FR/NFR, glosario y trazabilidad funcional congelados para `mvp`. |
+| 00-producto | Cerrado | Estructura de producto normalizada y baseline `MVP` congelado. |
 | 01-dominio | Cerrado | Semantica, reglas, eventos y contratos de integracion alineados al baseline vigente. |
 | 02-arquitectura | Cerrado | Vistas globales y dossiers por servicio coherentes con decisiones tecnicas congeladas. |
 | 03-calidad | Cerrado | Sistema de verificacion y certificacion minima definido de forma auditable. |
@@ -53,11 +55,13 @@ Este ciclo concentra el trabajo de definicion, validacion y trazabilidad de requ
 ## Artefactos disponibles en MVP
 
 - [Producto](/mvp/producto/)
-- [SRS Ligero](/mvp/producto/srs-ligero/)
-- [Catalogo RF](/mvp/producto/catalogo-rf/)
-- [Catalogo RNF](/mvp/producto/catalogo-rnf/)
-- [Trazabilidad](/mvp/producto/trazabilidad/)
-- [Glosario](/mvp/producto/glosario/)
+- [Resumen del producto](/mvp/producto/resumen-del-producto/)
+- [Problema de negocio](/mvp/producto/problema-de-negocio/)
+- [Objetivos del sistema](/mvp/producto/objetivos-del-sistema/)
+- [Requisitos funcionales](/mvp/producto/requisitos-funcionales/)
+- [Requisitos no funcionales](/mvp/producto/definicion-funcional/requisitos-no-funcionales/)
+- [Glosario preliminar](/mvp/producto/glosario-preliminar/)
+- [Prioridades del MVP / roadmap inmediato](/mvp/producto/prioridades-mvp-roadmap-inmediato/)
 - [Dominio](/mvp/dominio/)
 - [Mapa de Contexto](/mvp/dominio/mapa-contexto/)
 - [Lenguaje Ubicuo](/mvp/dominio/lenguaje-ubicuo/)
@@ -77,14 +81,17 @@ Este ciclo concentra el trabajo de definicion, validacion y trazabilidad de requ
 
 ## Flujo recomendado
 
-1. Revisar `SRS Ligero` para entender outcomes del ciclo.
-2. Validar FR/NFR del grupo `MVP`.
-3. Confirmar prioridades y estado en trazabilidad.
+1. Revisar estrategia y contexto de uso del producto.
+2. Validar FR y NFR del ciclo `MVP`.
+3. Confirmar glosario preliminar y prioridades inmediatas.
 4. Consumir dominio como baseline semantico ejecutable.
-5. Revisar arquitectura para definir servicios, contratos, seguridad, runtime, datos y despliegue del ciclo.
-6. Usar calidad y operacion como guia de verificacion y ejecucion sobre el baseline cerrado.
+5. Revisar arquitectura para definir servicios, contratos, seguridad, runtime,
+   datos y despliegue del ciclo.
+6. Usar calidad y operacion como guia de verificacion y ejecucion sobre el
+   baseline cerrado.
 
 ## Regla de evolucion
 
-En este repositorio, cada ciclo de vida agrega nuevos requerimientos o deltas sobre IDs existentes.
-No se reescribe informacion sin cambio: se referencia por ID y se documenta la diferencia.
+En este repositorio, cada ciclo de vida agrega nuevos requerimientos o deltas
+sobre IDs existentes. No se reescribe informacion sin cambio: se referencia por
+ID y se documenta la diferencia.

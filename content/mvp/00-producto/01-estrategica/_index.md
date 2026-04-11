@@ -28,7 +28,7 @@ ciclo `MVP`.
 ## Salida hacia el resto del pilar Producto
 Este bloque deja una base estable para:
 - Contexto de uso: actores, journeys y supuestos de partida.
-- Definicion funcional: capacidades y restricciones relevantes.
+- Definicion funcional: capacidades y requisitos no funcionales.
 - Direccion: prioridades del `MVP` y decisiones de avance.
 
 ## Criterio editorial

@@ -26,12 +26,13 @@ trazable dentro del pilar:
 | 3       | objetivos del sistema                                  | `01-estrategica/03-Objetivos-del-Sistema.md`                 |
 | 4       | alcance y no alcance                                   | `01-estrategica/04-Alcance-No-Alcance.md`                    |
 | 5       | actores del sistema                                    | `02-contexto-de-uso/01-Actores-del-Sistema.md`               |
-| 6       | escenarios o journeys principales                      | `02-contexto-de-uso/02-Escenarios-o-Journeys-Principales.md` |
+| 6       | escenarios de negocio                                  | `02-contexto-de-uso/02-Escenarios-de-Negocio.md`              |
 | 7       | supuestos y decisiones base                            | `02-contexto-de-uso/03-Supuestos-y-Decisiones-Base.md`       |
-| 8       | capacidades funcionales / `FR`                         | `03-definicion-funcional/01-Capacidades-Funcionales-FR/`     |
-| 9       | restricciones relevantes / `NFR` con impacto semantico | `03-definicion-funcional/02-Restricciones-Relevantes-NFR/`   |
-| 10      | glosario preliminar                                    | `04-semantica-inicial/01-Glosario-Preliminar.md`             |
-| 11      | prioridades del `MVP` / roadmap inmediato              | `05-direccion/01-Prioridades-del-MVP-Roadmap-Inmediato.md`   |
+| 8       | casos de uso funcionales                               | `03-definicion-funcional/01-Casos-de-Uso-Funcionales.md`     |
+| 9       | requisitos funcionales                                 | `03-definicion-funcional/02-Requisitos-Funcionales.md`       |
+| 10      | requisitos no funcionales / `NFR` con impacto semantico | `03-definicion-funcional/03-Requisitos-No-Funcionales.md` |
+| 11      | glosario preliminar                                    | `04-semantica-inicial/01-Glosario-Preliminar.md`             |
+| 12      | prioridades del `MVP` / roadmap inmediato              | `05-direccion/01-Prioridades-del-MVP-Roadmap-Inmediato.md`   |
 
 Esta salida representa la definición funcional, contextual y operativa del producto 
 para el corte vigente, y constituye la base de entrada para el modelado

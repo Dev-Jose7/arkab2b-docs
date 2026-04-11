@@ -20,7 +20,7 @@ valor y bajo que supuestos o decisiones de partida debe interpretarse el `MVP`.
 | Seccion | Aporte principal |
 |---|---|
 | Actores del sistema | identifica actores de negocio/operacion, su rol, interes y relacion con el producto |
-| Escenarios o journeys principales | define flujos principales, disparadores, resultado buscado y secuencias de uso |
+| Escenarios de negocio | define escenarios de alto nivel, actores, valor, recorrido de negocio e intencion/resultados |
 | Supuestos y decisiones base | explicita supuestos, simplificaciones y restricciones que condicionan el ciclo |
 
 ## Salida hacia el resto del pilar Producto
