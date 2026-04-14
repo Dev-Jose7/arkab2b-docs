@@ -4,6 +4,11 @@ weight: 4
 url: "/mvp/calidad/"
 ---
 
-Pilar de calidad para ArkaB2B en `MVP`: establece la estrategia de verificacion del baseline mediante mapeo de pruebas, convenciones de ejecucion, compuertas de calidad y un modelo trazable de cobertura y evidencia.
+Pilar de calidad para ArkaB2B en `MVP`: define que debe protegerse, como se
+verifica con evidencia, que gates controlan la aceptacion del baseline y que
+handoff formal recibe Operacion.
 
-El contenido separa de forma explicita diseno, implementacion, ejecucion y validacion con evidencia, y permite sostener una certificacion minima honesta y auditable sin reabrir decisiones de producto, dominio ni arquitectura.
+El pilar se apoya en el sistema real del repositorio: pruebas unitarias,
+de aplicacion, persistencia, adapters, contextos, compatibilidad de contratos,
+light E2E, smoke integrado, hubs manuales de Swagger/E2E y evidencia operativa
+del stack `Docker Compose` local y cloud.
