@@ -281,7 +281,7 @@
 
       function openModal(sourceSvg, titleOverride) {
         ensureModal();
-
+        var title = titleOverride || getDiagramTitle(sourceSvg);
         var clone = sourceSvg.cloneNode(true);
         var firstChild = clone.firstElementChild;
         if (firstChild && firstChild.tagName && firstChild.tagName.toLowerCase() === "g") {
@@ -317,13 +317,28 @@
           dragOriginY: 0,
         };
 
-        titleElement.textContent = titleOverride || getDiagramTitle(sourceSvg);
+        titleElement.textContent = title;
         overlay.classList.add("is-open");
         overlay.setAttribute("aria-hidden", "false");
         document.body.classList.add("R-mermaid-lightbox-open");
 
         requestAnimationFrame(function () {
           resetTransform();
+          closeButton.focus({ preventScroll: true });
+        });
+      }
+
+      function openModalShell(titleOverride) {
+        ensureModal();
+
+        canvasElement.innerHTML =
+          '<div style="padding: 1.5rem; text-align: center; color: var(--MAIN-TEXT-color-secondary);">Cargando diagrama...</div>';
+        titleElement.textContent = titleOverride || "Diagrama Mermaid";
+        overlay.classList.add("is-open");
+        overlay.setAttribute("aria-hidden", "false");
+        document.body.classList.add("R-mermaid-lightbox-open");
+
+        requestAnimationFrame(function () {
           closeButton.focus({ preventScroll: true });
         });
       }
@@ -404,7 +419,11 @@
 
         mermaidRuntimePromise = new Promise(function (resolve, reject) {
           var script = document.createElement("script");
-          script.src = "/js/mermaid/mermaid.min.js";
+          var baseUri =
+            window.relearn && typeof window.relearn.absBaseUri === "string"
+              ? window.relearn.absBaseUri.replace(/\/$/, "")
+              : "";
+          script.src = baseUri + "/js/mermaid/mermaid.min.js";
           script.defer = true;
 
           script.onload = function () {
@@ -445,52 +464,114 @@
         return mermaidRuntimePromise;
       }
 
-      function renderTemplateDiagram(templateId) {
-        if (!templateId) {
-          return Promise.resolve(null);
-        }
+      function getStoredDiagramSvg(sourceId) {
+        if (!sourceId) return null;
 
-        var template = document.getElementById(templateId);
-        if (!template) return Promise.resolve(null);
+        var source = document.getElementById(sourceId);
+        if (!source) return null;
 
-        var definition = template.textContent.trim();
+        return (
+          source.querySelector(".mermaid-container > .mermaid > svg") ||
+          source.querySelector(".mermaid > svg") ||
+          null
+        );
+      }
+
+      function getStoredDiagramDefinition(sourceId) {
+        if (!sourceId) return "";
+
+        var source = document.getElementById(sourceId);
+        if (!source) return "";
+
+        var mermaidNode = source.querySelector(".mermaid-code") || source.querySelector("pre.mermaid");
+        return mermaidNode ? mermaidNode.textContent.trim() : "";
+      }
+
+      function renderDirectDiagram(definition, title) {
         if (!definition) return Promise.resolve(null);
 
-        var renderId = "R-tree-diagram-" + templateId + "-" + Date.now();
-
         return ensureMermaidRuntime().then(function (runtime) {
-          if (!runtime || typeof runtime.render !== "function") return null;
+          if (!runtime) return null;
 
-          return Promise.resolve(runtime.render(renderId, definition)).then(function (rendered) {
-            var svgMarkup = rendered && rendered.svg ? rendered.svg : rendered;
-            if (!svgMarkup) return null;
+          var renderId = "R-tree-diagram-direct-" + Date.now();
 
-            var wrapper = document.createElement("div");
-            wrapper.innerHTML = svgMarkup.trim();
+          if (typeof runtime.render === "function") {
+            return Promise.resolve(runtime.render(renderId, definition))
+              .then(function (result) {
+                var svgMarkup = result && result.svg ? result.svg : result;
+                if (!svgMarkup) return null;
 
-            if (rendered && typeof rendered.bindFunctions === "function") {
-              rendered.bindFunctions(wrapper);
-            }
+                var wrapper = document.createElement("div");
+                wrapper.innerHTML = String(svgMarkup).trim();
+                return wrapper.querySelector("svg");
+              })
+              .catch(function (error) {
+                console.error(error);
+                return null;
+              });
+          }
 
-            return wrapper.querySelector("svg");
-          });
+          if (runtime.mermaidAPI && typeof runtime.mermaidAPI.render === "function") {
+            return new Promise(function (resolve) {
+              try {
+                runtime.mermaidAPI.render(renderId, definition, function (svgCode) {
+                  var wrapper = document.createElement("div");
+                  wrapper.innerHTML = String(svgCode || "").trim();
+                  resolve(wrapper.querySelector("svg"));
+                });
+              } catch (error) {
+                console.error(error);
+                resolve(null);
+              }
+            });
+          }
+
+          return Promise.resolve(null);
         });
       }
 
-      function openTemplateDiagram(templateId, title) {
-        renderTemplateDiagram(templateId).then(function (svg) {
-          if (!svg) return;
-          openModal(svg, title);
-        });
+      function openStoredDiagram(sourceId, title) {
+        openModalShell(title);
+
+        var attempts = 0;
+        var maxAttempts = 80;
+
+        (function poll() {
+          var svg = getStoredDiagramSvg(sourceId);
+          if (svg) {
+            openModal(svg, title);
+            return;
+          }
+
+          attempts += 1;
+          if (attempts >= maxAttempts) {
+            var definition = getStoredDiagramDefinition(sourceId);
+            renderDirectDiagram(definition, title).then(function (directSvg) {
+              if (directSvg) {
+                openModal(directSvg, title);
+                return;
+              }
+
+              canvasElement.innerHTML =
+                '<div style="padding: 1.5rem; text-align: center; color: var(--MAIN-TEXT-color-secondary);">No se encontro el diagrama renderizado para este servicio.</div>';
+            });
+            return;
+          }
+
+          setTimeout(poll, 50);
+        })();
       }
 
       document.addEventListener("click", function (event) {
-        var trigger = event.target.closest(".R-tree-diagram-trigger, .R-tree-diagram-link");
-        if (!trigger || !trigger.dataset.diagramTemplate) return;
+        var source = event.target;
+        var target =
+          source && source.nodeType === 1 ? source : source && source.parentElement ? source.parentElement : null;
+        var trigger = target ? target.closest(".R-tree-diagram-trigger, .R-tree-diagram-link") : null;
+        if (!trigger || !trigger.dataset.diagramSource) return;
 
         event.preventDefault();
-        openTemplateDiagram(
-          trigger.dataset.diagramTemplate,
+        openStoredDiagram(
+          trigger.dataset.diagramSource,
           trigger.dataset.diagramTitle || trigger.textContent.replace(/^\[|\]$/g, "").trim()
         );
       });
@@ -498,12 +579,15 @@
       document.addEventListener("keydown", function (event) {
         if (event.key !== "Enter" && event.key !== " ") return;
 
-        var trigger = event.target.closest(".R-tree-diagram-trigger, .R-tree-diagram-link");
-        if (!trigger || !trigger.dataset.diagramTemplate) return;
+        var source = event.target;
+        var target =
+          source && source.nodeType === 1 ? source : source && source.parentElement ? source.parentElement : null;
+        var trigger = target ? target.closest(".R-tree-diagram-trigger, .R-tree-diagram-link") : null;
+        if (!trigger || !trigger.dataset.diagramSource) return;
 
         event.preventDefault();
-        openTemplateDiagram(
-          trigger.dataset.diagramTemplate,
+        openStoredDiagram(
+          trigger.dataset.diagramSource,
           trigger.dataset.diagramTitle || trigger.textContent.replace(/^\[|\]$/g, "").trim()
         );
       });

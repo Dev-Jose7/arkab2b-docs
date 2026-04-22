@@ -4,6 +4,14 @@ weight: 5
 url: "/mvp/operacion/"
 ---
 
-Pilar de operacion para ArkaB2B en `MVP`: convierte el baseline cerrado de producto, dominio, arquitectura y calidad en una forma de ejecucion diaria trazable y accionable para ambientes reales.
+<div style="text-align:center; max-width: 900px; margin: 0 auto;">
 
-El contenido define como operar, observar, desplegar, recuperar y gobernar el sistema con criterios de promocion y evidencia operativa, sin reabrir decisiones de arquitectura ni calidad, y manteniendo coherencia con el baseline vigente `mvp` (`v0.1.1`).
+<p>
+El pilar de Operacion define como ejecutar y sostener ArkaB2B en runtime a partir del baseline ya cerrado en los pilares anteriores, incluyendo estrategia operativa, ejecucion del sistema, observabilidad, resiliencia y continuidad.
+</p>
+
+<p>
+Su salida formal establece control operativo por evidencia: gates de salida, runbooks, gestion de incidentes, seguridad operativa, deuda y evolucion, manteniendo trazabilidad con Arquitectura y Calidad para operar sin deriva semantica.
+</p>
+
+</div>

@@ -1,21 +1,35 @@
 /* Horizontal scroll inside table container, not the whole section/page */
 .table-scroll {
-  max-width: 100%;
   overflow-x: auto;
-  overflow-y: hidden;
+  overflow-y: clip;
   -webkit-overflow-scrolling: touch;
 }
 
 .table-scroll > table {
-  min-width: max-content;
+  min-width: 100%;
   width: 100%;
+  table-layout: auto;
   margin-bottom: 0;
 }
 
-/* Keep dense columns readable */
+/* Let table cells wrap naturally for better readability */
 .table-scroll > table th,
 .table-scroll > table td {
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+.table-scroll > table thead th {
+  position: sticky;
+  top: -1px;
+  z-index: 111;
+}
+
+.table-scroll > table thead tr {
+  position: sticky;
+  top: -1px;
+  z-index: 110;
 }
 
 /* Catalog indexes after ciclo-de-vida-first flattening */

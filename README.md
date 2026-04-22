@@ -9,7 +9,8 @@ No contiene el codigo fuente de los microservicios: su funcion es actuar como **
 - **Version documental del baseline:** `0.1.1`
 - **Estado del baseline:** **cerrado y listo para implementacion**
 
-Este baseline documenta de forma integrada producto, dominio, arquitectura, calidad y operacion para un backend B2B multi-tenant.
+Este baseline documenta de forma integrada producto, dominio, arquitectura,
+calidad y operacion para el sistema ArkaB2B.
 
 ## Alcance funcional del sistema (MVP)
 
@@ -18,11 +19,15 @@ Tambien incluye controles base de identidad y acceso por organizacion/rol para o
 
 ## Organizacion de la documentacion
 
-Toda la documentacion vigente esta en `content/mvp/` y se organiza en cinco pilares:
+Toda la documentacion vigente esta en `content/mvp/` y se organiza en cinco
+pilares:
 
-- `00-producto`: alcance, FR/NFR, glosario y trazabilidad de negocio.
-- `01-dominio`: bounded contexts, lenguaje ubicuo, reglas e invariantes, contratos semanticos y eventos.
-- `02-arquitectura`: decisiones tecnicas, vistas globales, contratos/datos/seguridad/rendimiento por servicio.
+- `00-producto`: estrategica, contexto de uso, definicion funcional,
+  semantica inicial, direccion y transicion a dominio.
+- `01-dominio`: descubrimiento del dominio, consolidacion del modelo y
+  transicion a arquitectura.
+- `02-arquitectura`: traduccion del dominio, estructura del sistema,
+  integracion/consistencia, realizacion tecnica y despliegue/trazabilidad.
 - `03-calidad`: estrategia de pruebas, mapeo FR/NFR, compuertas, cobertura, evidencia y certificacion minima.
 - `04-operacion`: ambientes, releases/promocion, observabilidad, SLI/SLO, runbooks, continuidad y seguridad operacional.
 
@@ -35,8 +40,9 @@ No deben confundirse con versiones de runtime o versionado de artefactos de desp
 
 ## Reproducibilidad tecnica y baseline tecnico
 
-La documentacion del baseline incorpora empaquetado reproducible por servicio e inicio reproducible de stacks de desarrollo/integracion (incluyendo Docker y `docker compose`) como parte de la definicion tecnica.  
-Este repositorio sigue siendo documental: especifica que debe implementarse y como validarlo, pero no es el runtime productivo del sistema.
+La documentacion del baseline define como debe implementarse y validarse el
+sistema con trazabilidad entre pilares. Este repositorio sigue siendo
+documental: no es el runtime productivo del sistema.
 
 ## Como usar este repositorio
 
