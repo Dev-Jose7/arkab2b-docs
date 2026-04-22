@@ -38,7 +38,8 @@ requerimientos que habilitan la primera entrega util del producto.
 
 - Definicion de producto organizada por estrategia, contexto de uso, capacidades,
   restricciones, semantica inicial y prioridades.
-- Baseline de dominio por bounded context, reglas, eventos y contratos.
+- Baseline de dominio organizado en descubrimiento del dominio,
+  consolidacion del modelo y transicion a arquitectura.
 - Baseline de arquitectura organizado por traduccion del dominio, estructura
   del sistema, integracion/consistencia, realizacion tecnica y
   despliegue/trazabilidad.
@@ -64,6 +65,7 @@ requerimientos que habilitan la primera entrega util del producto.
 - [Glosario preliminar](/mvp/producto/glosario-preliminar/)
 - [Prioridades del MVP / roadmap inmediato](/mvp/producto/prioridades-mvp-roadmap-inmediato/)
 - [Dominio](/mvp/dominio/)
+- [Transicion a Dominio](/mvp/producto/transicion-a-dominio/)
 - [Bounded contexts](/mvp/dominio/bounded-contexts/)
 - [Lenguaje Ubicuo](/mvp/dominio/lenguaje-ubicuo/)
 - [Eventos de Dominio](/mvp/dominio/eventos-de-dominio/)
@@ -71,6 +73,7 @@ requerimientos que habilitan la primera entrega util del producto.
 - [Agregados](/mvp/dominio/agregados/)
 - [Contratos de Integracion](/mvp/dominio/contratos-de-integracion/)
 - [Trazabilidad del Dominio](/mvp/dominio/trazabilidad/)
+- [Transicion a Arquitectura](/mvp/dominio/transicion-a-arquitectura/)
 - [Arquitectura](/mvp/arquitectura/)
 - [Traduccion del dominio](/mvp/arquitectura/traduccion-del-dominio/)
 - [Estructura del sistema](/mvp/arquitectura/estructura-del-sistema/)
