@@ -4,11 +4,14 @@ weight: 4
 url: "/mvp/calidad/"
 ---
 
-Pilar de calidad para ArkaB2B en `MVP`: define que debe protegerse, como se
-verifica con evidencia, que gates controlan la aceptacion del baseline y que
-handoff formal recibe Operacion.
+<div style="text-align:center; max-width: 900px; margin: 0 auto;">
 
-El pilar se apoya en el sistema real del repositorio: pruebas unitarias,
-de aplicacion, persistencia, adapters, contextos, compatibilidad de contratos,
-light E2E, smoke integrado, hubs manuales de Swagger/E2E y evidencia operativa
-del stack `Docker Compose` local y cloud.
+<p>
+El pilar de Calidad define como se verifica el baseline `MVP` de ArkaB2B con criterios auditablemente trazables desde Producto, Dominio y Arquitectura, separando verificacion funcional, integracion, no funcional y readiness operativo previo a produccion.
+</p>
+
+<p>
+Su salida formal consolida estrategia de pruebas, cobertura y trazabilidad, gates de calidad, artefactos de evidencia y transicion a Operacion para sostener una declaracion de cierre honesta y verificable del sistema.
+</p>
+
+</div>

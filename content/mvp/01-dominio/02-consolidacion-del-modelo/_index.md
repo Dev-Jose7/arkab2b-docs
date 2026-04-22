@@ -25,7 +25,10 @@ implementarse sin reinterpretacion arbitraria?"
 | Contratos de integracion | formaliza colaboracion semantica entre contextos y capacidades externas |
 | Trazabilidad | conecta Producto con hallazgos de descubrimiento y consolidacion |
 | Evolucion | explicita madurez actual, tensiones abiertas y direccion plausible |
-| Transicion a Arquitectura | formaliza el handoff metodologico y las decisiones de dominio que arquitectura debe respetar |
+
+La seccion [Transicion a Arquitectura](/mvp/dominio/transicion-a-arquitectura/)
+se mantiene como salida del pilar de Dominio a nivel raiz para explicitar el
+handoff formal hacia Arquitectura.
 
 ## Criterio de salida
 Al cerrar este bloque, Dominio queda listo para transicion a Arquitectura con

@@ -4,10 +4,14 @@ weight: 5
 url: "/mvp/operacion/"
 ---
 
-Pilar de operacion para ArkaB2B en `MVP`: convierte el baseline validado en una
-forma real de arranque, despliegue, observacion, recuperacion y control sobre
-`Docker Compose` local y cloud.
+<div style="text-align:center; max-width: 900px; margin: 0 auto;">
 
-El pilar describe el runtime actual del repositorio: servicios Java, Compose
-base/cloud, scripts oficiales, health/readiness, logs, runbooks, Kafka,
-Postgres, Redis, seguridad JWT y evidencia operativa razonable para DigitalOcean.
+<p>
+El pilar de Operacion define como ejecutar y sostener ArkaB2B en runtime a partir del baseline ya cerrado en los pilares anteriores, incluyendo estrategia operativa, ejecucion del sistema, observabilidad, resiliencia y continuidad.
+</p>
+
+<p>
+Su salida formal establece control operativo por evidencia: gates de salida, runbooks, gestion de incidentes, seguridad operativa, deuda y evolucion, manteniendo trazabilidad con Arquitectura y Calidad para operar sin deriva semantica.
+</p>
+
+</div>

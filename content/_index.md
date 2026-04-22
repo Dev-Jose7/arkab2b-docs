@@ -27,10 +27,9 @@ Su objetivo es organizar los pilares de ingeniería de software y sus artefactos
 
 1. Entra al ciclo de vida objetivo.
 2. Empieza por `00-producto` para entender alcance y requerimientos.
-3. Revisa `SRS`, catálogo RF/RNF y trazabilidad de producto.
-4. Continúa en `01-dominio` para validar mapa de contexto, lenguaje ubicuo, reglas y contratos.
-5. Revisa la trazabilidad de dominio para cobertura RF/RNF por componente.
-6. Usa el glosario y la trazabilidad de dominio para validar semántica antes de pasar a arquitectura.
-7. Revisa `02-arquitectura` para aterrizar servicios, contratos tecnicos, vistas globales y decisiones de despliegue del ciclo.
-8. Usa `03-calidad` para implementar y verificar el sistema con mapeo FR/NFR, compuertas y evidencia.
-9. Usa `04-operacion` para ejecutar despliegue, observabilidad, runbooks e incidentes en el baseline vigente.
+3. Revisa casos de uso funcionales, RF/RNF y trazabilidad de producto.
+4. Continúa en `01-dominio` para recorrer descubrimiento, consolidacion y transicion a arquitectura.
+5. Usa lenguaje/contratos/trazabilidad de dominio para validar semantica antes del diseno tecnico.
+6. Revisa `02-arquitectura` para aterrizar servicios, contratos, consistencia, persistencia, seguridad y despliegue.
+7. Usa `03-calidad` para verificar cobertura, gates y evidencia del baseline.
+8. Usa `04-operacion` para definir ejecucion runtime, observabilidad, continuidad y control operativo.
